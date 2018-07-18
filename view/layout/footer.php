@@ -39,6 +39,7 @@
                     <form>
                         <div class="newsletter-form">
                             <input class="form-control" placeholder="Enter Your Email address" type="text">
+                            <input type="submit" class="btn btn-primary btn-send" value="Submit">
                         </div>
                     </form>
                 </div>

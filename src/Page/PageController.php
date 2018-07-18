@@ -67,4 +67,22 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
         $view->add("page/about", $data);
         $pageRender->renderPage(["title" => $title]);
     }
+
+    /**
+     * Show contact page.
+     *
+     * @return void
+     */
+    public function getContact()
+    {
+        $title      = "Contact";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+
+        $data = [
+            "items" => "items",
+        ];
+        $view->add("page/contact", $data);
+        $pageRender->renderPage(["title" => $title]);
+    }
 }

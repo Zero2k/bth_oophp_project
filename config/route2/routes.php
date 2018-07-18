@@ -21,6 +21,12 @@ return [
             "requestMethod" => null,
             "path" => "blog",
             "callable" => ["pageController", "getBlog"],
+        ],
+        [
+            "info" => "Contact.",
+            "requestMethod" => null,
+            "path" => "contact",
+            "callable" => ["pageController", "getContact"],
         ]
     ]
 ];
