@@ -40,7 +40,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4 ptb-20">
+            <div class="col-md-4 ptb-50">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 ptb-20">
+            <div class="col-md-4 ptb-50">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -70,7 +70,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 ptb-20">
+            <div class="col-md-4 ptb-50">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -88,7 +88,7 @@
         </div>
 
         <h3 class="text-divider"><span>Popular Products</span></h3>
-        <div class="row">
+        <!-- <div class="row">
             <div class="text-center my-3">
                 <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
                     <div class="carousel-inner w-100" role="listbox">
@@ -105,18 +105,138 @@
                             <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/bbb?text=8"></div>
                         </div>
                     </div>
-                    <!-- <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
-                    </a> -->
+                    </a>
                     <a href="#!" class="btn btn-primary btn-more">Show More</a>
                 </div>
             </div>
+        </div> -->
+        <div class="row">
+            <div class="col-md-12">
+                <div id="myCarousel" class="carousel-product slide" data-ride="carousel">
+                <!-- Wrapper for carousel items -->
+                <div class="carousel-inner">
+                    <div class="item carousel-item active">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6">
+                                <div class="thumb-wrapper">
+                                    <div class="img-box">
+                                        <img src="img/orange_shirt_01.jpg" class="img-responsive img-fluid" alt="">
+                                    </div>
+                                    <div class="thumb-content">
+                                        <h4>Pleated Halter Blouse</h4>
+                                        <p class="item-price"><strike>$40.00</strike> <span>$34.00</span></p>
+                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="thumb-wrapper">
+                                    <div class="img-box">
+                                        <img src="img/black_shirt_01.jpg" class="img-responsive img-fluid" alt="">
+                                    </div>
+                                    <div class="thumb-content">
+                                        <h4>Michael Stars Front Halter</h4>
+                                        <p class="item-price"><strike>$25.00</strike> <span>$21.99</span></p>
+                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="thumb-wrapper">
+                                    <div class="img-box">
+                                        <img src="img/grey_shirt_01.jpg" class="img-responsive img-fluid" alt="">
+                                    </div>
+                                    <div class="thumb-content">
+                                        <h4>Cinch Athletic Poly Spandex Tech Polo</h4>
+                                        <p class="item-price"><strike>$69.00</strike> <span>$23.00</span></p>
+                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="thumb-wrapper">
+                                    <div class="img-box">
+                                        <img src="img/green_shirt_01.jpg" class="img-responsive img-fluid" alt="">
+                                    </div>
+                                    <div class="thumb-content">
+                                        <h4>Sleeveless Chiffon Zebra Fresco</h4>
+                                        <p class="item-price"><strike>$35.00</strike> <span>$25.00</span></p>
+                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item carousel-item">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6">
+                                <div class="thumb-wrapper">
+                                    <div class="img-box">
+                                        <img src="img/green_woman_shorts_01.jpg" class="img-responsive img-fluid" alt="">
+                                    </div>
+                                    <div class="thumb-content">
+                                        <h4>Patagonia Baggies Short</h4>
+                                        <p class="item-price"><strike>$28.00</strike> <span>$26.00</span></p>
+                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="thumb-wrapper">
+                                    <div class="img-box">
+                                        <img src="img/darkgrey_shirt_01.jpg" class="img-responsive img-fluid" alt="">
+                                    </div>
+                                    <div class="thumb-content">
+                                        <h4>Under Armour Tank</h4>
+                                        <p class="item-price"><strike>$39.00</strike> <span>$26.00</span></p>
+                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="thumb-wrapper">
+                                    <div class="img-box">
+                                        <img src="img/blue_shirt_01.jpg" class="img-responsive img-fluid" alt="">
+                                    </div>
+                                    <div class="thumb-content">
+                                        <h4>Lucky Brand Neptune Records Graphic Tee</h4>
+                                        <p class="item-price"><strike>$49.00</strike> <span>$39.00</span></p>
+                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="thumb-wrapper">
+                                    <div class="img-box">
+                                        <img src="img/white_red_shirt_01.jpg" class="img-responsive img-fluid" alt="">
+                                    </div>
+                                    <div class="thumb-content">
+                                        <h4>Calvin Klein Short Sleeve Jersey</h4>
+                                        <p class="item-price"><strike>$59.00</strike> <span>$56.00</span></p>
+                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carousel controls -->
+                <!-- <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a> -->
+            </div>
         </div>
+    </div>
 
         <h3 class="text-divider"><span>Weekly Deals</span></h3>
         <div class="row row-eq-height text-center text-lg-left">
@@ -146,8 +266,7 @@
             </div>
         </div>
 
-        <div class="divider"></div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-8">
                 <h4 class="ptb-10">Recent Posts</h4>
                 <div class="row">
@@ -178,6 +297,87 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+
+        <div class="row ptb-50">
+          <div class="col-md-4 col-sm-12">
+            <div class="widget widget-featured-products">
+              <h3 class="widget-title">Top Sellers</h3>
+              <!-- Entry-->
+              <div class="product">
+                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                <div class="product-content">
+                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                </div>
+              </div>
+              <!-- Entry-->
+              <div class="product">
+                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                <div class="product-content">
+                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                </div>
+              </div>
+              <!-- Entry-->
+              <div class="product">
+                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                <div class="product-content">
+                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12">
+            <div class="widget widget-featured-products">
+              <h3 class="widget-title">New Arrivals</h3>
+              <!-- Entry-->
+              <div class="product">
+                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                <div class="product-content">
+                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                </div>
+              </div>
+              <!-- Entry-->
+              <div class="product">
+                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                <div class="product-content">
+                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                </div>
+              </div>
+              <!-- Entry-->
+              <div class="product">
+                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                <div class="product-content">
+                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12">
+            <div class="widget widget-featured-products">
+              <h3 class="widget-title">Best Rated</h3>
+              <!-- Entry-->
+              <div class="product">
+                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                <div class="product-content">
+                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                </div>
+              </div>
+              <!-- Entry-->
+              <div class="product">
+                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                <div class="product-content">
+                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                </div>
+              </div>
+              <!-- Entry-->
+              <div class="product">
+                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                <div class="product-content">
+                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 </main>

@@ -13,6 +13,11 @@
     object-fit: cover;
 }
 
+.ptb-50 {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
 .ptb-20 {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -28,13 +33,49 @@
     line-height: 0;
     text-align: center;
     font-weight: 500;
+    color: #9da9b9;
 }
 .text-divider span{background-color: #fff; padding: 1em;}
-.text-divider:before{ content: " "; display: block; border-top: 2px solid #08202e; border-bottom: 1px solid #f7f7f7;}
+.text-divider:before{ content: " "; display: block; border-top: 1px solid #e1e7ec;}
 
 .divider {
-    border-top: 2px solid #08202e;
+    border-top: 1px solid #e1e7ec;
     padding: 1em;
+}
+
+.widget-title {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e1e7ec;
+    color: #9da9b9;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.product {
+    display: table;
+    margin-bottom: 18px;
+}
+
+.product .product-thumb {
+    width: 62px;
+    margin-right: 12px;
+}
+
+.product .product-content {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.product .product-title {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.product .product-meta {
+    color: #606975;
+    font-size: 12px;
 }
 
 .margin_left10 {
@@ -77,22 +118,43 @@ section .section-title {
 .form-control:focus { color: #011c28; outline: 0; box-shadow: 0 0 0 0.0rem rgb(255, 255, 255); border-color: #c9cdd0; background-color: #f0f4f6; }
 
 .btn-send {
-    border-radius: 0px;
-    background-color: transparent;
-    border: 1px solid #d6dadc;
-    color: #868e96;
-    font-weight: 600;
-    font-size: 15px;
+    color: #fff;
+    border-radius: 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: none;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin-top: 5px;
+    line-height: 16px;
+}
+
+.btn-send:hover {
+    color: #fff;
+    background: #333;
+    border-color: #333;
+    box-shadow: none;
 }
 
 .btn-more {
-    border-radius: 0px;
-    background-color: #327890;
-    border: 1px solid #327890;
     color: #fff;
-    font-weight: 600;
-    font-size: 15px;
-    margin-top: 25px;
+    border-radius: 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: none;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin-top: 5px;
+    line-height: 16px;
+}
+
+.btn-more:hover {
+    color: #fff;
+    background: #333;
+    border-color: #333;
+    box-shadow: none;
 }
 
 .footer { background-color: #327890; margin-top: 30px; padding-top: 50px; color: #c9cacb; font-weight: 400; font-size: 17px; }
@@ -110,6 +172,11 @@ section .section-title {
 @media (max-width:767px){
     .pd-top:not(:first-child) {
         padding-top: 20px;
+    }
+
+    .ptb-50 {
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
     .ptb-20 {

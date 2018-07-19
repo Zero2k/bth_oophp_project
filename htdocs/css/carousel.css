@@ -1,0 +1,125 @@
+/* Inspiration from https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=product-list-carousel-for-ecommerce-website */
+
+.carousel-product {
+    margin: 0 auto;
+    padding: 0 70px;
+}
+
+.carousel-product .item {
+    min-height: 330px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.carousel-product .item .img-box {
+    height: 240px;
+    width: 100%;
+    position: relative;
+}
+
+.carousel-product .item img {
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.carousel-product .item h4 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.carousel-product .item .btn {
+	color: #333;
+    border-radius: 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: none;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin-top: 5px;
+    line-height: 16px;
+}
+
+.carousel-product .item .btn:hover, .carousel-product .item .btn:focus {
+    color: #fff;
+    background: #333;
+    border-color: #333;
+    box-shadow: none;
+}
+
+.carousel-product .item .btn i {
+	font-size: 14px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.carousel-product .thumb-wrapper {
+    text-align: center;
+}
+
+.carousel-product .thumb-content {
+    padding: 15px;
+}
+
+.carousel-product .carousel-control {
+    height: 100px;
+    width: 40px;
+    background: none;
+    margin: auto 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.carousel-product .carousel-control i {
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    margin: -16px 0 0 0;
+    z-index: 5;
+    left: 0;
+    right: 0;
+    color: rgba(0, 0, 0, 0.8);
+    text-shadow: none;
+    font-weight: bold;
+}
+
+.carousel-product .item-price {
+    font-size: 13px;
+    padding: 2px 0;
+}
+
+.carousel-product .item-price strike {
+    color: #999;
+    margin-right: 5px;
+}
+
+.carousel-product .item-price span {
+    color: #86bd57;
+    font-size: 110%;
+}
+
+.carousel-product .carousel-control.left i {
+    margin-left: -3px;
+}
+
+.carousel-product .carousel-control.left i {
+    margin-right: -3px;
+}
+
+.carousel-product .carousel-indicators {
+    bottom: -30px;
+}
+
+.carousel-indicators li {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.carousel-indicators li.active {
+    background: rgba(0, 0, 0, 0.6);
+}
