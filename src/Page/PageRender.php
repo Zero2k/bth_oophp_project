@@ -30,7 +30,7 @@ class PageRender implements PageRenderInterface, InjectionAwareInterface
         // Add common header, navbar and footer
         $view = $this->di->get("view");
         // $this->view->add("layout/header", [], "header");
-        $view->add("layout/subnavbar", [], "subnavbar");
+        /* $view->add("layout/subnavbar", [], "subnavbar"); */
         $view->add("layout/navbar", [], "navbar");
         $view->add("layout/footer", $data, "footer");
         // Add layout, render it, add to response and send.

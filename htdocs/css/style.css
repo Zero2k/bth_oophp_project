@@ -114,8 +114,8 @@ section .section-title {
 }
 
 
-.form-control { border-radius: 0px; font-size: 14px; font-weight: 700; width: 100%; height: 64px; padding: 16px 20px; line-height: 1.42857143; border: 1px solid #d6dadc; background-color: #fff; text-transform: capitalize; letter-spacing: 0px; margin-bottom: 10px; -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0); box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0); -webkit-appearance: none; color: #011c28; }
-.form-control:focus { color: #011c28; outline: 0; box-shadow: 0 0 0 0.0rem rgb(255, 255, 255); border-color: #c9cdd0; background-color: #f0f4f6; }
+.form-control-custom { border-radius: 0px; font-size: 14px; font-weight: 700; width: 100%; height: 64px; padding: 16px 20px; line-height: 1.42857143; border: 1px solid #d6dadc; background-color: #fff; letter-spacing: 0px; margin-bottom: 10px; -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0); box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0); -webkit-appearance: none; color: #011c28; }
+.form-control-custom:focus { color: #011c28; outline: 0; box-shadow: 0 0 0 0.0rem rgb(255, 255, 255); border-color: #c9cdd0; background-color: #f0f4f6; }
 
 .btn-send {
     color: #fff;
@@ -138,7 +138,7 @@ section .section-title {
 }
 
 .btn-more {
-    color: #fff;
+    color: #333;
     border-radius: 0;
     font-size: 11px;
     text-transform: uppercase;
@@ -157,7 +157,31 @@ section .section-title {
     box-shadow: none;
 }
 
-.footer { background-color: #327890; margin-top: 30px; padding-top: 50px; color: #c9cacb; font-weight: 400; font-size: 17px; }
+.btn-user {
+    color: #333;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: none;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    padding: .375rem .75rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.btn-user:hover {
+    color: #fff;
+    background: #333;
+    border-color: #333;
+    box-shadow: none;
+}
+
+.no-border {
+    border-radius: 0;
+}
+
+.footer { background-color: #327890; margin-top: 30px; padding-top: 50px; color: #c9cacb; font-weight: 400; font-size: 15px; }
 .footer-line { border-color: #152e3d; }
 .footer-widget { padding-bottom: 50px; }
 .footer-title { font-size: 24px; font-weight: 500; margin-bottom: 44px; color: #fff; }

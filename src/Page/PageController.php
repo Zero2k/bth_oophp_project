@@ -14,6 +14,8 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
 {
     use InjectionAwareTrait, ConfigureTrait;
 
+
+
     /**
      * Show home page.
      *
@@ -31,6 +33,8 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
         $view->add("page/index", $data);
         $pageRender->renderPage(["title" => $title]);
     }
+
+
 
     /**
      * Show blog page.
@@ -50,6 +54,8 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
         $pageRender->renderPage(["title" => $title]);
     }
 
+
+
     /**
      * Show about page.
      *
@@ -67,6 +73,8 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
         $view->add("page/about", $data);
         $pageRender->renderPage(["title" => $title]);
     }
+
+
 
     /**
      * Show contact page.

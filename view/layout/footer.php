@@ -4,21 +4,16 @@
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 ">
                 <div class="footer-widget ">
                     <div class="footer-title">elite<b>appeal</b></div>
-                    <ul class="list-unstyled">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Legal & Privacy</a></li>
-                    </ul>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo.</p>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 ">
                 <div class="footer-widget ">
                     <div class="footer-title">Quick Links</div>
                     <ul class="list-unstyled">
-                        <li><a href="#">News</a></li>
+                        <li><a href="#">About</a></li>
                         <li><a href="#">Contact us</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">News</a></li>
                     </ul>
                 </div>
             </div>
@@ -38,7 +33,7 @@
                     <h3 class="footer-title">Subscribe Newsletter</h3>
                     <form>
                         <div class="newsletter-form">
-                            <input class="form-control" placeholder="Enter Your Email address" type="text">
+                            <input class="form-control-custom" placeholder="Enter Your Email address" type="text">
                             <input type="submit" class="btn btn-primary btn-send" value="Submit">
                         </div>
                     </form>
