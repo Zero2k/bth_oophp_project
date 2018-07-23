@@ -22,5 +22,11 @@ return [
             "path" => "logout",
             "callable" => ["userController", "logoutUser"],
         ],
+        [
+            "info" => "Profile.",
+            "requestMethod" => "get|post",
+            "path" => "profile",
+            "callable" => ["userController", "getProfile"],
+        ],
     ]
 ];

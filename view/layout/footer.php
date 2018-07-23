@@ -19,7 +19,7 @@
             </div>
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 ">
                 <div class="footer-widget ">
-                    <div class="footer-title">Social</div>
+                    <div class="footer-title">Social Media</div>
                     <ul class="list-unstyled">
                         <li><a href="#">Twitter</a></li>
                         <li><a href="#">Google +</a></li>

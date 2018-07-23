@@ -28,6 +28,16 @@ class UserController implements
 
 
 
+    public function init()
+    {
+        $this->user = new User();
+        $this->user->setDb($this->di->get("database"));
+
+        $this->session = $this->di->get("session");
+    }
+
+
+
     /**
      * Description.
      *
@@ -106,6 +116,60 @@ class UserController implements
         ];
 
         $view->add("page/sign-up", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    /**
+     * Description.
+     *
+     * @param datatype $variable Description
+     *
+     * @throws Exception
+     *
+     * @return void
+     */
+    public function getProfile()
+    {
+        $this->init();
+        $title      = "Profile";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+
+        if ($userId) {
+            $tab = isset($_GET["tab"]) ? $_GET["tab"] : '';
+
+            switch ($tab) {
+                case 'profile':
+                    $content = $this->user->getUserInfo($userId, 180);
+                    break;
+
+                case 'orders':
+                    $content = "orders";
+                    break;
+
+                case 'address':
+                    $content = "address";
+                    break;
+
+                case 'posts':
+                    $content = "posts";
+                    break;
+                
+                default:
+                    $content = $this->user->getUserInfo($userId, 180);
+                    break;
+            }
+        }
+
+        $data = [
+            "content" => $content,
+        ];
+
+        $view->add("user/profile", $data);
 
         $pageRender->renderPage(["title" => $title]);
     }

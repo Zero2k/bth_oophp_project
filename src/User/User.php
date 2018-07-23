@@ -100,4 +100,24 @@ class User extends ActiveRecordModel
             return false;
         }
     }
+
+
+
+    /**
+     * Get user information.
+     *
+     * @param id $id.
+     * @param integer $size.
+     *
+     * @return object.
+     */
+    public function getUserInfo($id, $size)
+    {
+        $user = $this->find("id", $id);
+        $gravatar = new Gravatar();
+
+        $user->gravatar = $gravatar->url($user->email, $size);
+
+        return $user;
+    }
 }
