@@ -8,6 +8,7 @@ use \Anax\DI\InjectionAwareInterface;
 use \Anax\Di\InjectionAwareTrait;
 use \Vibe\User\HTMLForm\UserLoginForm;
 use \Vibe\User\HTMLForm\CreateUserForm;
+use \Vibe\User\HTMLForm\UpdateAddressForm;
 
 /**
  * A controller class.
@@ -144,29 +145,48 @@ class UserController implements
 
             switch ($tab) {
                 case 'profile':
-                    $content = $this->user->getUserInfo($userId, 180);
+                    $data = [
+                        "content" => $this->user->getUserInfo($userId, 180),
+                    ];
+                    $view->add("user/partials/profile", $data, "partial");
                     break;
 
                 case 'orders':
-                    $content = "orders";
+                    $data = [
+                        "content" => "test",
+                    ];
+                    $view->add("user/partials/orders", $data, "partial");
                     break;
 
                 case 'address':
-                    $content = "address";
+                    $form = new UpdateAddressForm($this->di, $userId);
+                    
+                    $form->check();
+
+                    $data = [
+                        "content" => $form->getHTML(),
+                    ];
+
+                    $view->add("user/partials/address", $data, "partial");
                     break;
 
-                case 'posts':
-                    $content = "posts";
+                case 'settings':
+                    $content = "settings";
                     break;
                 
                 default:
-                    $content = $this->user->getUserInfo($userId, 180);
+                    $data = [
+                        "content" => $this->user->getUserInfo($userId, 180),
+                    ];
+                    $view->add("user/partials/profile", $data, "partial");
                     break;
             }
+        } else {
+            $this->di->get("response")->redirect("login");
         }
 
         $data = [
-            "content" => $content,
+            "view" => "test",
         ];
 
         $view->add("user/profile", $data);
