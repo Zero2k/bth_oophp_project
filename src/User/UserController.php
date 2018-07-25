@@ -165,7 +165,21 @@ class UserController implements
 
                     $data = [
                         "content" => $form->getHTML(),
+                        /* "content" => $this->user->find("id", $userId), */
                     ];
+
+                    /* if (!empty($_POST)) {
+                        $country = isset($_POST["country"]) ? htmlentities($_POST["country"]) : "";
+                        $city = isset($_POST["city"]) ? htmlentities($_POST["city"]) : "";
+                        $address = isset($_POST["address"]) ? htmlentities($_POST["address"]) : "";
+
+                        $this->user->country = $country;
+                        $this->user->city = $city;
+                        $this->user->address = $address;
+
+                        $this->user->save();
+                        $this->di->get("response")->redirect("profile");
+                    } */
 
                     $view->add("user/partials/address", $data, "partial");
                     break;

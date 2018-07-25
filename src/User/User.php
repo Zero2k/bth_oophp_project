@@ -45,8 +45,8 @@ class User extends ActiveRecordModel
      */
     public function createUser($username, $email, $password)
     {
-        $this->username = strtolower($username);
-        $this->email = strtolower($email);
+        $this->username = mb_strtolower($username, 'UTF-8');
+        $this->email = mb_strtolower($email, 'UTF-8');
         $this->setPassword($password);
         $this->save();
     }

@@ -1,8 +1,11 @@
 <?php
+
 namespace Vibe\User\HTMLForm;
+
 use \Anax\HTMLForm\FormModel;
 use \Anax\DI\DIInterface;
 use \Vibe\User\User;
+
 /**
  * Form to update an item.
  */
@@ -17,7 +20,7 @@ class UpdateAddressForm extends FormModel
     public function __construct(DIInterface $di, $id)
     {
         parent::__construct($di);
-        $user = $this->getItemDetails($id);
+        $user = $this->getUserDetails($id);
         $this->form->create(
             [
                 "id" => __CLASS__,
@@ -57,20 +60,26 @@ class UpdateAddressForm extends FormModel
             ]
         );
     }
+
+
+
     /**
-     * Get details on item to load form with.
+     * Get details on user to load form with.
      *
-     * @param integer $id get details on item with id.
+     * @param integer $id get details on user with id.
      *
      * @return User
      */
-    public function getItemDetails($id)
+    public function getUserDetails($id)
     {
         $user = new User();
         $user->setDb($this->di->get("database"));
         $user->find("id", $id);
         return $user;
     }
+
+
+
     /**
      * Callback for submit-button which should return true if it could
      * carry out its work and false if something failed.
@@ -90,9 +99,9 @@ class UpdateAddressForm extends FormModel
         $user->username = $user->username;
         $user->email = $user->email;
         $user->password = $user->password;
-        $user->country = $country;
-        $user->address = $address;
-        $user->city = $city;
+        $user->country = mb_strtolower($country, 'UTF-8');
+        $user->address = mb_strtolower($address, 'UTF-8');
+        $user->city = mb_strtolower($city, 'UTF-8');
         $user->save();
 
         $this->di->get("response")->redirect("profile");
