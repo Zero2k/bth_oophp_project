@@ -11,9 +11,9 @@
                 <div class="footer-widget ">
                     <div class="footer-title">Quick Links</div>
                     <ul class="list-unstyled">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">News</a></li>
+                        <li><a href="about">About</a></li>
+                        <li><a href="contact">Contact us</a></li>
+                        <li><a href="blog">News</a></li>
                     </ul>
                 </div>
             </div>

@@ -3,7 +3,7 @@
     <div class="col-md-9 col-sm-12">
         <dl class="row">
             <dt class="col-md-4">Username</dt>
-            <dd class="col-md-8"><?= $content->username ?></dd>
+            <dd class="col-md-8"><?= ucfirst($content->username) ?></dd>
 
             <dt class="col-md-4">Email</dt>
             <dd class="col-md-8"><?= $content->email ?></dd>

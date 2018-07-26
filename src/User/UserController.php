@@ -8,7 +8,6 @@ use \Anax\DI\InjectionAwareInterface;
 use \Anax\Di\InjectionAwareTrait;
 use \Vibe\User\HTMLForm\UserLoginForm;
 use \Vibe\User\HTMLForm\CreateUserForm;
-use \Vibe\User\HTMLForm\UpdateAddressForm;
 
 /**
  * A controller class.
@@ -159,33 +158,57 @@ class UserController implements
                     break;
 
                 case 'address':
-                    $form = new UpdateAddressForm($this->di, $userId);
-                    
-                    $form->check();
-
                     $data = [
-                        "content" => $form->getHTML(),
-                        /* "content" => $this->user->find("id", $userId), */
+                        "content" => $this->user->find("id", $userId),
                     ];
 
-                    /* if (!empty($_POST)) {
+                    if (!empty($_POST)) {
                         $country = isset($_POST["country"]) ? htmlentities($_POST["country"]) : "";
                         $city = isset($_POST["city"]) ? htmlentities($_POST["city"]) : "";
                         $address = isset($_POST["address"]) ? htmlentities($_POST["address"]) : "";
 
-                        $this->user->country = $country;
-                        $this->user->city = $city;
-                        $this->user->address = $address;
+                        $this->user->country = mb_strtolower($country, 'UTF-8');
+                        $this->user->city = mb_strtolower($city, 'UTF-8');
+                        $this->user->address = mb_strtolower($address, 'UTF-8');
 
                         $this->user->save();
                         $this->di->get("response")->redirect("profile");
-                    } */
+                    }
 
                     $view->add("user/partials/address", $data, "partial");
                     break;
 
                 case 'settings':
-                    $content = "settings";
+                    $data = [
+                        "content" => $this->user->find("id", $userId),
+                    ];
+
+                    if (!empty($_POST)) {
+                        $username = isset($_POST["username"]) ? htmlentities($_POST["username"]) : "";
+                        $email = isset($_POST["email"]) ? htmlentities($_POST["email"]) : "";
+                        $password = isset($_POST["password"]) ? htmlentities($_POST["password"]) : "";
+                        $confirmPassword = isset($_POST["confirm-password"]) ? htmlentities($_POST["confirm-password"]) : "";
+
+                        if (!$password) {
+                            $this->user->username = $username;
+                            $this->user->email = $email;
+                            $this->user->password = $this->user->password;
+                        } else {
+                            if ($password !== $confirmPassword) {
+                                return false;
+                            }
+
+                            $this->user->username = $username;
+                            $this->user->email = $email;
+                            $this->user->password = $password;
+                            $this->user->setPassword($password);
+                        }
+
+                        $this->user->save();
+                        $this->di->get("response")->redirect("profile");
+                    }
+
+                    $view->add("user/partials/settings", $data, "partial");
                     break;
                 
                 default:
@@ -200,7 +223,7 @@ class UserController implements
         }
 
         $data = [
-            "view" => "test",
+            "userRole" => $this->session->get("userRole"),
         ];
 
         $view->add("user/profile", $data);

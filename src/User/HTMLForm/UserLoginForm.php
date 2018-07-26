@@ -74,7 +74,8 @@ class UserLoginForm extends FormModel
         $session->set("userId", $user->id);
         $session->set("username", $user->username);
         $session->set("userEmail", $user->email);
-        $this->form->addOutput("Success!");
+        $session->set("userRole", $user->admin);
+        $this->di->get("response")->redirect("profile");
 
         return true;
     }

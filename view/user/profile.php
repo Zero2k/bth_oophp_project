@@ -24,6 +24,9 @@
                 <a href="?tab=orders" class="list-group-item list-group-item-action">Orders</a>
                 <a href="?tab=address" class="list-group-item list-group-item-action">Address</a>
                 <a href="?tab=settings" class="list-group-item list-group-item-action">Settings</a>
+                <?php if ($userRole === 1) : ?>
+                    <a href="?tab=posts" class="list-group-item list-group-item-action">Posts</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
