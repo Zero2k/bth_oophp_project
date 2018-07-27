@@ -22,9 +22,14 @@ return [
             "file" => __DIR__ . "/route2/internal.php",
         ],
         [
-            // Add routes from userController and mount on user/
+            // Add routes from userController and mount on profile/
             "mount" => null,
             "file" => __DIR__ . "/route2/userController.php",
+        ],
+        [
+            // Add routes from adminController and mount on admin/
+            "mount" => null,
+            "file" => __DIR__ . "/route2/adminController.php",
         ],
         [
             // For debugging and development details on Anax

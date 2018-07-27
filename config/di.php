@@ -143,5 +143,13 @@ return [
                 return $obj;
             }
         ],
+        "adminController" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \Vibe\Admin\AdminController();
+                $obj->setDI($this);
+                return $obj;
+            }
+        ],
     ],
 ];

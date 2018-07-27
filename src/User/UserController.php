@@ -147,6 +147,7 @@ class UserController implements
                     $data = [
                         "content" => $this->user->getUserInfo($userId, 180),
                     ];
+
                     $view->add("user/partials/profile", $data, "partial");
                     break;
 
@@ -154,6 +155,7 @@ class UserController implements
                     $data = [
                         "content" => "test",
                     ];
+
                     $view->add("user/partials/orders", $data, "partial");
                     break;
 
@@ -215,6 +217,7 @@ class UserController implements
                     $data = [
                         "content" => $this->user->getUserInfo($userId, 180),
                     ];
+
                     $view->add("user/partials/profile", $data, "partial");
                     break;
             }
