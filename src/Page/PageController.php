@@ -37,6 +37,26 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
 
 
     /**
+     * Show shop page.
+     *
+     * @return void
+     */
+    public function getShop()
+    {
+        $title      = "Shop";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+
+        $data = [
+            "items" => "items",
+        ];
+        $view->add("page/shop", $data);
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    /**
      * Show blog page.
      *
      * @return void

@@ -5,25 +5,31 @@
 return [
     "routes" => [
         [
-            "info" => "Home.",
+            "info" => "Home",
             "requestMethod" => null,
             "path" => "/",
             "callable" => ["pageController", "getIndex"],
         ],
         [
-            "info" => "About.",
+            "info" => "Shop",
+            "requestMethod" => null,
+            "path" => "shop",
+            "callable" => ["pageController", "getShop"],
+        ],
+        [
+            "info" => "About",
             "requestMethod" => null,
             "path" => "about",
             "callable" => ["pageController", "getAbout"],
         ],
         [
-            "info" => "Blog.",
+            "info" => "Blog",
             "requestMethod" => null,
             "path" => "blog",
             "callable" => ["pageController", "getBlog"],
         ],
         [
-            "info" => "Contact.",
+            "info" => "Contact",
             "requestMethod" => null,
             "path" => "contact",
             "callable" => ["pageController", "getContact"],
