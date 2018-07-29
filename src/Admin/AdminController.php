@@ -7,6 +7,7 @@ use \Anax\Configure\ConfigureTrait;
 use \Anax\DI\InjectionAwareInterface;
 use \Anax\Di\InjectionAwareTrait;
 use \Vibe\User\User;
+use \Vibe\Content\HTMLForm\EditContentForm;
 
 /**
  * A controller class.
@@ -100,8 +101,18 @@ class AdminController implements
                     break;
 
                 case 'settings':
+                    /* Form to edit about */
+                    $about = new EditContentForm($this->di, "about");
+                    $about->check();
+
+                    /* Form to edit footer */
+                    $footer = new EditContentForm($this->di, "footer");
+                    $footer->check();
+
+                
                     $data = [
-                        "content" => "settings",
+                        "about" => $about->getHTML(),
+                        "footer" => $footer->getHTML(),
                     ];
 
                     $view->add("admin/partials/settings", $data, "partial");
