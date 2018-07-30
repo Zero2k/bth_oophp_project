@@ -120,4 +120,33 @@ class User extends ActiveRecordModel
 
         return $user;
     }
+
+
+
+    /**
+     * Get users.
+     *
+     * @param integer $limit.
+     *
+     * @return objects.
+     */
+    public function getUsers($limit, $order = "id")
+    {
+        $sql = 'SELECT * FROM oophp_User User 
+        ORDER BY '.$order.' ASC 
+        LIMIT ?';
+
+        $users = $this->findAllSql($sql, [$limit]);
+        $users = array_map(function ($user) {
+            $user->id = $user->id;
+            $user->username = $user->username;
+            $user->address = $user->address;
+            $user->country = $user->country;
+            $user->city = $user->city;
+            $user->created = $user->created;
+            return $user;
+        }, $users);
+
+        return $users;
+    }
 }

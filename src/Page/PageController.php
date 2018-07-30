@@ -6,6 +6,7 @@ use \Anax\DI\InjectionAwareInterface;
 use \Anax\DI\InjectionAwareTrait;
 use \Anax\Configure\ConfigureInterface;
 use \Anax\Configure\ConfigureTrait;
+use \Vibe\Content\Content;
 
 /**
 * Routes class.
@@ -13,6 +14,14 @@ use \Anax\Configure\ConfigureTrait;
 class PageController implements ConfigureInterface, InjectionAwareInterface
 {
     use InjectionAwareTrait, ConfigureTrait;
+
+
+
+    public function init()
+    {
+        $this->content = new Content();
+        $this->content->setDb($this->di->get("database"));
+    }
 
 
 
@@ -30,6 +39,7 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
         $data = [
             "items" => "items",
         ];
+
         $view->add("page/index", $data);
         $pageRender->renderPage(["title" => $title]);
     }
@@ -50,6 +60,7 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
         $data = [
             "items" => "items",
         ];
+
         $view->add("page/shop", $data);
         $pageRender->renderPage(["title" => $title]);
     }
@@ -70,6 +81,7 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
         $data = [
             "items" => "items",
         ];
+
         $view->add("page/blog", $data);
         $pageRender->renderPage(["title" => $title]);
     }
@@ -83,13 +95,15 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
      */
     public function getAbout()
     {
+        $this->init();
         $title      = "About";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
 
         $data = [
-            "items" => "items",
+            "content" => $this->content->getContent("about"),
         ];
+
         $view->add("page/about", $data);
         $pageRender->renderPage(["title" => $title]);
     }
@@ -110,6 +124,7 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
         $data = [
             "items" => "items",
         ];
+
         $view->add("page/contact", $data);
         $pageRender->renderPage(["title" => $title]);
     }

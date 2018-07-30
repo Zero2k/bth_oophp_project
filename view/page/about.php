@@ -13,7 +13,7 @@
         <div class="card text-center form-group">
             <div class="card-body">
                 <h5 class="card-title">ABOUT THIS SITE</h5>
-                <p class="card-text">This website is part of the last assignment in the course oophp at BTH and it's created by Viktor Bengtsson who's currently studying web development at BTH (Blekinge Institute of Technology). The site is built with PHP and a lightweight PHP framework called Anax and a couple of modules. The Anax framework is perfect when you want to build small websites such as a personal site like this one.</p>
+                <div class="card-text"><?= $content->html ?></div>
                 <a href="https://github.com/Zero2k/bth_oophp_project" class="btn btn-primary btn-more">Learn more about this project</a>
             </div>
         </div>

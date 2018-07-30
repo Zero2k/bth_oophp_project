@@ -70,6 +70,19 @@ class Content extends ActiveRecordModel
 
 
 
+    /**
+     * Get content
+     *
+     * @param string $type.
+     *
+     */
+    public function getContent($type)
+    {
+        return $this->find("type", $type);
+    }
+
+
+
     public function parseContent($content)
     {
         $textfilter = new TextFilter();

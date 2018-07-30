@@ -94,7 +94,7 @@ class AdminController implements
 
                 case 'users':
                     $data = [
-                        "content" => "users",
+                        "users" => $this->user->getUsers(10),
                     ];
 
                     $view->add("admin/partials/users", $data, "partial");

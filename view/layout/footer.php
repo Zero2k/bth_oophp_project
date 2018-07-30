@@ -4,7 +4,7 @@
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 ">
                 <div class="footer-widget ">
                     <div class="footer-title">elite<b>appeal</b></div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo.</p>
+                    <?= $footer->html ?>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 ">
