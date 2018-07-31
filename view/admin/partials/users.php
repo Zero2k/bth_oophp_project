@@ -1,3 +1,8 @@
+<?php
+    $url = $this->di->get("url");
+    $session = $this->di->get("session");
+?>
+
 <h4>Users</h4>
 <table class="table">
     <thead>
@@ -16,15 +21,15 @@
             <td><?= ucfirst($user->username) ?></td>
             <td><?= $user->email ?></td>
             <td><?= ucfirst($user->address) ?>, <?= ucfirst($user->city) ?></td>
-            <td>Edit | Delete</td>
+            <td><a href="<?= $url->create("admin/edit/user/$user->id")?>">Edit</a> | <a href="<?= $url->create("admin/delete/user/$user->id")?>">Delete</a></td>
             </tr>
             <tr>
         <?php endforeach; ?>
     </tbody>
     <tfoot>
         <tr>
-            <th></th>
-            <th colspan="4">
+            <th colspan="3"><p class="text-info"><?= $session->getOnce("message") ?></p></th>
+            <th colspan="2">
                 <button class="btn btn-primary float-right">Add User</button>
             </th>
         </tr>

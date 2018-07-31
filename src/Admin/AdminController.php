@@ -131,10 +131,112 @@ class AdminController implements
         }
 
         $data = [
-            "userRole" => $this->session->get("userRole"),
+            "userRole" => $userRole,
         ];
 
+        $view->add("admin/partials/sidebar", [], "sidebar");
         $view->add("admin/dashboard", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getAdminEditUser($id)
+    {
+        $this->init();
+        $title      = "Admin - Edit User";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $userRole = $this->session->get("userRole");
+
+        if ($userId && $userRole === 1) {
+            $user = $this->user->find("id", $id);
+
+            if (!empty($_POST)) {
+                $username = isset($_POST["username"]) ? htmlentities($_POST["username"]) : "";
+                $email = isset($_POST["email"]) ? htmlentities($_POST["email"]) : "";
+                $address = isset($_POST["address"]) ? htmlentities($_POST["address"]) : "";
+                $city = isset($_POST["city"]) ? htmlentities($_POST["city"]) : "";
+                $country = isset($_POST["country"]) ? htmlentities($_POST["country"]) : "";
+                $password = isset($_POST["password"]) ? htmlentities($_POST["password"]) : "";
+                $confirmPassword = isset($_POST["confirm-password"]) ? htmlentities($_POST["confirm-password"]) : "";
+
+                if ($email !== $this->user->email && $this->user->userExists($email)) {
+                    $this->session->set("message", "Email already exist");
+                    $this->di->get("response")->redirect("admin?tab=users");
+                }
+
+                if (!$password) {
+                    $this->user->username = mb_strtolower($username, 'UTF-8');
+                    $this->user->email = mb_strtolower($email, 'UTF-8');
+                    $this->user->address = mb_strtolower($address, 'UTF-8');
+                    $this->user->city = mb_strtolower($city, 'UTF-8');
+                    $this->user->country = mb_strtolower($country, 'UTF-8');
+                    $this->user->password = $this->user->password;
+                } else {
+                    if ($password !== $confirmPassword) {
+                        $this->session->set("message", "Password didn't match");
+                        $this->di->get("response")->redirect("admin?tab=users");
+                    }
+
+                    $this->user->username = mb_strtolower($username, 'UTF-8');
+                    $this->user->email = mb_strtolower($email, 'UTF-8');
+                    $this->user->address = mb_strtolower($address, 'UTF-8');
+                    $this->user->city = mb_strtolower($city, 'UTF-8');
+                    $this->user->country = mb_strtolower($country, 'UTF-8');
+                    $this->user->setPassword($password);
+                }
+
+                $this->session->set("message", "User has been updated");
+                $this->user->save();
+                $this->di->get("response")->redirect("admin?tab=users");
+            }
+        } else {
+            $this->di->get("response")->redirect("");
+        }
+
+        $data = [
+            "user" => $user,
+        ];
+
+        $view->add("admin/partials/sidebar", [], "sidebar");
+        $view->add("admin/user/edit", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getAdminDeleteUser($id)
+    {
+        $this->init();
+        $title      = "Admin - Delete User";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $userRole = $this->session->get("userRole");
+
+        if ($userId && $userRole === 1) {
+            $user = $this->user->find("id", $id);
+
+            if (!empty($_POST) && $id !== $userId) {
+                $userId = isset($_POST["id"]) ? htmlentities($_POST["id"]) : "";
+                $deleteUser = $this->user->find("id", $userId);
+                $deleteUser->delete();
+                $this->di->get("response")->redirect("admin?tab=users");
+            }
+        } else {
+            $this->di->get("response")->redirect("");
+        }
+
+        $data = [
+            "user" => $user,
+        ];
+
+        $view->add("admin/partials/sidebar", [], "sidebar");
+        $view->add("admin/user/delete", $data);
 
         $pageRender->renderPage(["title" => $title]);
     }

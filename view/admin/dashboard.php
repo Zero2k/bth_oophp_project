@@ -19,15 +19,11 @@
         </div>
         
         <div class="col-md-3 col-sm-12">
-            <div class="list-group">
-                <a href="admin" class="list-group-item list-group-item-action">Dashboard</a>
-                <a href="?tab=orders" class="list-group-item list-group-item-action">Orders</a>
-                <a href="?tab=products" class="list-group-item list-group-item-action">Products</a>
-                <a href="?tab=categories" class="list-group-item list-group-item-action">Categories</a>
-                <a href="?tab=posts" class="list-group-item list-group-item-action">Posts</a>
-                <a href="?tab=users" class="list-group-item list-group-item-action">Users</a>
-                <a href="?tab=settings" class="list-group-item list-group-item-action">Settings</a>
-            </div>
+            <?php if ($this->regionHasContent("sidebar")) : ?>
+                <div>
+                    <?php $this->renderRegion("sidebar") ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>

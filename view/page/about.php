@@ -12,9 +12,7 @@
     <div class="container">
         <div class="card text-center form-group">
             <div class="card-body">
-                <h5 class="card-title">ABOUT THIS SITE</h5>
                 <div class="card-text"><?= $content->html ?></div>
-                <a href="https://github.com/Zero2k/bth_oophp_project" class="btn btn-primary btn-more">Learn more about this project</a>
             </div>
         </div>
         <div class="row">
