@@ -142,6 +142,62 @@ class AdminController implements
 
 
 
+    public function getAdminAddUser()
+    {
+        $this->init();
+        $title      = "Admin - Add User";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $userRole = $this->session->get("userRole");
+
+        if ($userId && $userRole === 1) {
+            if (!empty($_POST)) {
+                $username = isset($_POST["username"]) ? htmlentities($_POST["username"]) : "";
+                $email = isset($_POST["email"]) ? htmlentities($_POST["email"]) : "";
+                $role = isset($_POST["role"]) ? htmlentities($_POST["role"]) : "";
+                $address = isset($_POST["address"]) ? htmlentities($_POST["address"]) : "";
+                $city = isset($_POST["city"]) ? htmlentities($_POST["city"]) : "";
+                $country = isset($_POST["country"]) ? htmlentities($_POST["country"]) : "";
+                $password = isset($_POST["password"]) ? htmlentities($_POST["password"]) : "";
+                $confirmPassword = isset($_POST["confirm-password"]) ? htmlentities($_POST["confirm-password"]) : "";
+
+                if ($this->user->userExists($email)) {
+                    $this->session->set("message", "Email already exist");
+                    $this->di->get("response")->redirect("admin?tab=users");
+                }
+
+                if (!$password && $password !== $confirmPassword) {
+                    $this->session->set("message", "Password is required and needs to be confirmed!");
+                    $this->di->get("response")->redirect("admin?tab=users");
+                } else {
+                    $this->user->username = mb_strtolower($username, 'UTF-8');
+                    $this->user->email = mb_strtolower($email, 'UTF-8');
+                    $this->user->admin = mb_strtolower($role, 'UTF-8');
+                    $this->user->address = mb_strtolower($address, 'UTF-8');
+                    $this->user->city = mb_strtolower($city, 'UTF-8');
+                    $this->user->country = mb_strtolower($country, 'UTF-8');
+                    $this->user->setPassword($password);
+                    $this->user->save();
+                }
+
+                $this->session->set("message", "User was successfully added");
+                $this->di->get("response")->redirect("admin?tab=users");
+            }
+        } else {
+            $this->di->get("response")->redirect("");
+        }
+
+        $data = [];
+
+        $view->add("admin/partials/sidebar", [], "sidebar");
+        $view->add("admin/user/new", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
     public function getAdminEditUser($id)
     {
         $this->init();
@@ -157,6 +213,7 @@ class AdminController implements
             if (!empty($_POST)) {
                 $username = isset($_POST["username"]) ? htmlentities($_POST["username"]) : "";
                 $email = isset($_POST["email"]) ? htmlentities($_POST["email"]) : "";
+                $role = isset($_POST["role"]) ? htmlentities($_POST["role"]) : "";
                 $address = isset($_POST["address"]) ? htmlentities($_POST["address"]) : "";
                 $city = isset($_POST["city"]) ? htmlentities($_POST["city"]) : "";
                 $country = isset($_POST["country"]) ? htmlentities($_POST["country"]) : "";
@@ -171,6 +228,7 @@ class AdminController implements
                 if (!$password) {
                     $this->user->username = mb_strtolower($username, 'UTF-8');
                     $this->user->email = mb_strtolower($email, 'UTF-8');
+                    $this->user->admin = mb_strtolower($role, 'UTF-8');
                     $this->user->address = mb_strtolower($address, 'UTF-8');
                     $this->user->city = mb_strtolower($city, 'UTF-8');
                     $this->user->country = mb_strtolower($country, 'UTF-8');
@@ -183,6 +241,7 @@ class AdminController implements
 
                     $this->user->username = mb_strtolower($username, 'UTF-8');
                     $this->user->email = mb_strtolower($email, 'UTF-8');
+                    $this->user->admin = mb_strtolower($role, 'UTF-8');                    
                     $this->user->address = mb_strtolower($address, 'UTF-8');
                     $this->user->city = mb_strtolower($city, 'UTF-8');
                     $this->user->country = mb_strtolower($country, 'UTF-8');

@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-user">Delete</button>
+                <button type="submit" class="btn btn-primary btn-block btn-user">Delete User</button>
             </form>
         </div>
         

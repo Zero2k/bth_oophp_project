@@ -17,7 +17,7 @@
             <dt class="col-md-4">Created</dt>
             <dd class="col-md-8"><?= $content->created ?></dd>
 
-            <dt class="col-md-4">User level</dt>
+            <dt class="col-md-4">User Role</dt>
             <dd class="col-md-8"><?= $content->admin === 0 ? 'Customer' : 'Admin' ?></dd>
         </dl>
     </div>

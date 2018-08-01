@@ -59,6 +59,11 @@
     animation: fadeInDown .5s ease;
 }
 
+.col-item .title {
+    text-decoration: underline;
+    font-weight: 500;
+}
+
 .col-item .info {
     padding: 10px;
     margin-top: 1px;

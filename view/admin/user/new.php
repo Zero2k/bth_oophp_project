@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid bg-header text-white">
     <div class="container">
         <div class="row">
-            <h1 class="display-4">Edit User</h1>
+            <h1 class="display-4">Add User</h1>
             <p class="lead">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text.
             </p>
@@ -16,17 +16,17 @@
                     <div class="form-row">
                         <div class="col">
                             <label for="inputUsername">Username</label>
-                            <input type="text" class="form-control-custom" name="username" value="<?= $user->username ?>" placeholder="J. Doe">
+                            <input type="text" class="form-control-custom" name="username" placeholder="J. Doe">
                         </div>
                         <div class="col">
                             <label for="inputEmail">Email</label>
-                            <input type="text" class="form-control-custom" name="email" value="<?= $user->email ?>" placeholder="your@email.com">
+                            <input type="text" class="form-control-custom" name="email" placeholder="your@email.com" required>
                         </div>
                         <div class="col">
                             <label>User Role</label>
-                            <select name="role" class="form-control-custom">
-                                <option <?= $user->admin === 0 ? ' selected="selected"' : '' ?> value="0">Customer</option>
-                                <option <?= $user->admin === 1 ? ' selected="selected"' : '' ?> value="1">Admin</option>
+                            <select class="form-control-custom">
+                                <option value="0">Customer</option>
+                                <option value="1">Admin</option>
                             </select>
                         </div>
                     </div>
@@ -35,15 +35,15 @@
                     <div class="form-row">
                         <div class="col">
                             <label for="inputAddress">Address</label>
-                            <input type="text" class="form-control-custom" name="address" value="<?= $user->address ?>" placeholder="Address">
+                            <input type="text" class="form-control-custom" name="address" placeholder="Address">
                         </div>
                         <div class="col">
                             <label for="inputCity">City</label>
-                            <input type="text" class="form-control-custom" name="city" value="<?= $user->city ?>" placeholder="City">
+                            <input type="text" class="form-control-custom" name="city" placeholder="City">
                         </div>
                         <div class="col">
                             <label for="inputCountry">Country</label>
-                            <input type="text" class="form-control-custom" name="country" value="<?= $user->country ?>" placeholder="Country">
+                            <input type="text" class="form-control-custom" name="country" placeholder="Country">
                         </div>
                     </div>
                 </div>
@@ -51,15 +51,15 @@
                     <div class="form-row">
                         <div class="col">
                             <label for="inputPassword">Password</label>
-                            <input type="password" class="form-control-custom" name="password" placeholder="******">
+                            <input type="password" class="form-control-custom" name="password" placeholder="******" required>
                         </div>
                         <div class="col">
                             <label for="inputConfirmPassword">Confirm Password</label>
-                            <input type="password" class="form-control-custom" name="confirm-password" placeholder="******">
+                            <input type="password" class="form-control-custom" name="confirm-password" placeholder="******" required>
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-user">Save User</button>
+                <button type="submit" class="btn btn-primary btn-block btn-user">Add User</button>
             </form>
         </div>
         

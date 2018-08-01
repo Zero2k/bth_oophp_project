@@ -11,6 +11,7 @@
             <th scope="col">Username</th>
             <th scope="col">Email</th>
             <th scope="col">Address</th>
+            <th scope="col">Role</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
@@ -21,6 +22,7 @@
             <td><?= ucfirst($user->username) ?></td>
             <td><?= $user->email ?></td>
             <td><?= ucfirst($user->address) ?>, <?= ucfirst($user->city) ?></td>
+            <td><?= $user->admin === 0 ? 'Customer' : 'Admin' ?></td>
             <td><a href="<?= $url->create("admin/edit/user/$user->id")?>">Edit</a> | <a href="<?= $url->create("admin/delete/user/$user->id")?>">Delete</a></td>
             </tr>
             <tr>
@@ -29,8 +31,8 @@
     <tfoot>
         <tr>
             <th colspan="3"><p class="text-info"><?= $session->getOnce("message") ?></p></th>
-            <th colspan="2">
-                <button class="btn btn-primary float-right">Add User</button>
+            <th colspan="3">
+                <a href="<?= $url->create("admin/add/user")?>" class="btn btn-primary float-right">Add User</a>
             </th>
         </tr>
     </tfoot>

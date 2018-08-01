@@ -8,19 +8,28 @@
                 </p>
             </div>
         </div>
-    </div>
+    </div >
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Shoes</li>
-                <li class="list-group-item">Clothing</li>
-                <li class="list-group-item">Bags</li>
-                <li class="list-group-item">Accessories</li>
-            </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Shoes</li>
+                    <li class="list-group-item">Clothing</li>
+                    <li class="list-group-item">Bags</li>
+                    <li class="list-group-item">Accessories</li>
+                </ul>
             </div>
             <div class="col-md-9">
-                <div class="row">
+                <form class="form-inline" method="get">
+                    <input id="search-field" class="search form-control no-border" placeholder="Search" name="search" />
+                    <button class="btn btn-outline-dark margin_left10 no-border" name="name" value="DESC">
+                        Sort by name
+                    </button>
+                    <button class="btn btn-outline-dark margin_left10 no-border" name="price" value="ASC">
+                        Sort by price
+                    </button>
+                </form>
+                <div class="row ptb-20">
                     <div class="col-md-4">
                         <article class="col-item">
                             <div class="photo">
@@ -34,8 +43,9 @@
                             <div class="info">
                                 <div class="row">
                                     <div class="price-details col-md-12">
+                                        <h6 class="title text-center">Title</h6>
                                         <p class="details text-center" style="padding-bottom: 10px">
-                                            Lorem ipsum dolor sit amet, consectetur..
+                                            C
                                         </p>
                                         <div class="separator" style="padding-top: 10px">
                                             <span class="price-new">$110.00</span>
@@ -59,8 +69,9 @@
                             <div class="info">
                                 <div class="row">
                                     <div class="price-details col-md-12">
+                                        <h6 class="title text-center">Title</h6>
                                         <p class="details text-center" style="padding-bottom: 10px">
-                                            Lorem ipsum dolor sit amet, consectetur..
+                                            B
                                         </p>
                                         <div class="separator" style="padding-top: 10px">
                                             <span class="price-new">$110.00</span>
@@ -84,8 +95,9 @@
                             <div class="info">
                                 <div class="row">
                                     <div class="price-details col-md-12">
+                                        <h6 class="title text-center">Title</h6>
                                         <p class="details text-center" style="padding-bottom: 10px">
-                                            Lorem ipsum dolor sit amet, consectetur..
+                                            A
                                         </p>
                                         <div class="separator" style="padding-top: 10px">
                                             <span class="price-new">$110.00</span>
@@ -100,13 +112,13 @@
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
                         </li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
+                            <a class="page-link" href="#">Next</a>
                         </li>
                     </ul>
                 </nav>
