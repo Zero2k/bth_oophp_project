@@ -86,7 +86,7 @@ class AdminController implements
 
                 case 'posts':
                     $data = [
-                        "content" => "posts",
+                        "posts" => [],
                     ];
 
                     $view->add("admin/partials/posts", $data, "partial");
@@ -296,6 +296,39 @@ class AdminController implements
 
         $view->add("admin/partials/sidebar", [], "sidebar");
         $view->add("admin/user/delete", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getAdminAddPost()
+    {
+        $this->init();
+        $title      = "Admin - Add Post";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $userRole = $this->session->get("userRole");
+
+        if ($userId && $userRole === 1) {
+            if (!empty($_POST)) {
+                $title = isset($_POST["title"]) ? htmlentities($_POST["title"]) : "";
+                $category = isset($_POST["category"]) ? htmlentities($_POST["category"]) : "";
+                $content = isset($_POST["content"]) ? htmlentities($_POST["content"]) : "";
+                $image = isset($_POST["image"]) ? htmlentities($_POST["image"]) : "";
+
+                $this->session->set("message", "Post was successfully added");
+                $this->di->get("response")->redirect("admin?tab=posts");
+            }
+        } else {
+            $this->di->get("response")->redirect("");
+        }
+
+        $data = [];
+
+        $view->add("admin/partials/sidebar", [], "sidebar");
+        $view->add("admin/post/new", $data);
 
         $pageRender->renderPage(["title" => $title]);
     }

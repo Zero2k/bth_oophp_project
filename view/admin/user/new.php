@@ -24,7 +24,7 @@
                         </div>
                         <div class="col">
                             <label>User Role</label>
-                            <select class="form-control-custom">
+                            <select class="form-control-custom" name="role">
                                 <option value="0">Customer</option>
                                 <option value="1">Admin</option>
                             </select>

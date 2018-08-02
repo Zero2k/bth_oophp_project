@@ -28,5 +28,11 @@ return [
             "path" => "admin/delete/user/{id:digit}",
             "callable" => ["adminController", "getAdminDeleteUser"],
         ],
+        [
+            "info" => "Admin - Add Post",
+            "requestMethod" => "get|post",
+            "path" => "admin/add/post",
+            "callable" => ["adminController", "getAdminAddPost"],
+        ],
     ]
 ];
