@@ -7,6 +7,7 @@ use \Anax\Configure\ConfigureTrait;
 use \Anax\DI\InjectionAwareInterface;
 use \Anax\Di\InjectionAwareTrait;
 use \Vibe\User\User;
+use \Vibe\Post\Post;
 use \Vibe\Content\HTMLForm\EditContentForm;
 
 /**
@@ -32,6 +33,12 @@ class AdminController implements
     {
         $this->user = new User();
         $this->user->setDb($this->di->get("database"));
+
+        $this->post = new Post();
+        $this->post->setDb($this->di->get("database"));
+
+        $dir = "img/blog/";
+        $this->images = scandir( $dir );
 
         $this->session = $this->di->get("session");
     }
@@ -86,7 +93,7 @@ class AdminController implements
 
                 case 'posts':
                     $data = [
-                        "posts" => [],
+                        "posts" => $this->post->getPosts(10),
                     ];
 
                     $view->add("admin/partials/posts", $data, "partial");
@@ -284,6 +291,7 @@ class AdminController implements
                 $userId = isset($_POST["id"]) ? htmlentities($_POST["id"]) : "";
                 $deleteUser = $this->user->find("id", $userId);
                 $deleteUser->delete();
+                $this->session->set("message", "User was successfully deleted");
                 $this->di->get("response")->redirect("admin?tab=users");
             }
         } else {
@@ -314,9 +322,16 @@ class AdminController implements
         if ($userId && $userRole === 1) {
             if (!empty($_POST)) {
                 $title = isset($_POST["title"]) ? htmlentities($_POST["title"]) : "";
-                $category = isset($_POST["category"]) ? htmlentities($_POST["category"]) : "";
                 $content = isset($_POST["content"]) ? htmlentities($_POST["content"]) : "";
+                $category = isset($_POST["category"]) ? htmlentities($_POST["category"]) : "";
                 $image = isset($_POST["image"]) ? htmlentities($_POST["image"]) : "";
+
+                if ($title && $content && $category) {
+                    $response = $this->post->createPost($userId, $content, $title, $image, $category);
+                } else if (!$response || !$title && !$content && !$category) {
+                    $this->session->set("message", "Post couldn't be created");
+                    $this->di->get("response")->redirect("admin?tab=posts");
+                }
 
                 $this->session->set("message", "Post was successfully added");
                 $this->di->get("response")->redirect("admin?tab=posts");
@@ -325,10 +340,92 @@ class AdminController implements
             $this->di->get("response")->redirect("");
         }
 
-        $data = [];
+        $data = [
+            "images" =>$this->images
+        ];
 
         $view->add("admin/partials/sidebar", [], "sidebar");
         $view->add("admin/post/new", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getAdminEditPost($id)
+    {
+        $this->init();
+        $title      = "Admin - Edit Post";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $userRole = $this->session->get("userRole");
+
+        if ($userId && $userRole === 1) {
+            $post = $this->post->find("id", $id);
+
+            if (!empty($_POST)) {
+                $title = isset($_POST["title"]) ? htmlentities($_POST["title"]) : "";
+                $content = isset($_POST["content"]) ? htmlentities($_POST["content"]) : "";
+                $category = isset($_POST["category"]) ? htmlentities($_POST["category"]) : "";
+                $image = isset($_POST["image"]) ? htmlentities($_POST["image"]) : "";
+
+                if ($title && $content && $category) {
+                    $response = $this->post->updatePost($id, $userId, $content, $title, $image, $category);
+                } else if (!$response || !$title && !$content && !$category) {
+                    $this->session->set("message", "Post couldn't be updated");
+                    $this->di->get("response")->redirect("admin?tab=posts");
+                }
+                
+                $this->session->set("message", "Post was successfully updated");
+                $this->di->get("response")->redirect("admin?tab=posts");
+            }
+        } else {
+            $this->di->get("response")->redirect("");
+        }
+
+        $data = [
+            "images" => $this->images,
+            "post" => $post,
+        ];
+
+        $view->add("admin/partials/sidebar", [], "sidebar");
+        $view->add("admin/post/edit", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getAdminDeletePost($id)
+    {
+        $this->init();
+        $title      = "Admin - Delete Post";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $userRole = $this->session->get("userRole");
+
+        if ($userId) {
+            $post = $this->post->find("id", $id);
+
+            if (!empty($_POST) && $id !== $userId) {
+                $postId = isset($_POST["id"]) ? htmlentities($_POST["id"]) : "";
+                $deletePost = $this->post->find("id", $postId);
+                $deletePost->delete();
+                $this->session->set("message", "Post was successfully deleted");
+                $this->di->get("response")->redirect("admin?tab=posts");
+            }
+        } else {
+            $this->di->get("response")->redirect("");
+        }
+
+        $data = [
+            "post" => $post,
+        ];
+
+        $view->add("admin/partials/sidebar", [], "sidebar");
+        $view->add("admin/post/delete", $data);
 
         $pageRender->renderPage(["title" => $title]);
     }

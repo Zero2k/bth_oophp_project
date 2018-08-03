@@ -11,26 +11,27 @@
             <th scope="col">Title</th>
             <th scope="col">Category</th>
             <th scope="col">Created</th>
+            <th scope="col">UserId</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
-        <!-- <?php foreach ($users as $user) : ?>
+        <?php foreach ($posts as $post) : ?>
             <tr>
-            <th scope="row"><?= $user->id ?></th>
-            <td><?= ucfirst($user->username) ?></td>
-            <td><?= $user->email ?></td>
-            <td><?= ucfirst($user->address) ?>, <?= ucfirst($user->city) ?></td>
-            <td><?= $user->admin === 0 ? 'Customer' : 'Admin' ?></td>
-            <td><a href="<?= $url->create("admin/edit/post/$user->id")?>">Edit</a> | <a href="<?= $url->create("admin/delete/post/$user->id")?>">Delete</a></td>
+            <th scope="row"><?= $post->id ?></th>
+            <td><?= ucfirst($post->title) ?></td>
+            <td><?= $post->category ?></td>
+            <td><?= $post->created ?></td>
+            <td><?= ucfirst($post->userId) ?></td>
+            <td><a href="<?= $url->create("admin/edit/post/$post->id")?>">Edit</a> | <a href="<?= $url->create("admin/delete/post/$post->id")?>">Delete</a></td>
             </tr>
             <tr>
-        <?php endforeach; ?> -->
+        <?php endforeach; ?>
     </tbody>
     <tfoot>
         <tr>
             <th colspan="3"><p class="text-info"><?= $session->getOnce("message") ?></p></th>
-            <th colspan="2">
+            <th colspan="3">
                 <a href="<?= $url->create("admin/add/post")?>" class="btn btn-primary float-right">Add Post</a>
             </th>
         </tr>

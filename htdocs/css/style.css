@@ -1,6 +1,10 @@
 /** A css file */
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
+h4 {
+    font-size: 1.3rem;
+}
+
 .btn-margin-left {
     margin-left: 5px;
 }
@@ -89,6 +93,24 @@
 
 .blog-title {
     padding-top: 10px;
+}
+
+.blog-item {
+    position: relative;
+    padding-top: 20px;
+    display: inline-block;
+}
+
+.category-badge{
+    position: absolute;
+    right: -10px;
+    top: 10px;
+    background:#225c71;
+    text-align: center;
+    color:white;
+    padding: 5px 10px;
+    font-size: 17px;
+    box-shadow: 0 0 0 .1rem rgb(236, 236, 236);
 }
 
 .bg-white {

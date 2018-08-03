@@ -7,6 +7,7 @@ use \Anax\DI\InjectionAwareTrait;
 use \Anax\Configure\ConfigureInterface;
 use \Anax\Configure\ConfigureTrait;
 use \Vibe\Content\Content;
+use \Vibe\Post\Post;
 
 /**
 * Routes class.
@@ -21,6 +22,9 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
     {
         $this->content = new Content();
         $this->content->setDb($this->di->get("database"));
+
+        $this->post = new Post();
+        $this->post->setDb($this->di->get("database"));
     }
 
 
@@ -74,12 +78,13 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
      */
     public function getBlog()
     {
+        $this->init();
         $title      = "Blog";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
 
         $data = [
-            "items" => "items",
+            "posts" => $this->post->getPosts(10),
         ];
 
         $view->add("page/blog", $data);

@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid bg-header text-white">
     <div class="container">
         <div class="row">
-            <h1 class="display-4">Add Post</h1>
+            <h1 class="display-4">Edit Post</h1>
             <p class="lead">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text.
             </p>
@@ -16,13 +16,13 @@
                     <div class="form-row">
                         <div class="col">
                             <label for="inputTitle">Title</label>
-                            <input type="text" class="form-control-custom" name="title" placeholder="Title" required>
+                            <input type="text" class="form-control-custom" name="title" value="<?= $post->title ?>" placeholder="Title" required>
                         </div>
                         <div class="col">
                             <label>Category</label>
                             <select class="form-control-custom" name="category">
-                                <option value="news">News</option>
-                                <option value="offers">Offers</option>
+                                <option <?= $post->category === "news" ? ' selected="selected"' : '' ?> value="news">News</option>
+                                <option <?= $post->category === "offers" ? ' selected="selected"' : '' ?> value="offers">Offers</option>
                             </select>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                     <div class="form-row">
                         <div class="col">
                             <label for="inputImage">Content</label>
-                            <textarea id="form-element-content" class="form-control-textarea" name="content"></textarea>
+                            <textarea id="form-element-content" class="form-control-textarea" name="content"><?= $post->content ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -44,14 +44,14 @@
                             <?php $ignore = Array(".", ".."); ?>
                             <?php foreach( $images as $image ) : ?>
                                 <?php if(!in_array($image, $ignore)) : ?>
-                                    <option value="<?= $image ?>"><?php echo $image ?></option>
+                                    <option <?= $image === $post->image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?= $image ?></option>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-user">Add Post</button>
+                <button type="submit" class="btn btn-primary btn-block btn-user">Update Post</button>
             </form>
         </div>
         

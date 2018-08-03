@@ -34,5 +34,17 @@ return [
             "path" => "admin/add/post",
             "callable" => ["adminController", "getAdminAddPost"],
         ],
+        [
+            "info" => "Admin - Change Post",
+            "requestMethod" => "get|post",
+            "path" => "admin/edit/post/{id:digit}",
+            "callable" => ["adminController", "getAdminEditPost"],
+        ],
+        [
+            "info" => "Admin - Delete Post",
+            "requestMethod" => "get|post",
+            "path" => "admin/delete/post/{id:digit}",
+            "callable" => ["adminController", "getAdminDeletePost"],
+        ],
     ]
 ];
