@@ -20,8 +20,8 @@
                     <div class="blog text-center blog-item">
                         <span class="category-badge"><?= ucfirst($post->category) ?></span>
                         <img src="<?= $url->create("/kmom10/shop/htdocs/img/blog/$post->image")?>" alt="" width="100%">
-                        <h4 class="blog-title"><?= $post->title ?></h4>
-                        <p><?= substr(strip_tags($post->content), 0, 150); ?>...</p>
+                        <h4 class="blog-title"><?= ucfirst($post->title) ?></h4>
+                        <p><?= substr(strip_tags($post->content), 0, 110); ?>...</p>
                         <a href="<?= $url->create("blog/$post->slug")?>">Read More</a>
                     </div>
                 </div>

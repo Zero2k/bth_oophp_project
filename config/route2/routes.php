@@ -29,6 +29,12 @@ return [
             "callable" => ["pageController", "getBlog"],
         ],
         [
+            "info" => "Blog View",
+            "requestMethod" => null,
+            "path" => "blog/{slug}",
+            "callable" => ["pageController", "getBlogView"],
+        ],
+        [
             "info" => "Contact",
             "requestMethod" => null,
             "path" => "contact",

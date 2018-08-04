@@ -36,7 +36,7 @@ class Post extends ActiveRecordModel
     {
         $this->userId = $userId;
         $this->content = $content;
-        $this->title = $title;
+        $this->title = strtolower($title);
         $this->image = $image;
         $this->category = $category;
         $this->html = $this->parseContent($content);
@@ -53,7 +53,7 @@ class Post extends ActiveRecordModel
 
         $post->userId = $userId;
         $post->content = $content;
-        $post->title = $title;
+        $post->title = strtolower($title);
         $post->image = $image;
         $post->category = $category;
         $post->html = $this->parseContent($content);
@@ -85,6 +85,16 @@ class Post extends ActiveRecordModel
 
         return $posts;
     }
+
+
+
+    public function getPost($slug)
+    {
+        $post = $this->find("slug", $slug);
+
+        return $post;
+    }
+
 
 
     public function slugify($str)

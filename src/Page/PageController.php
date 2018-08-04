@@ -94,6 +94,28 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
 
 
     /**
+     * Show blog view page.
+     *
+     * @return void
+     */
+    public function getBlogView($slug)
+    {
+        $this->init();
+        $title      = "Blog View";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+
+        $data = [
+            "post" => $this->post->getPost($slug),
+        ];
+
+        $view->add("page/blogView", $data);
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    /**
      * Show about page.
      *
      * @return void
