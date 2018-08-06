@@ -46,5 +46,23 @@ return [
             "path" => "admin/delete/post/{id:digit}",
             "callable" => ["adminController", "getAdminDeletePost"],
         ],
+        [
+            "info" => "Admin - Add Product",
+            "requestMethod" => "get|post",
+            "path" => "admin/add/product",
+            "callable" => ["adminController", "getAdminAddProduct"],
+        ],
+        [
+            "info" => "Admin - Change Product",
+            "requestMethod" => "get|post",
+            "path" => "admin/edit/product/{id:digit}",
+            "callable" => ["adminController", "getAdminEditProduct"],
+        ],
+        [
+            "info" => "Admin - Delete Product",
+            "requestMethod" => "get|post",
+            "path" => "admin/delete/product/{id:digit}",
+            "callable" => ["adminController", "getAdminDeleteProduct"],
+        ],
     ]
 ];

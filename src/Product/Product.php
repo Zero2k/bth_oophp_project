@@ -29,4 +29,35 @@ class Product extends ActiveRecordModel
     public $price;
     public $old_price;
     public $image;
+
+
+
+    /**
+     * Get products.
+     *
+     * @param integer $limit.
+     *
+     * @return objects.
+     */
+    public function getProducts($limit, $order = "id")
+    {
+        $sql = 'SELECT * FROM oophp_Product Product 
+        ORDER BY '.$order.' ASC 
+        LIMIT ?';
+
+        $preducts = $this->findAllSql($sql, [$limit]);
+        $preducts = array_map(function ($product) {
+            $product->id = $product->id;
+            $product->userId = $product->userId;
+            $product->name = $product->name;
+            $product->descriptin = $product->description;
+            $product->text = $product->text;
+            $product->price = $product->price;
+            $product->old_price = $product->old_price;
+            $product->image = $product->image;
+            return $product;
+        }, $preducts);
+
+        return $preducts;
+    }
 }

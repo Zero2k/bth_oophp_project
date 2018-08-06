@@ -8,6 +8,7 @@ use \Anax\DI\InjectionAwareInterface;
 use \Anax\Di\InjectionAwareTrait;
 use \Vibe\User\User;
 use \Vibe\Post\Post;
+use \Vibe\Product\Product;
 use \Vibe\Content\HTMLForm\EditContentForm;
 
 /**
@@ -37,8 +38,11 @@ class AdminController implements
         $this->post = new Post();
         $this->post->setDb($this->di->get("database"));
 
-        $dir = "img/blog/";
-        $this->images = scandir( $dir );
+        $this->product = new Product();
+        $this->product->setDb($this->di->get("database"));
+
+        $this->blogImages = scandir( "img/blog/" );
+        $this->shopImages = scandir( "img" );
 
         $this->session = $this->di->get("session");
     }
@@ -85,7 +89,7 @@ class AdminController implements
 
                 case 'products':
                     $data = [
-                        "content" => "products",
+                        "products" => $this->product->getProducts(10),
                     ];
 
                     $view->add("admin/partials/products", $data, "partial");
@@ -341,7 +345,7 @@ class AdminController implements
         }
 
         $data = [
-            "images" =>$this->images
+            "images" =>$this->blogImages
         ];
 
         $view->add("admin/partials/sidebar", [], "sidebar");
@@ -385,7 +389,7 @@ class AdminController implements
         }
 
         $data = [
-            "images" => $this->images,
+            "images" => $this->blogImages,
             "post" => $post,
         ];
 
@@ -426,6 +430,134 @@ class AdminController implements
 
         $view->add("admin/partials/sidebar", [], "sidebar");
         $view->add("admin/post/delete", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getAdminAddProduct()
+    {
+        $this->init();
+        $title      = "Admin - Add Product";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $userRole = $this->session->get("userRole");
+
+        if ($userId && $userRole === 1) {
+            if (!empty($_POST)) {
+                $name = isset($_POST["name"]) ? htmlentities($_POST["name"]) : "";
+                $category = isset($_POST["category"]) ? htmlentities($_POST["category"]) : "";
+                $text = isset($_POST["text"]) ? htmlentities($_POST["text"]) : "";
+                $desciption = isset($_POST["desciption"]) ? htmlentities($_POST["desciption"]) : "";
+                $price = isset($_POST["price"]) ? htmlentities($_POST["price"]) : "";
+                $oldPrice = isset($_POST["oldPrice"]) ? htmlentities($_POST["oldPrice"]) : "";
+                $image = isset($_POST["image"]) ? htmlentities($_POST["image"]) : "";
+
+                if ($title && $desciption && $category) {
+                    /* $response = $this->product->createProduct($userId, $name, $category, $text, $description, $price, $image); */
+                } else if (!$response || !$name && !$desciption && !$category) {
+                    $this->session->set("message", "Product couldn't be created");
+                    $this->di->get("response")->redirect("admin?tab=products");
+                }
+
+                $this->session->set("message", "Product was successfully added");
+                $this->di->get("response")->redirect("admin?tab=products");
+            }
+        } else {
+            $this->di->get("response")->redirect("");
+        }
+
+        $data = [
+            "images" =>$this->shopImages
+        ];
+
+        $view->add("admin/partials/sidebar", [], "sidebar");
+        $view->add("admin/product/new", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getAdminEditProduct($id)
+    {
+        $this->init();
+        $title      = "Admin - Edit Product";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $userRole = $this->session->get("userRole");
+
+        if ($userId && $userRole === 1) {
+            $product = $this->product->find("id", $id);
+
+            if (!empty($_POST)) {
+                $name = isset($_POST["name"]) ? htmlentities($_POST["name"]) : "";
+                $category = isset($_POST["category"]) ? htmlentities($_POST["category"]) : "";
+                $text = isset($_POST["text"]) ? htmlentities($_POST["text"]) : "";
+                $desciption = isset($_POST["desciption"]) ? htmlentities($_POST["desciption"]) : "";
+                $price = isset($_POST["price"]) ? htmlentities($_POST["price"]) : "";
+                $oldPrice = isset($_POST["oldPrice"]) ? htmlentities($_POST["oldPrice"]) : "";
+                $image = isset($_POST["image"]) ? htmlentities($_POST["image"]) : "";
+
+                if ($name && $desciption && $category) {
+                    // $response = $this->product->updateProduct($id, $userId, $name, $text, $description, $price, $image);
+                } else if (!$response || !$title && !$desciption && !$category) {
+                    $this->session->set("message", "Product couldn't be updated");
+                    $this->di->get("response")->redirect("admin?tab=products");
+                }
+                
+                $this->session->set("message", "Product was successfully updated");
+                $this->di->get("response")->redirect("admin?tab=products");
+            }
+        } else {
+            $this->di->get("response")->redirect("");
+        }
+
+        $data = [
+            "images" => $this->shopImages,
+            "product" => $product,
+        ];
+
+        $view->add("admin/partials/sidebar", [], "sidebar");
+        $view->add("admin/product/edit", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getAdminDeleteProduct($id)
+    {
+        $this->init();
+        $title      = "Admin - Delete Product";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $userRole = $this->session->get("userRole");
+
+        if ($userId) {
+            $product = $this->product->find("id", $id);
+
+            if (!empty($_POST) && $id !== $userId) {
+                $productId = isset($_POST["id"]) ? htmlentities($_POST["id"]) : "";
+                $deleteProduct = $this->post->find("id", $productId);
+                $deleteProduct->delete();
+                $this->session->set("message", "Product was successfully deleted");
+                $this->di->get("response")->redirect("admin?tab=products");
+            }
+        } else {
+            $this->di->get("response")->redirect("");
+        }
+
+        $data = [
+            "product" => $product,
+        ];
+
+        $view->add("admin/partials/sidebar", [], "sidebar");
+        $view->add("admin/product/delete", $data);
 
         $pageRender->renderPage(["title" => $title]);
     }
