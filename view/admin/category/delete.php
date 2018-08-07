@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid bg-header text-white">
     <div class="container">
         <div class="row">
-            <h1 class="display-4">Delete Product</h1>
+            <h1 class="display-4">Delete Category</h1>
             <p class="lead">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text.
             </p>
@@ -12,20 +12,16 @@
     <div class="row">
         <div class="col-md-9 col-sm-12">
             <form method="post">
-                <input type="hidden" class="form-control-custom" name="id" value="<?= $product->id ?>">
+                <input type="hidden" class="form-control-custom" name="id" value="<?= $category->id ?>">
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col">
-                            <label for="inputName">Name</label>
-                            <input type="text" class="form-control-custom" name="name" value="<?= $product->name ?>" disabled>
-                        </div>
-                        <div class="col">
-                            <label for="inputPrice">Price</label>
-                            <input type="text" class="form-control-custom" name="price" value="$<?= $product->price ?>" disabled>
+                            <label for="inputCategory">Category</label>
+                            <input type="text" class="form-control-custom" name="category" value="<?= $category->category ?>" disabled>
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-user">Delete Product</button>
+                <button type="submit" class="btn btn-primary btn-block btn-user">Delete Category</button>
             </form>
         </div>
         

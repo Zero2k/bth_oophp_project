@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-9 col-sm-12">
-        <form method="post" enctype="multipart/form-data">
+        <form method="post">
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col">

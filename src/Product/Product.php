@@ -2,6 +2,8 @@
 
 namespace Vibe\Product;
 
+use \Vibe\Category\Category;
+use \Vibe\Category\CategoryProduct;
 use \Anax\DI\DIInterface;
 use \Anax\Database\ActiveRecordModel;
 use \Anax\TextFilter\TextFilter;
@@ -29,6 +31,7 @@ class Product extends ActiveRecordModel
     public $price;
     public $old_price;
     public $image;
+    public $stock;
 
 
 
@@ -55,9 +58,44 @@ class Product extends ActiveRecordModel
             $product->price = $product->price;
             $product->old_price = $product->old_price;
             $product->image = $product->image;
+            $product->stock = $product->stock;
             return $product;
         }, $preducts);
 
         return $preducts;
+    }
+
+
+
+    public function addProduct($userId, $name, $text, $description, $price, $image, $stock)
+    {
+        $this->userId = $userId;
+        $this->name = $name;
+        $this->text = $text;
+        $this->description = $description;
+        $this->price = $price;
+        $this->image = $image;
+        $this->stock = $stock;
+        $this->save();
+        return $this;
+    }
+
+
+
+    public function createProduct($userId, $name, $text, $description, $price, $image, $stock, $categories, $di)
+    {
+        $newProduct = $this->addProduct($userId, $name, $text, $description, $price, $image, $stock);
+
+        if (!empty($categories)) {
+            foreach ($categories as $categoryId) {
+                $categoryProduct = new CategoryProduct();
+                $categoryProduct->setDb($di->get("database"));
+                $categoryProduct->categoryId = $categoryId;
+                $categoryProduct->productId = $newProduct->id;
+                $categoryProduct->save();
+            }
+        }
+
+        return $newProduct;
     }
 }

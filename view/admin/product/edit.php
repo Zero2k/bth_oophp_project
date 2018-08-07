@@ -19,11 +19,8 @@
                             <input type="text" class="form-control-custom" name="name" placeholder="Name" value="<?= $product->name ?>" required>
                         </div>
                         <div class="col">
-                            <label>Category</label>
-                            <select class="form-control-custom" name="category">
-                                <option value="news">News</option>
-                                <option value="offers">Offers</option>
-                            </select>
+                            <label for="inputStock">Stock</label>
+                            <input type="number" class="form-control-custom" name="stock" value="<?= $product->stock ?>" placeholder="Stock">
                         </div>
                     </div>
                 </div>
@@ -64,12 +61,20 @@
                             <?php $ignore = Array(".", ".."); ?>
                             <?php foreach( $images as $image ) : ?>
                                 <?php if(!in_array($image, $ignore)) : ?>
-                                    <option value="<?= $image ?>"><?php echo $image ?></option>
+                                    <option <?= $product->image === $image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?php echo $image ?></option>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label>Categories (Use Ctrl to select multiple)</label>
+                    <select class="form-control-multiselect" name="categories[]" multiple="multiple">
+                        <?php foreach( $categories as $cat ) : ?>
+                            <option value="<?= $cat->id ?>"><?php echo ucfirst($cat->category) ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block btn-user">Update Product</button>
             </form>

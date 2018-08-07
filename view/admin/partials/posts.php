@@ -18,13 +18,12 @@
     <tbody>
         <?php foreach ($posts as $post) : ?>
             <tr>
-            <th scope="row"><?= $post->id ?></th>
-            <td><?= ucfirst($post->title) ?></td>
-            <td><?= $post->category ?></td>
-            <td><?= $post->created ?></td>
-            <td><?= ucfirst($post->userId) ?></td>
-            <td><a href="<?= $url->create("admin/edit/post/$post->id")?>">Edit</a> | <a href="<?= $url->create("admin/delete/post/$post->id")?>">Delete</a></td>
-            </tr>
+                <th scope="row"><?= $post->id ?></th>
+                <td><?= ucfirst($post->title) ?></td>
+                <td><?= $post->category ?></td>
+                <td><?= $post->created ?></td>
+                <td><?= $post->userId ?></td>
+                <td><a href="<?= $url->create("admin/edit/post/$post->id")?>">Edit</a> | <a href="<?= $url->create("admin/delete/post/$post->id")?>">Delete</a></td>
             <tr>
         <?php endforeach; ?>
     </tbody>

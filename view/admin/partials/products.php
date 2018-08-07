@@ -11,7 +11,7 @@
             <th scope="col">Name</th>
             <th scope="col">Price</th>
             <th scope="col">Old Price</th>
-            <th scope="col">UserId</th>
+            <th scope="col">Stock</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
@@ -22,7 +22,7 @@
             <td><?= ucfirst($product->name) ?></td>
             <td>$<?= $product->price ?></td>
             <td>$<?= $product->old_price ?></td>
-            <td><?= $product->userId ?></td>
+            <td><?= $product->stock ?></td>
             <td><a href="<?= $url->create("admin/edit/product/$product->id")?>">Edit</a> | <a href="<?= $url->create("admin/delete/product/$product->id")?>">Delete</a></td>
             </tr>
             <tr>

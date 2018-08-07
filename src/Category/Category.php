@@ -22,4 +22,49 @@ class Category extends ActiveRecordModel
      */
     public $id;
     public $category;
+
+
+
+    /**
+     * Get categories.
+     *
+     * @param integer $limit.
+     *
+     * @return objects.
+     */
+    public function getCategories($limit, $order = "id")
+    {
+        $sql = 'SELECT * FROM oophp_Category Category 
+        ORDER BY '.$order.' ASC 
+        LIMIT ?';
+
+        $categories = $this->findAllSql($sql, [$limit]);
+        $categories = array_map(function ($category) {
+            $category->id = $category->id;
+            $category->category = $category->category;
+            return $category;
+        }, $categories);
+
+        return $categories;
+    }
+
+
+
+    public function createCategory($category)
+    {
+        $this->category = $category;
+        $this->save();
+        return $this;
+    }
+
+
+
+    public function updateCategory($categoryId, $category)
+    {
+        $cat = $this->find("id", $categoryId);
+
+        $cat->category = strtolower($category);
+        $cat->update();
+        return $cat;
+    }
 }

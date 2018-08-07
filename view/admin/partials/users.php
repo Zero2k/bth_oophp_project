@@ -18,13 +18,12 @@
     <tbody>
         <?php foreach ($users as $user) : ?>
             <tr>
-            <th scope="row"><?= $user->id ?></th>
-            <td><?= ucfirst($user->username) ?></td>
-            <td><?= $user->email ?></td>
-            <td><?= ucfirst($user->address) ?>, <?= ucfirst($user->city) ?></td>
-            <td><?= $user->admin === 0 ? 'Customer' : 'Admin' ?></td>
-            <td><a href="<?= $url->create("admin/edit/user/$user->id")?>">Edit</a> | <a href="<?= $url->create("admin/delete/user/$user->id")?>">Delete</a></td>
-            </tr>
+                <th scope="row"><?= $user->id ?></th>
+                <td><?= ucfirst($user->username) ?></td>
+                <td><?= $user->email ?></td>
+                <td><?= ucfirst($user->address) ?>, <?= ucfirst($user->city) ?></td>
+                <td><?= $user->admin === 0 ? 'Customer' : 'Admin' ?></td>
+                <td><a href="<?= $url->create("admin/edit/user/$user->id")?>">Edit</a> | <a href="<?= $url->create("admin/delete/user/$user->id")?>">Delete</a></td>
             <tr>
         <?php endforeach; ?>
     </tbody>

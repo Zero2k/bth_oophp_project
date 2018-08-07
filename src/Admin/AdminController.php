@@ -9,6 +9,7 @@ use \Anax\Di\InjectionAwareTrait;
 use \Vibe\User\User;
 use \Vibe\Post\Post;
 use \Vibe\Product\Product;
+use \Vibe\Category\Category;
 use \Vibe\Content\HTMLForm\EditContentForm;
 
 /**
@@ -40,6 +41,9 @@ class AdminController implements
 
         $this->product = new Product();
         $this->product->setDb($this->di->get("database"));
+
+        $this->category = new Category();
+        $this->category->setDb($this->di->get("database"));
 
         $this->blogImages = scandir( "img/blog/" );
         $this->shopImages = scandir( "img" );
@@ -81,7 +85,7 @@ class AdminController implements
 
                 case 'categories':
                     $data = [
-                        "content" => "categories",
+                        "categories" => $this->category->getCategories(10),
                     ];
 
                     $view->add("admin/partials/categories", $data, "partial");
@@ -345,7 +349,7 @@ class AdminController implements
         }
 
         $data = [
-            "images" =>$this->blogImages
+            "images" =>$this->blogImages,
         ];
 
         $view->add("admin/partials/sidebar", [], "sidebar");
@@ -413,7 +417,7 @@ class AdminController implements
         if ($userId) {
             $post = $this->post->find("id", $id);
 
-            if (!empty($_POST) && $id !== $userId) {
+            if (!empty($_POST)) {
                 $postId = isset($_POST["id"]) ? htmlentities($_POST["id"]) : "";
                 $deletePost = $this->post->find("id", $postId);
                 $deletePost->delete();
@@ -448,16 +452,17 @@ class AdminController implements
         if ($userId && $userRole === 1) {
             if (!empty($_POST)) {
                 $name = isset($_POST["name"]) ? htmlentities($_POST["name"]) : "";
-                $category = isset($_POST["category"]) ? htmlentities($_POST["category"]) : "";
+                $categories = isset($_POST["categories"]) ? $_POST["categories"] : "";
                 $text = isset($_POST["text"]) ? htmlentities($_POST["text"]) : "";
-                $desciption = isset($_POST["desciption"]) ? htmlentities($_POST["desciption"]) : "";
+                $description = isset($_POST["description"]) ? htmlentities($_POST["description"]) : "";
                 $price = isset($_POST["price"]) ? htmlentities($_POST["price"]) : "";
                 $oldPrice = isset($_POST["oldPrice"]) ? htmlentities($_POST["oldPrice"]) : "";
                 $image = isset($_POST["image"]) ? htmlentities($_POST["image"]) : "";
+                $stock = isset($_POST["stock"]) ? htmlentities($_POST["stock"]) : "";
 
-                if ($title && $desciption && $category) {
-                    /* $response = $this->product->createProduct($userId, $name, $category, $text, $description, $price, $image); */
-                } else if (!$response || !$name && !$desciption && !$category) {
+                if ($name && $description && $categories) {
+                    $response = $this->product->createProduct($userId, $name, $text, $description, $price, $image, $stock, $categories, $this->di);
+                } else if (!$response || !$name && !$description && !$categories) {
                     $this->session->set("message", "Product couldn't be created");
                     $this->di->get("response")->redirect("admin?tab=products");
                 }
@@ -470,7 +475,8 @@ class AdminController implements
         }
 
         $data = [
-            "images" =>$this->shopImages
+            "images" => $this->shopImages,
+            "categories" => $this->category->getCategories(10),
         ];
 
         $view->add("admin/partials/sidebar", [], "sidebar");
@@ -495,16 +501,17 @@ class AdminController implements
 
             if (!empty($_POST)) {
                 $name = isset($_POST["name"]) ? htmlentities($_POST["name"]) : "";
-                $category = isset($_POST["category"]) ? htmlentities($_POST["category"]) : "";
+                $categories = isset($_POST["categories"]) ? $_POST["categories"] : "";
                 $text = isset($_POST["text"]) ? htmlentities($_POST["text"]) : "";
-                $desciption = isset($_POST["desciption"]) ? htmlentities($_POST["desciption"]) : "";
+                $description = isset($_POST["description"]) ? htmlentities($_POST["description"]) : "";
                 $price = isset($_POST["price"]) ? htmlentities($_POST["price"]) : "";
                 $oldPrice = isset($_POST["oldPrice"]) ? htmlentities($_POST["oldPrice"]) : "";
                 $image = isset($_POST["image"]) ? htmlentities($_POST["image"]) : "";
+                $stock = isset($_POST["stock"]) ? htmlentities($_POST["stock"]) : "";
 
-                if ($name && $desciption && $category) {
+                if ($name && $description && $categories) {
                     // $response = $this->product->updateProduct($id, $userId, $name, $text, $description, $price, $image);
-                } else if (!$response || !$title && !$desciption && !$category) {
+                } else if (!$response || !$title && !$description && !$categories) {
                     $this->session->set("message", "Product couldn't be updated");
                     $this->di->get("response")->redirect("admin?tab=products");
                 }
@@ -519,6 +526,7 @@ class AdminController implements
         $data = [
             "images" => $this->shopImages,
             "product" => $product,
+            "categories" => $this->category->getCategories(10),
         ];
 
         $view->add("admin/partials/sidebar", [], "sidebar");
@@ -541,7 +549,7 @@ class AdminController implements
         if ($userId) {
             $product = $this->product->find("id", $id);
 
-            if (!empty($_POST) && $id !== $userId) {
+            if (!empty($_POST)) {
                 $productId = isset($_POST["id"]) ? htmlentities($_POST["id"]) : "";
                 $deleteProduct = $this->post->find("id", $productId);
                 $deleteProduct->delete();
@@ -558,6 +566,119 @@ class AdminController implements
 
         $view->add("admin/partials/sidebar", [], "sidebar");
         $view->add("admin/product/delete", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getAdminAddCategory()
+    {
+        $this->init();
+        $title      = "Admin - Add Category";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $userRole = $this->session->get("userRole");
+
+        if ($userId && $userRole === 1) {
+            if (!empty($_POST)) {
+                $category = isset($_POST["category"]) ? htmlentities($_POST["category"]) : "";
+
+                if ($category) {
+                    $response = $this->category->createCategory($category);
+                } else if (!$response || !$category) {
+                    $this->session->set("message", "Category couldn't be added");
+                    $this->di->get("response")->redirect("admin?tab=categories");
+                }
+
+                $this->session->set("message", "Category was successfully added");
+                $this->di->get("response")->redirect("admin?tab=categories");
+            }
+        } else {
+            $this->di->get("response")->redirect("");
+        }
+
+        $data = [];
+
+        $view->add("admin/partials/sidebar", [], "sidebar");
+        $view->add("admin/category/new", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getAdminEditCategory($id)
+    {
+        $this->init();
+        $title      = "Admin - Edit Category";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $userRole = $this->session->get("userRole");
+
+        if ($userId && $userRole === 1) {
+            $category = $this->category->find("id", $id);
+
+            if (!empty($_POST)) {
+                $categoryValue = isset($_POST["category"]) ? htmlentities($_POST["category"]) : "";
+
+                if ($categoryValue) {
+                    $response = $this->category->updateCategory($id, $categoryValue);
+                } else if (!$response || !$categoryValue) {
+                    $this->session->set("message", "Category couldn't be updated");
+                    $this->di->get("response")->redirect("admin?tab=categories");
+                }
+
+                $this->session->set("message", "Category was successfully updated");
+                $this->di->get("response")->redirect("admin?tab=categories");
+            }
+        } else {
+            $this->di->get("response")->redirect("");
+        }
+
+        $data = [
+            "category" => $category,
+        ];
+
+        $view->add("admin/partials/sidebar", [], "sidebar");
+        $view->add("admin/category/edit", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getAdminDeleteCategory($id)
+    {
+        $this->init();
+        $title      = "Admin - Delete Category";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $userRole = $this->session->get("userRole");
+
+        if ($userId) {
+            $category = $this->category->find("id", $id);
+
+            if (!empty($_POST)) {
+                $categoryId = isset($_POST["id"]) ? htmlentities($_POST["id"]) : "";
+                $deleteCategory = $this->category->find("id", $categoryId);
+                $deleteCategory->delete();
+                $this->session->set("message", "Category was successfully deleted");
+                $this->di->get("response")->redirect("admin?tab=categories");
+            }
+        } else {
+            $this->di->get("response")->redirect("");
+        }
+
+        $data = [
+            "category" => $category,
+        ];
+
+        $view->add("admin/partials/sidebar", [], "sidebar");
+        $view->add("admin/category/delete", $data);
 
         $pageRender->renderPage(["title" => $title]);
     }

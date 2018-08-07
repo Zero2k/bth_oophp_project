@@ -15,6 +15,7 @@ CREATE TABLE oophp_Product (
     `price` INTEGER,
     `old_price` INTEGER,
     `image` VARCHAR(250),
+    `stock` INTEGER,
     `created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
@@ -22,8 +23,8 @@ CREATE TABLE oophp_Product (
 
 ) ENGINE INNODB CHARACTER SET utf8 COLLATE utf8_swedish_ci;
 
-INSERT INTO oophp_Product (id, userId, name, description, text, price)
+INSERT INTO oophp_Product (id, userId, name, description, text, price, stock)
     VALUES
-(1, 1, 'Pleated Halter Blouse', 'description', 'text', 34),
-(2, 1, 'Cinch Athletic Poly Spandex Tech Polo', 'description', 'text', 23),
-(3, 1, 'Sleeveless Chiffon Zebra Fresco', 'description', 'text', 25);
+(1, 1, 'Pleated Halter Blouse', 'description', 'text', 34, 10),
+(2, 1, 'Cinch Athletic Poly Spandex Tech Polo', 'description', 'text', 23, 10),
+(3, 1, 'Sleeveless Chiffon Zebra Fresco', 'description', 'text', 25, 10);
