@@ -10,6 +10,7 @@ use \Vibe\User\User;
 use \Vibe\Post\Post;
 use \Vibe\Product\Product;
 use \Vibe\Category\Category;
+use \Vibe\Category\CategoryProduct;
 use \Vibe\Content\HTMLForm\EditContentForm;
 
 /**
@@ -45,8 +46,11 @@ class AdminController implements
         $this->category = new Category();
         $this->category->setDb($this->di->get("database"));
 
-        $this->blogImages = scandir( "img/blog/" );
-        $this->shopImages = scandir( "img" );
+        $this->categoryProduct = new CategoryProduct();
+        $this->categoryProduct->setDb($this->di->get("database"));
+
+        $this->blogImages = scandir("img/blog/");
+        $this->shopImages = scandir("img");
 
         $this->session = $this->di->get("session");
     }
@@ -256,7 +260,7 @@ class AdminController implements
 
                     $this->user->username = mb_strtolower($username, 'UTF-8');
                     $this->user->email = mb_strtolower($email, 'UTF-8');
-                    $this->user->admin = mb_strtolower($role, 'UTF-8');                    
+                    $this->user->admin = mb_strtolower($role, 'UTF-8');
                     $this->user->address = mb_strtolower($address, 'UTF-8');
                     $this->user->city = mb_strtolower($city, 'UTF-8');
                     $this->user->country = mb_strtolower($country, 'UTF-8');
@@ -498,6 +502,7 @@ class AdminController implements
 
         if ($userId && $userRole === 1) {
             $product = $this->product->find("id", $id);
+            $productImages = $this->categoryProduct->findCategoriesToProduct($id);
 
             if (!empty($_POST)) {
                 $name = isset($_POST["name"]) ? htmlentities($_POST["name"]) : "";
@@ -510,12 +515,12 @@ class AdminController implements
                 $stock = isset($_POST["stock"]) ? htmlentities($_POST["stock"]) : "";
 
                 if ($name && $description && $categories) {
-                    // $response = $this->product->updateProduct($id, $userId, $name, $text, $description, $price, $image);
+                    // $response = $this->product->updateProduct($id, $userId, $name, $text, $description, $price, $image, $stock, $categories, $this->di);
                 } else if (!$response || !$title && !$description && !$categories) {
                     $this->session->set("message", "Product couldn't be updated");
                     $this->di->get("response")->redirect("admin?tab=products");
                 }
-                
+
                 $this->session->set("message", "Product was successfully updated");
                 $this->di->get("response")->redirect("admin?tab=products");
             }
@@ -526,6 +531,7 @@ class AdminController implements
         $data = [
             "images" => $this->shopImages,
             "product" => $product,
+            "productImages" => $productImages,
             "categories" => $this->category->getCategories(10),
         ];
 

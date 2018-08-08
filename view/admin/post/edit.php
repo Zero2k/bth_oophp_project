@@ -41,12 +41,12 @@
                             <label for="inputImage">Image</label>
                             <select class="form-control-custom" name="image">
                                 <option value=""></option>
-                            <?php $ignore = Array(".", ".."); ?>
-                            <?php foreach( $images as $image ) : ?>
-                                <?php if(!in_array($image, $ignore)) : ?>
+                            <?php $ignore = array(".", ".."); ?>
+                            <?php foreach ($images as $image) : ?>
+                                <?php if (!in_array($image, $ignore)) : ?>
                                     <option <?= $image === $post->image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?= $image ?></option>
                                 <?php endif; ?>
-                            <?php endforeach; ?>
+                            <?php endforeach ; ?>
                             </select>
                         </div>
                     </div>

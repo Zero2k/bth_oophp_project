@@ -58,9 +58,9 @@
                             <label for="inputImage">Image</label>
                             <select class="form-control-custom" name="image">
                                 <option value=""></option>
-                            <?php $ignore = Array(".", ".."); ?>
-                            <?php foreach( $images as $image ) : ?>
-                                <?php if(!in_array($image, $ignore)) : ?>
+                            <?php $ignore = array(".", ".."); ?>
+                            <?php foreach ($images as $image) : ?>
+                                <?php if (!in_array($image, $ignore)) : ?>
                                     <option <?= $product->image === $image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?php echo $image ?></option>
                                 <?php endif; ?>
                             <?php endforeach; ?>
@@ -71,13 +71,21 @@
                 <div class="form-group">
                     <label>Categories (Use Ctrl to select multiple)</label>
                     <select class="form-control-multiselect" name="categories[]" multiple="multiple">
-                        <?php foreach( $categories as $cat ) : ?>
-                            <option value="<?= $cat->id ?>"><?php echo ucfirst($cat->category) ?></option>
+                        <?php $arr = array_column($productImages, 'categoryId'); ?>
+                        <?php foreach ($categories as $cat) : ?>
+                            <!-- <option value="<?= $cat->id ?>"><?php echo ucfirst($cat->category) ?></option> -->
+                                <?php if (in_array($cat->id, $arr) === true) : ?>
+                                    <option selected="selected" value="<?= $cat->id ?>"><?php echo ucfirst($cat->category) ?></option>
+                                <?php else : ?>
+                                    <option value="<?= $cat->id ?>"><?php echo ucfirst($cat->category) ?></option>
+                                <?php endif; ?>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block btn-user">Update Product</button>
             </form>
+            <!-- <?= var_dump($values) ?>
+            <?= print_r($values) ?> -->
         </div>
         
         <div class="col-md-3 col-sm-12">

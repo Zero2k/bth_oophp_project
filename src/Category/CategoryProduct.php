@@ -23,4 +23,25 @@ class CategoryProduct extends ActiveRecordModel
     public $id;
     public $categoryId;
     public $productId;
+
+
+
+    public function findCategoriesToProduct($productId)
+    {
+        $sql = 'SELECT * FROM oophp_CategoryProduct CategoryProduct 
+        WHERE CategoryProduct.productId = ?';
+
+        $categories = $this->findAllSql($sql, [$productId]);
+
+        return $categories;
+    }
+
+
+
+    public function createCategoryRelation($categoryId, $productId)
+    {
+        $this->categoryId = $categoryId;
+        $this->productId = $productId;
+        $this->save();
+    }
 }

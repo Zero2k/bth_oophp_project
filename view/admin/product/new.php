@@ -58,9 +58,9 @@
                             <label for="inputImage">Image</label>
                             <select class="form-control-custom" name="image">
                                 <option value=""></option>
-                            <?php $ignore = Array(".", ".."); ?>
-                            <?php foreach( $images as $image ) : ?>
-                                <?php if(!in_array($image, $ignore)) : ?>
+                            <?php $ignore = array(".", ".."); ?>
+                            <?php foreach ($images as $image) : ?>
+                                <?php if (!in_array($image, $ignore)) : ?>
                                     <option value="<?= $image ?>"><?php echo $image ?></option>
                                 <?php endif; ?>
                             <?php endforeach; ?>
@@ -71,7 +71,7 @@
                 <div class="form-group">
                     <label>Categories (Use Ctrl to select multiple)</label>
                     <select class="form-control-multiselect" name="categories[]" multiple="multiple">
-                        <?php foreach( $categories as $cat ) : ?>
+                        <?php foreach ($categories as $cat) : ?>
                             <option value="<?= $cat->id ?>"><?php echo ucfirst($cat->category) ?></option>
                         <?php endforeach; ?>
                     </select>

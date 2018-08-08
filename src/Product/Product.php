@@ -90,12 +90,17 @@ class Product extends ActiveRecordModel
             foreach ($categories as $categoryId) {
                 $categoryProduct = new CategoryProduct();
                 $categoryProduct->setDb($di->get("database"));
-                $categoryProduct->categoryId = $categoryId;
-                $categoryProduct->productId = $newProduct->id;
-                $categoryProduct->save();
+                $categoryProduct->createCategoryRelation($categoryId, $newProduct->id);
             }
         }
 
         return $newProduct;
     }
+
+
+
+    /* public function updateProduct($productId, $userId, $name, $text, $description, $price, $image, $stock, $categories, $di)
+    {
+        # code...
+    } */
 }
