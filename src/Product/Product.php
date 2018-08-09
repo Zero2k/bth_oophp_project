@@ -99,8 +99,51 @@ class Product extends ActiveRecordModel
 
 
 
-    /* public function updateProduct($productId, $userId, $name, $text, $description, $price, $image, $stock, $categories, $di)
+    public function updateProduct($productId, $userId, $name, $text, $description, $price, $image, $stock, $categories, $di)
     {
-        # code...
-    } */
+        $categoryProduct = new CategoryProduct();
+        $categoryProduct->setDb($di->get("database"));
+        $currentCategories = $categoryProduct->findCategoriesToProduct($productId);
+        $currentIds = array_column($currentCategories, "categoryId");
+
+        $product = $this->find("id", $productId);
+        $product->userId = $userId;
+        $product->name = $name;
+        $product->text = $text;
+        $product->description = $description;
+
+        if ($product->price !== $price) {
+            $product->old_price = $product->price;
+            $product->price = $price;
+        }
+
+        $product->image = $image;
+        $product->stock = $stock;
+
+        if ($categories) {
+            $ids_to_insert = array_diff($categories, $currentIds);
+            
+            foreach ($ids_to_insert as $newId) {
+                $newCat = new CategoryProduct();
+                $newCat->setDb($di->get("database"));
+                $newCat->categoryId = $newId;
+                $newCat->productId = $productId;
+                $newCat->save();
+            }
+
+            $ids_to_delete = array_diff($currentIds, $categories);
+
+            if ($ids_to_delete) {
+                $deleteCat = new CategoryProduct();
+                $deleteCat->setDb($di->get("database"));
+                foreach ($ids_to_delete as $deleteId) {
+                    $deleteCat->findWhere("productId = ? AND categoryId = ?", [$productId, $deleteId]);
+                    $deleteCat->delete();
+                }
+            }
+        }
+
+        $product->save();
+        return $product;
+    }
 }
