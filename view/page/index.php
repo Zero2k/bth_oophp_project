@@ -88,35 +88,6 @@
         </div>
 
         <h3 class="text-divider"><span>Popular Products</span></h3>
-        <!-- <div class="row">
-            <div class="text-center my-3">
-                <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
-                    <div class="carousel-inner w-100" role="listbox">
-                        <div class="carousel-item row no-gutters active">
-                            <div class="col-3 float-left"><a href="#"><img class="img-fluid" src="http://placehold.it/350x280/222/fff?text=1"></a></div>
-                            <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/444?text=2"></div>
-                            <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/888?text=3"></div>
-                            <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/111/fff?text=4"></div>
-                        </div>
-                        <div class="carousel-item row no-gutters">
-                            <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280?text=5"></div>
-                            <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/555?text=6"></div>
-                            <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/333/fff?text=7"></div>
-                            <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/bbb?text=8"></div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                    <a href="#!" class="btn btn-primary btn-more">Show More</a>
-                </div>
-            </div>
-        </div> -->
         <div class="row">
             <div class="col-md-12">
                 <div id="myCarousel" class="carousel-product slide" data-ride="carousel">
@@ -227,13 +198,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Carousel controls -->
-                <!-- <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-                    <i class="fa fa-angle-right"></i>
-                </a> -->
             </div>
         </div>
     </div>
@@ -266,118 +230,156 @@
             </div>
         </div>
 
-        <!-- <div class="row">
-            <div class="col-md-8">
-                <h4 class="ptb-10">Recent Posts</h4>
-                <div class="row">
-                    <div class="col-md-12"><h5>Title</h5></div>
-                    <div class="col-md-3">
-                        <a href="#" class="thumbnail">
-                            <img class="img-fluid" src="http://placehold.it/260x180" alt="">
-                        </a>
-                    </div>
-                    <div class="col-md-9">
-                        <p>Text</p>
-                        <a class="btn btn-primary btn-more" href="#">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <h4 class="ptb-10">Product Categories</h4>
-                <div class="card">
-                    <div class="list-group list-group-flush list-group-sm">
-                        <a href="#" class="list-group-item list-group-item-action">Hoodies</a>
-                        <a href="#" class="list-group-item list-group-item-action">Headwear</a>
-                        <a href="#" class="list-group-item list-group-item-action">T-shirts</a>
-                        <a href="#" class="list-group-item list-group-item-action">Jackets</a>
-                        <a href="#" class="list-group-item list-group-item-action">Accessories</a>
-                    </div>
-                    <div class="card-body text-center p-1">
-                    <a href="#" class="btn btn-block">View All</a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
         <div class="row ptb-50">
-          <div class="col-md-4 col-sm-12">
-            <div class="widget widget-featured-products">
-              <h3 class="widget-title">Top Sellers</h3>
-              <!-- Entry-->
-              <div class="product">
-                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                <div class="product-content">
-                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+            <div class="col-md-4 col-sm-12">
+                <div class="widget widget-featured-products">
+                    <h3 class="widget-title">Top Sellers</h3>
+                    <!-- Entry-->
+                    <div class="product">
+                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                    <div class="product-content">
+                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                    </div>
+                    </div>
+                    <!-- Entry-->
+                    <div class="product">
+                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                    <div class="product-content">
+                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                    </div>
+                    </div>
+                    <!-- Entry-->
+                    <div class="product">
+                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                    <div class="product-content">
+                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                    </div>
+                    </div>
                 </div>
-              </div>
-              <!-- Entry-->
-              <div class="product">
-                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                <div class="product-content">
-                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
-                </div>
-              </div>
-              <!-- Entry-->
-              <div class="product">
-                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                <div class="product-content">
-                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
-                </div>
-              </div>
             </div>
-          </div>
-          <div class="col-md-4 col-sm-12">
-            <div class="widget widget-featured-products">
-              <h3 class="widget-title">New Arrivals</h3>
-              <!-- Entry-->
-              <div class="product">
-                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                <div class="product-content">
-                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+            <div class="col-md-4 col-sm-12">
+                <div class="widget widget-featured-products">
+                    <h3 class="widget-title">New Arrivals</h3>
+                    <!-- Entry-->
+                    <div class="product">
+                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                    <div class="product-content">
+                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                    </div>
+                    </div>
+                    <!-- Entry-->
+                    <div class="product">
+                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                    <div class="product-content">
+                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                    </div>
+                    </div>
+                    <!-- Entry-->
+                    <div class="product">
+                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                    <div class="product-content">
+                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                    </div>
+                    </div>
                 </div>
-              </div>
-              <!-- Entry-->
-              <div class="product">
-                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                <div class="product-content">
-                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
-                </div>
-              </div>
-              <!-- Entry-->
-              <div class="product">
-                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                <div class="product-content">
-                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
-                </div>
-              </div>
             </div>
-          </div>
-          <div class="col-md-4 col-sm-12">
-            <div class="widget widget-featured-products">
-              <h3 class="widget-title">Best Rated</h3>
-              <!-- Entry-->
-              <div class="product">
-                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                <div class="product-content">
-                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+            <div class="col-md-4 col-sm-12">
+                <div class="widget widget-featured-products">
+                    <h3 class="widget-title">Best Rated</h3>
+                    <!-- Entry-->
+                    <div class="product">
+                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                    <div class="product-content">
+                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                    </div>
+                    </div>
+                    <!-- Entry-->
+                    <div class="product">
+                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                    <div class="product-content">
+                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                    </div>
+                    </div>
+                    <!-- Entry-->
+                    <div class="product">
+                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
+                    <div class="product-content">
+                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                    </div>
+                    </div>
                 </div>
-              </div>
-              <!-- Entry-->
-              <div class="product">
-                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                <div class="product-content">
-                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
-                </div>
-              </div>
-              <!-- Entry-->
-              <div class="product">
-                <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                <div class="product-content">
-                  <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
-                </div>
-              </div>
             </div>
-          </div>
+        </div>
+
+        <h3 class="text-divider"><span>Latest News</span></h3>
+        <div id="myCarousel" class="slide" data-ride="carousel">
+            <!-- Wrapper for carousel items -->
+            <div class="carousel-inner">
+                <div class="item carousel-item active">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                                <div class="card-body d-flex flex-column align-items-start">
+                                <strong class="d-inline-block mb-2 text-primary">News</strong>
+                                <h3 class="mb-0">
+                                    <a class="text-dark" href="#">Featured post 1</a>
+                                </h3>
+                                <div class="mb-1 text-muted">Nov 12</div>
+                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#">Read more</a>
+                                </div>
+                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16523b6b3e2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16523b6b3e2%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2258%22%20y%3D%22130.7%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                                <div class="card-body d-flex flex-column align-items-start">
+                                <strong class="d-inline-block mb-2 text-primary">Offers</strong>
+                                <h3 class="mb-0">
+                                    <a class="text-dark" href="#">Featured post 2</a>
+                                </h3>
+                                <div class="mb-1 text-muted">Nov 12</div>
+                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#">Read more</a>
+                                </div>
+                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16523b6b3e2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16523b6b3e2%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2258%22%20y%3D%22130.7%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item carousel-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                                <div class="card-body d-flex flex-column align-items-start">
+                                <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                <h3 class="mb-0">
+                                    <a class="text-dark" href="#">Featured post 3</a>
+                                </h3>
+                                <div class="mb-1 text-muted">Nov 12</div>
+                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#">Continue reading</a>
+                                </div>
+                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16523b6b3e2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16523b6b3e2%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2258%22%20y%3D%22130.7%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                                <div class="card-body d-flex flex-column align-items-start">
+                                <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                <h3 class="mb-0">
+                                    <a class="text-dark" href="#">Featured post 4</a>
+                                </h3>
+                                <div class="mb-1 text-muted">Nov 12</div>
+                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#">Continue reading</a>
+                                </div>
+                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16523b6b3e2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16523b6b3e2%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2258%22%20y%3D%22130.7%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>

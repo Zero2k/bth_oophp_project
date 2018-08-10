@@ -463,9 +463,12 @@ class AdminController implements
                 $oldPrice = isset($_POST["oldPrice"]) ? htmlentities($_POST["oldPrice"]) : "";
                 $image = isset($_POST["image"]) ? htmlentities($_POST["image"]) : "";
                 $stock = isset($_POST["stock"]) ? htmlentities($_POST["stock"]) : "";
+                /* ADD OFFER / FEATURED TO createProduct method */
+                $offer = isset($_POST["offer"]) ? htmlentities($_POST["offer"]) : "";
+                $featured = isset($_POST["featured"]) ? htmlentities($_POST["featured"]) : "";
 
                 if ($name && $description && $categories) {
-                    $response = $this->product->createProduct($userId, $name, $text, $description, $price, $image, $stock, $categories, $this->di);
+                    $response = $this->product->createProduct($userId, $name, $text, $description, $price, $image, $stock, $offer, $featured, $categories, $this->di);
                 } else if (!$response || !$name && !$description && !$categories) {
                     $this->session->set("message", "Product couldn't be created");
                     $this->di->get("response")->redirect("admin?tab=products");
@@ -513,9 +516,12 @@ class AdminController implements
                 $oldPrice = isset($_POST["oldPrice"]) ? htmlentities($_POST["oldPrice"]) : "";
                 $image = isset($_POST["image"]) ? htmlentities($_POST["image"]) : "";
                 $stock = isset($_POST["stock"]) ? htmlentities($_POST["stock"]) : "";
+                /* ADD OFFER / FEATURED TO updateProduct method */
+                $offer = isset($_POST["offer"]) ? htmlentities($_POST["offer"]) : "";
+                $featured = isset($_POST["featured"]) ? htmlentities($_POST["featured"]) : "";
 
                 if ($name && $description && $categories) {
-                    $response = $this->product->updateProduct($id, $userId, $name, $text, $description, $price, $image, $stock, $categories, $this->di);
+                    $response = $this->product->updateProduct($id, $userId, $name, $text, $description, $price, $image, $stock, $categories, $offer, $featured, $this->di);
                 } else if (!$response || !$title && !$description && !$categories) {
                     $this->session->set("message", "Product couldn't be updated");
                     $this->di->get("response")->redirect("admin?tab=products");
@@ -557,7 +563,7 @@ class AdminController implements
 
             if (!empty($_POST)) {
                 $productId = isset($_POST["id"]) ? htmlentities($_POST["id"]) : "";
-                $deleteProduct = $this->post->find("id", $productId);
+                $deleteProduct = $this->product->find("id", $productId);
                 $deleteProduct->delete();
                 $this->session->set("message", "Product was successfully deleted");
                 $this->di->get("response")->redirect("admin?tab=products");

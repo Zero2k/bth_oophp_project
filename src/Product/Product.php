@@ -32,6 +32,8 @@ class Product extends ActiveRecordModel
     public $old_price;
     public $image;
     public $stock;
+    public $offer;
+    public $featured;
 
 
 
@@ -59,6 +61,8 @@ class Product extends ActiveRecordModel
             $product->old_price = $product->old_price;
             $product->image = $product->image;
             $product->stock = $product->stock;
+            $product->offer = $product->offer;
+            $product->featured = $product->featured;
             return $product;
         }, $preducts);
 
@@ -67,7 +71,7 @@ class Product extends ActiveRecordModel
 
 
 
-    public function addProduct($userId, $name, $text, $description, $price, $image, $stock)
+    public function addProduct($userId, $name, $text, $description, $price, $image, $stock, $offer, $featured)
     {
         $this->userId = $userId;
         $this->name = $name;
@@ -76,15 +80,17 @@ class Product extends ActiveRecordModel
         $this->price = $price;
         $this->image = $image;
         $this->stock = $stock;
+        $this->offer = $offer;
+        $this->featured = $featured;
         $this->save();
         return $this;
     }
 
 
 
-    public function createProduct($userId, $name, $text, $description, $price, $image, $stock, $categories, $di)
+    public function createProduct($userId, $name, $text, $description, $price, $image, $stock, $offer, $featured, $categories, $di)
     {
-        $newProduct = $this->addProduct($userId, $name, $text, $description, $price, $image, $stock);
+        $newProduct = $this->addProduct($userId, $name, $text, $description, $price, $image, $stock, $offer, $featured);
 
         if (!empty($categories)) {
             foreach ($categories as $categoryId) {
@@ -99,7 +105,7 @@ class Product extends ActiveRecordModel
 
 
 
-    public function updateProduct($productId, $userId, $name, $text, $description, $price, $image, $stock, $categories, $di)
+    public function updateProduct($productId, $userId, $name, $text, $description, $price, $image, $stock, $categories, $offer, $featured, $di)
     {
         $categoryProduct = new CategoryProduct();
         $categoryProduct->setDb($di->get("database"));
@@ -112,13 +118,18 @@ class Product extends ActiveRecordModel
         $product->text = $text;
         $product->description = $description;
 
-        if ($product->price !== $price) {
+        if ($product->price <= $price && $product->price !== $price) {
+            $product->price = $price;
+            $product->old_price = 0;
+        } else {
             $product->old_price = $product->price;
             $product->price = $price;
         }
 
         $product->image = $image;
         $product->stock = $stock;
+        $product->offer = $offer;
+        $product->featured = $featured;
 
         if ($categories) {
             $ids_to_insert = array_diff($categories, $currentIds);

@@ -82,6 +82,26 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputOffer">Offer</label>
+                            <select id="inputOffer" name="offer" class="form-control-custom">
+                                <option selected>Select...</option>
+                                <option <?= $product->offer === 1 ? ' selected="selected"' : '' ?> value="1">True</option>
+                                <option <?= $product->offer === 0 ? ' selected="selected"' : '' ?> value="0">False</option>
+                            </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                            <label for="inputFeatured">Featured</label>
+                            <select id="inputFeatured" name="featured" class="form-control-custom">
+                                <option selected>Select...</option>
+                                <option <?= $product->featured === 1 ? ' selected="selected"' : '' ?> value="1">True</option>
+                                <option <?= $product->featured === 0 ? ' selected="selected"' : '' ?> value="0">False</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-primary btn-block btn-user">Update Product</button>
             </form>
             <!-- <?= var_dump($values) ?>

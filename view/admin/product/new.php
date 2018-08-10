@@ -76,6 +76,26 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputOffer">Offer</label>
+                            <select id="inputOffer" name="offer" class="form-control-custom">
+                                <option value="0" selected>Select...</option>
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                            <label for="inputFeatured">Featured</label>
+                            <select id="inputFeatured" name="featured" class="form-control-custom">
+                                <option value="0" selected>Select...</option>
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-primary btn-block btn-user">Add Product</button>
             </form>
         </div>
