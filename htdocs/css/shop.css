@@ -88,7 +88,8 @@
 }
 
 .col-item .price-details .price-old {
-    font-size: 18px;
+    padding-left: 4px;
+    font-size: 14px;
     text-decoration: line-through;
 }
 

@@ -1,3 +1,7 @@
+<?php
+    $url = $this->di->get("url");
+?>
+
 <main role="main">
     <div class="jumbotron jumbotron-fluid bg-header text-white">
         <div class="container">
@@ -13,10 +17,11 @@
         <div class="row">
             <div class="col-md-3">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Shoes</li>
-                    <li class="list-group-item">Clothing</li>
+                    <li class="list-group-item"><a href="<?= $url->create("?category=shoes")?>">Shoes</a></li>
+                    <li class="list-group-item"><a href="<?= $url->create("?category=clothing")?>">Clothing</a></li>
                     <li class="list-group-item">Bags</li>
                     <li class="list-group-item">Accessories</li>
+                    <li class="list-group-item"><a href="<?= $url->create("?category=all")?>">See all</a></li>
                 </ul>
             </div>
             <div class="col-md-9">
@@ -30,6 +35,7 @@
                     </button>
                 </form>
                 <div class="row ptb-20">
+                <?php foreach ($products as $product) : ?>
                     <div class="col-md-4">
                         <article class="col-item">
                             <div class="photo">
@@ -43,70 +49,22 @@
                             <div class="info">
                                 <div class="row">
                                     <div class="price-details col-md-12">
-                                        <h6 class="title text-center">Title</h6>
+                                        <h6 class="title text-center"><?= $product->name ?></h6>
                                         <p class="details text-center" style="padding-bottom: 10px">
-                                            C
+                                            <?= $product->description ?>
                                         </p>
                                         <div class="separator" style="padding-top: 10px">
-                                            <span class="price-new">$110.00</span>
+                                            <?php if ($product->old_price): ?>
+                                                <span class="price-old">$<?= $product->old_price ?></span>
+                                            <?php endif ?>
+                                            <span class="price-new">$<?= $product->price ?></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </article>
                     </div>
-
-                    <div class="col-md-4">
-                        <article class="col-item">
-                            <div class="photo">
-                                <div class="options-cart-round">
-                                    <button class="btn btn-default" title="Add to cart">
-                                        <span class="fa fa-shopping-cart"></span>
-                                    </button>
-                                </div>
-                                <a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive" alt="Product Image" /> </a>
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <div class="price-details col-md-12">
-                                        <h6 class="title text-center">Title</h6>
-                                        <p class="details text-center" style="padding-bottom: 10px">
-                                            B
-                                        </p>
-                                        <div class="separator" style="padding-top: 10px">
-                                            <span class="price-new">$110.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-md-4">
-                        <article class="col-item">
-                            <div class="photo">
-                                <div class="options-cart-round">
-                                    <button class="btn btn-default" title="Add to cart">
-                                        <span class="fa fa-shopping-cart"></span>
-                                    </button>
-                                </div>
-                                <a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive" alt="Product Image" /> </a>
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <div class="price-details col-md-12">
-                                        <h6 class="title text-center">Title</h6>
-                                        <p class="details text-center" style="padding-bottom: 10px">
-                                            A
-                                        </p>
-                                        <div class="separator" style="padding-top: 10px">
-                                            <span class="price-new">$110.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
+                <?php endforeach ?>
                 </div>
                 <!-- Pagination start -->
                 <nav aria-label="Page navigation example">

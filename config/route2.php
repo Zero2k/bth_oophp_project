@@ -32,6 +32,11 @@ return [
             "file" => __DIR__ . "/route2/adminController.php",
         ],
         [
+            // Add routes from shopController and mount on profile/
+            "mount" => null,
+            "file" => __DIR__ . "/route2/shopController.php",
+        ],
+        [
             // For debugging and development details on Anax
             "mount" => "debug",
             "file" => __DIR__ . "/route2/debug.php",

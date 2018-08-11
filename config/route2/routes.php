@@ -11,12 +11,6 @@ return [
             "callable" => ["pageController", "getIndex"],
         ],
         [
-            "info" => "Shop",
-            "requestMethod" => null,
-            "path" => "shop",
-            "callable" => ["pageController", "getShop"],
-        ],
-        [
             "info" => "About",
             "requestMethod" => null,
             "path" => "about",

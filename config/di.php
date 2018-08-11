@@ -151,5 +151,13 @@ return [
                 return $obj;
             }
         ],
+        "shopController" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \Vibe\Shop\ShopController();
+                $obj->setDI($this);
+                return $obj;
+            }
+        ]
     ],
 ];
