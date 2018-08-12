@@ -10,5 +10,11 @@ return [
             "path" => "shop",
             "callable" => ["shopController", "getShop"],
         ],
+        [
+            "info" => "View Product",
+            "requestMethod" => "get|post",
+            "path" => "shop/product/{id:digit}",
+            "callable" => ["shopController", "getProduct"],
+        ],
     ]
 ];

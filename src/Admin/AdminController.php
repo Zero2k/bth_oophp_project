@@ -521,7 +521,7 @@ class AdminController implements
                 $featured = isset($_POST["featured"]) ? htmlentities($_POST["featured"]) : "";
 
                 if ($name && $description && $categories) {
-                    $response = $this->product->updateProduct($id, $userId, $name, $text, $description, $price, $image, $stock, $categories, $offer, $featured, $this->di);
+                    $response = $this->product->updateProduct($id, $userId, $name, $text, $description, $price, $image, $stock, $offer, $featured, $categories, $this->di);
                 } else if (!$response || !$title && !$description && !$categories) {
                     $this->session->set("message", "Product couldn't be updated");
                     $this->di->get("response")->redirect("admin?tab=products");

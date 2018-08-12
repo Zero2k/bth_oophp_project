@@ -50,8 +50,8 @@ class Product extends ActiveRecordModel
         ORDER BY '.$order.' ASC 
         LIMIT ?';
 
-        $preducts = $this->findAllSql($sql, [$limit]);
-        $preducts = array_map(function ($product) {
+        $products = $this->findAllSql($sql, [$limit]);
+        $products = array_map(function ($product) {
             $product->id = $product->id;
             $product->userId = $product->userId;
             $product->name = $product->name;
@@ -64,9 +64,9 @@ class Product extends ActiveRecordModel
             $product->offer = $product->offer;
             $product->featured = $product->featured;
             return $product;
-        }, $preducts);
+        }, $products);
 
-        return $preducts;
+        return $products;
     }
 
 
@@ -105,7 +105,7 @@ class Product extends ActiveRecordModel
 
 
 
-    public function updateProduct($productId, $userId, $name, $text, $description, $price, $image, $stock, $categories, $offer, $featured, $di)
+    public function updateProduct($productId, $userId, $name, $text, $description, $price, $image, $stock, $offer, $featured, $categories, $di)
     {
         $categoryProduct = new CategoryProduct();
         $categoryProduct->setDb($di->get("database"));

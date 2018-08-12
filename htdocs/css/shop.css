@@ -24,8 +24,11 @@
 }
 
 .col-item .photo img {
-    margin: 0 auto;
-    width: 100%;
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
 }
 
 .col-item .options-cart-round {

@@ -28,7 +28,7 @@
             </div>
         </li>
     </ul>
-    <a class="btn btn-outline-light no-border" href="<?= $url->create("")?>">View Cart <span class="badge badge-light">4</span></a>
+    <a class="btn btn-outline-light no-border" href="<?= $url->create("")?>">View Cart <span class="badge badge-light">0</span></a>
     <?php else : ?>
         <a class="btn btn-outline-light no-border" href="<?= $url->create("sign-up")?>">Sign Up</a>
         <a class="btn btn-outline-light btn-margin-left no-border" href="<?= $url->create("")?>">View Cart <span class="badge badge-light">0</span></a>

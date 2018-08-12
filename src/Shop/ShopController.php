@@ -7,6 +7,7 @@ use \Anax\DI\InjectionAwareTrait;
 use \Anax\Configure\ConfigureInterface;
 use \Anax\Configure\ConfigureTrait;
 use \Vibe\Product\Product;
+use \Vibe\Shop\Shop;
 
 /**
 * Routes class.
@@ -21,6 +22,9 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
     {
         $this->product = new Product();
         $this->product->setDb($this->di->get("database"));
+
+        $this->shop = new Shop();
+        $this->shop->setDb($this->di->get("database"));
     }
 
 
@@ -44,12 +48,20 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
                 $products = $this->product->getProducts(10);
                 break;
 
-            case 'shoes':
-                $products = $this->product->getProducts(1);
+            case 'dresses':
+                $products = $this->shop->getAllProductsByCategory("dresses", 10);
                 break;
 
-            case 'clothing':
-                $products = $this->product->getProducts(2);
+            case 'shirts':
+                $products = $this->shop->getAllProductsByCategory("shirts", 10);
+                break;
+
+            case 'shorts':
+                $products = $this->shop->getAllProductsByCategory("shorts", 10);
+                break;
+
+            case 'pants':
+                $products = $this->shop->getAllProductsByCategory("pants", 10);
                 break;
 
             default:
@@ -65,4 +77,25 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $pageRender->renderPage(["title" => $title]);
     }
 
+
+
+    /**
+     * Show product page.
+     *
+     * @return void
+     */
+    public function getProduct($id)
+    {
+        $this->init();
+        $title      = "View Product";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+
+        $data = [
+            "product" => "product",
+        ];
+
+        $view->add("shop/productView", $data);
+        $pageRender->renderPage(["title" => $title]);
+    }
 }

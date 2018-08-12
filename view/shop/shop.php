@@ -17,10 +17,10 @@
         <div class="row">
             <div class="col-md-3">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="<?= $url->create("?category=shoes")?>">Shoes</a></li>
-                    <li class="list-group-item"><a href="<?= $url->create("?category=clothing")?>">Clothing</a></li>
-                    <li class="list-group-item">Bags</li>
-                    <li class="list-group-item">Accessories</li>
+                    <li class="list-group-item"><a href="<?= $url->create("?category=dresses")?>">Dresses</a></li>
+                    <li class="list-group-item"><a href="<?= $url->create("?category=shirts")?>">Shirts</a></li>
+                    <li class="list-group-item"><a href="<?= $url->create("?category=shorts")?>">Shorts</a></li>
+                    <li class="list-group-item"><a href="<?= $url->create("?category=pants")?>">Pants</a></li>
                     <li class="list-group-item"><a href="<?= $url->create("?category=all")?>">See all</a></li>
                 </ul>
             </div>
@@ -44,17 +44,17 @@
                                         <span class="fa fa-shopping-cart"></span>
                                     </button>
                                 </div>
-                                <a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive" alt="Product Image" /> </a>
+                                <a href="#"> <img src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" class="img-responsive" alt="Product Image" /> </a>
                             </div>
                             <div class="info">
                                 <div class="row">
                                     <div class="price-details col-md-12">
-                                        <h6 class="title text-center"><?= $product->name ?></h6>
-                                        <p class="details text-center" style="padding-bottom: 10px">
+                                        <h6 class="title text-center"><a class="text-dark" href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h6>
+                                        <!-- <p class="details text-center" style="padding-bottom: 10px">
                                             <?= $product->description ?>
-                                        </p>
+                                        </p> -->
                                         <div class="separator" style="padding-top: 10px">
-                                            <?php if ($product->old_price): ?>
+                                            <?php if ($product->old_price) : ?>
                                                 <span class="price-old">$<?= $product->old_price ?></span>
                                             <?php endif ?>
                                             <span class="price-new">$<?= $product->price ?></span>
