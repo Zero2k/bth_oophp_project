@@ -71,6 +71,13 @@ class Product extends ActiveRecordModel
 
 
 
+    public function getProduct($id)
+    {
+        return $this->find("id", $id);
+    }
+
+
+
     public function addProduct($userId, $name, $text, $description, $price, $image, $stock, $offer, $featured)
     {
         $this->userId = $userId;

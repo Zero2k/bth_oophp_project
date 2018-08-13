@@ -69,6 +69,44 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="inputImage">Additional Images</label>
+                    <div class="form-row">
+                        <div class="col">
+                            <select class="form-control-custom" name="image_two">
+                                <option value=""></option>
+                            <?php $ignore = array(".", ".."); ?>
+                            <?php foreach ($images as $image) : ?>
+                                <?php if (!in_array($image, $ignore)) : ?>
+                                    <option <?= $product->image === $image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?php echo $image ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-control-custom" name="image_three">
+                                <option value=""></option>
+                            <?php $ignore = array(".", ".."); ?>
+                            <?php foreach ($images as $image) : ?>
+                                <?php if (!in_array($image, $ignore)) : ?>
+                                    <option <?= $product->image === $image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?php echo $image ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-control-custom" name="image_four">
+                                <option value=""></option>
+                            <?php $ignore = array(".", ".."); ?>
+                            <?php foreach ($images as $image) : ?>
+                                <?php if (!in_array($image, $ignore)) : ?>
+                                    <option <?= $product->image === $image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?php echo $image ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label>Categories (Use Ctrl to select multiple)</label>
                     <select class="form-control-multiselect" name="categories[]" multiple="multiple">
                         <?php $arr = array_column($productImages, 'categoryId'); ?>

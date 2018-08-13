@@ -38,7 +38,7 @@ class PageRender implements PageRenderInterface, InjectionAwareInterface
         $this->init();
         $data["stylesheets"] = ["https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", "css/color.css", "css/blog.css", "css/shop.css", "css/carousel.css", "css/offcanvas.css", "css/style.css"];
 
-        $data["javascript"] = ["js/offcanvas.js"];
+        $data["javascript"] = ["js/product.js", "js/offcanvas.js"];
 
         $data["footer"] = $this->content->getContent("footer");
         

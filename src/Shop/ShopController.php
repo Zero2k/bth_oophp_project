@@ -42,30 +42,31 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $pageRender = $this->di->get("pageRender");
 
         $category = isset($_GET["category"]) ? $_GET["category"] : '';
+        $limit = isset($_GET["limit"]) ? $_GET["limit"] : 10;
 
         switch ($category) {
             case 'all':
-                $products = $this->product->getProducts(10);
+                $products = $this->product->getProducts($limit);
                 break;
 
             case 'dresses':
-                $products = $this->shop->getAllProductsByCategory("dresses", 10);
+                $products = $this->shop->getAllProductsByCategory("dresses", $limit);
                 break;
 
             case 'shirts':
-                $products = $this->shop->getAllProductsByCategory("shirts", 10);
+                $products = $this->shop->getAllProductsByCategory("shirts", $limit);
                 break;
 
             case 'shorts':
-                $products = $this->shop->getAllProductsByCategory("shorts", 10);
+                $products = $this->shop->getAllProductsByCategory("shorts", $limit);
                 break;
 
             case 'pants':
-                $products = $this->shop->getAllProductsByCategory("pants", 10);
+                $products = $this->shop->getAllProductsByCategory("pants", $limit);
                 break;
 
             default:
-                $products = $this->product->getProducts(10);
+                $products = $this->product->getProducts($limit);
                 break;
         }
 
@@ -92,10 +93,32 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $pageRender = $this->di->get("pageRender");
 
         $data = [
-            "product" => "product",
+            "product" => $this->product->getProduct($id),
         ];
 
         $view->add("shop/productView", $data);
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    /**
+     * Show cart page.
+     *
+     * @return void
+     */
+    public function getCart()
+    {
+        $this->init();
+        $title      = "View Cart";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+
+        $data = [
+            "cart" => "cart",
+        ];
+
+        $view->add("shop/cart", $data);
         $pageRender->renderPage(["title" => $title]);
     }
 }

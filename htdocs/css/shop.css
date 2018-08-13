@@ -88,10 +88,11 @@
 
 .col-item .price-details .price-new {
     font-size: 16px;
+    padding-left: 4px;
+    color: #86bd57;
 }
 
 .col-item .price-details .price-old {
-    padding-left: 4px;
     font-size: 14px;
     text-decoration: line-through;
 }
@@ -125,4 +126,20 @@
 
 .col-item .btn-add {
     border-right: 1px solid #E1E1E1;
+}
+
+/* VIEW PRODUCT */
+
+.product-price {
+    text-align: center;
+}
+
+.product-price .old {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.product-price .new {
+    font-weight: 700;
+    font-size: 22px;
 }

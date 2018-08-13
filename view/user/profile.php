@@ -2,9 +2,6 @@
     <div class="container">
         <div class="row">
             <h1 class="display-4">Profile</h1>
-            <p class="lead">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text.
-            </p>
         </div>
     </div>
 </div>

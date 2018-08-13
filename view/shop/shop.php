@@ -7,9 +7,6 @@
         <div class="container">
             <div class="row">
                 <h1 class="display-4">Shop</h1>
-                <p class="lead">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text.
-                </p>
             </div>
         </div>
     </div >
@@ -54,10 +51,10 @@
                                             <?= $product->description ?>
                                         </p> -->
                                         <div class="separator" style="padding-top: 10px">
+                                            <span class="price-new">$<?= $product->price ?></span>
                                             <?php if ($product->old_price) : ?>
                                                 <span class="price-old">$<?= $product->old_price ?></span>
                                             <?php endif ?>
-                                            <span class="price-new">$<?= $product->price ?></span>
                                         </div>
                                     </div>
                                 </div>

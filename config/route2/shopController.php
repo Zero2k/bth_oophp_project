@@ -16,5 +16,11 @@ return [
             "path" => "shop/product/{id:digit}",
             "callable" => ["shopController", "getProduct"],
         ],
+        [
+            "info" => "View Cart",
+            "requestMethod" => "get|post",
+            "path" => "cart",
+            "callable" => ["shopController", "getCart"],
+        ],
     ]
 ];
