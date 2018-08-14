@@ -7,6 +7,7 @@ use \Anax\DI\InjectionAwareTrait;
 use \Anax\Configure\ConfigureInterface;
 use \Anax\Configure\ConfigureTrait;
 use \Vibe\Product\Product;
+use \Vibe\Category\CategoryProduct;
 use \Vibe\Shop\Shop;
 
 /**
@@ -22,6 +23,9 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
     {
         $this->product = new Product();
         $this->product->setDb($this->di->get("database"));
+
+        $this->categoryProduct = new CategoryProduct();
+        $this->categoryProduct->setDb($this->di->get("database"));
 
         $this->shop = new Shop();
         $this->shop->setDb($this->di->get("database"));
@@ -93,6 +97,7 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $pageRender = $this->di->get("pageRender");
 
         $data = [
+            "categories" => $this->categoryProduct->getCategoriesToProduct($id),
             "product" => $this->product->getProduct($id),
         ];
 

@@ -44,4 +44,18 @@ class CategoryProduct extends ActiveRecordModel
         $this->productId = $productId;
         $this->save();
     }
+
+
+
+    public function getCategoriesToProduct($productId)
+    {
+        $sql = 'SELECT category FROM oophp_Category Category
+        LEFT JOIN oophp_CategoryProduct CategoryProduct
+        ON CategoryProduct.categoryId = Category.id 
+        WHERE CategoryProduct.productId = ?';
+
+        $categories = $this->findAllSql($sql, [$productId]);
+
+        return $categories;
+    }
 }

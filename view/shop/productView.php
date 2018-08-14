@@ -100,7 +100,7 @@
                     </div>
                     <div class="card-footer">
                         <span>Categories: 
-                            <!-- <?= $allCategories = implode(', ', array_column($categories, "category")) ?> -->
+                            <?= $allCategories = implode(', ', array_column($categories, "category")) ?>
                         </span>
                     </div>
                 </div>
