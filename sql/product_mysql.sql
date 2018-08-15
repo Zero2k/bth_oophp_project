@@ -17,7 +17,6 @@ CREATE TABLE oophp_Product (
     `image` VARCHAR(250),
     `image_two` VARCHAR(250),
     `image_three` VARCHAR(250),
-    `image_four` VARCHAR(250),
     `stock` INTEGER,
     `offer` BOOLEAN,
     `featured` BOOLEAN,

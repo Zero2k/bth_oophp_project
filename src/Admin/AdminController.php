@@ -515,13 +515,15 @@ class AdminController implements
                 $price = isset($_POST["price"]) ? htmlentities($_POST["price"]) : "";
                 $oldPrice = isset($_POST["oldPrice"]) ? htmlentities($_POST["oldPrice"]) : "";
                 $image = isset($_POST["image"]) ? htmlentities($_POST["image"]) : "";
+                $image_two = isset($_POST["image_two"]) ? htmlentities($_POST["image_two"]) : "";
+                $image_three = isset($_POST["image_three"]) ? htmlentities($_POST["image_three"]) : "";
                 $stock = isset($_POST["stock"]) ? htmlentities($_POST["stock"]) : "";
                 /* ADD OFFER / FEATURED TO updateProduct method */
                 $offer = isset($_POST["offer"]) ? htmlentities($_POST["offer"]) : "";
                 $featured = isset($_POST["featured"]) ? htmlentities($_POST["featured"]) : "";
 
                 if ($name && $description && $categories) {
-                    $response = $this->product->updateProduct($id, $userId, $name, $text, $description, $price, $image, $stock, $offer, $featured, $categories, $this->di);
+                    $response = $this->product->updateProduct($id, $userId, $name, $text, $description, $price, $image, $image_two, $image_three, $stock, $offer, $featured, $categories, $this->di);
                 } else if (!$response || !$title && !$description && !$categories) {
                     $this->session->set("message", "Product couldn't be updated");
                     $this->di->get("response")->redirect("admin?tab=products");

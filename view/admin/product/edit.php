@@ -77,7 +77,7 @@
                             <?php $ignore = array(".", ".."); ?>
                             <?php foreach ($images as $image) : ?>
                                 <?php if (!in_array($image, $ignore)) : ?>
-                                    <option <?= $product->image === $image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?php echo $image ?></option>
+                                    <option <?= $product->image_two === $image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?php echo $image ?></option>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                             </select>
@@ -88,22 +88,22 @@
                             <?php $ignore = array(".", ".."); ?>
                             <?php foreach ($images as $image) : ?>
                                 <?php if (!in_array($image, $ignore)) : ?>
-                                    <option <?= $product->image === $image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?php echo $image ?></option>
+                                    <option <?= $product->image_three === $image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?php echo $image ?></option>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col">
+                        <!-- <div class="col">
                             <select class="form-control-custom" name="image_four">
                                 <option value=""></option>
                             <?php $ignore = array(".", ".."); ?>
                             <?php foreach ($images as $image) : ?>
                                 <?php if (!in_array($image, $ignore)) : ?>
-                                    <option <?= $product->image === $image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?php echo $image ?></option>
+                                    <option <?= $product->image_four === $image ? ' selected="selected"' : '' ?> value="<?= $image ?>"><?php echo $image ?></option>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                             </select>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="form-group">

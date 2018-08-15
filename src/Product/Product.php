@@ -31,6 +31,8 @@ class Product extends ActiveRecordModel
     public $price;
     public $old_price;
     public $image;
+    public $image_two;
+    public $image_three;
     public $stock;
     public $offer;
     public $featured;
@@ -112,7 +114,7 @@ class Product extends ActiveRecordModel
 
 
 
-    public function updateProduct($productId, $userId, $name, $text, $description, $price, $image, $stock, $offer, $featured, $categories, $di)
+    public function updateProduct($productId, $userId, $name, $text, $description, $price, $image, $image_two, $image_three, $stock, $offer, $featured, $categories, $di)
     {
         $categoryProduct = new CategoryProduct();
         $categoryProduct->setDb($di->get("database"));
@@ -134,6 +136,8 @@ class Product extends ActiveRecordModel
         }
 
         $product->image = $image;
+        $product->image_two = $image_two;
+        $product->image_three = $image_three;
         $product->stock = $stock;
         $product->offer = $offer;
         $product->featured = $featured;
