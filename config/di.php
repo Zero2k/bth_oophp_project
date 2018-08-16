@@ -158,6 +158,15 @@ return [
                 $obj->setDI($this);
                 return $obj;
             }
-        ]
+        ],
+        "cartSession" => [
+            "shared" => true,
+            "callback" => function () {
+                $cart = new \Vibe\CartSession\CartSession();
+                $cart->inject(["session" => $this->get("session")]);
+                $cart->setDI($this);
+                return $cart;
+            }
+        ],
     ],
 ];

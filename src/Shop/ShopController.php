@@ -9,6 +9,7 @@ use \Anax\Configure\ConfigureTrait;
 use \Vibe\Product\Product;
 use \Vibe\Category\CategoryProduct;
 use \Vibe\Shop\Shop;
+use \Vibe\CartSession\CartSession;
 
 /**
 * Routes class.
@@ -29,6 +30,11 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
 
         $this->shop = new Shop();
         $this->shop->setDb($this->di->get("database"));
+
+        $this->cartSession = new CartSession();
+        $this->cartSession->inject(["session" => $this->di->get("session")]);
+
+        $this->session = $this->di->get("session");
     }
 
 
@@ -120,10 +126,17 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $pageRender = $this->di->get("pageRender");
 
         $data = [
-            "cart" => "cart",
+            "products" => $this->cartSession->getProducts(),
         ];
 
         $view->add("shop/cart", $data);
         $pageRender->renderPage(["title" => $title]);
     }
+
+
+
+    /* function postAddToCart()
+    {
+        # code...
+    } */
 }

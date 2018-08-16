@@ -22,5 +22,11 @@ return [
             "path" => "cart",
             "callable" => ["shopController", "getCart"],
         ],
+        [
+            "info" => "Add product to Cart",
+            "requestMethod" => "post",
+            "path" => "cart/add",
+            "callable" => ["shopController", "postAddToCart"],
+        ]
     ]
 ];

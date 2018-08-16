@@ -37,9 +37,15 @@
                         <article class="col-item">
                             <div class="photo">
                                 <div class="options-cart-round">
-                                    <button class="btn btn-default" title="Add to cart">
+                                    <form class="product" id="product-<?= $product->id ?>">
+                                        <input type="hidden" name="product" value="<?= $product->id ?>" />
+                                        <button class="btn btn-default" type="submit" title="Add to cart">
+                                            <span class="fa fa-shopping-cart"></span>
+                                        </button>
+                                    </form>
+                                    <!-- <button class="btn btn-default" title="Add to cart">
                                         <span class="fa fa-shopping-cart"></span>
-                                    </button>
+                                    </button> -->
                                 </div>
                                 <a href="#"> <img src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" class="img-responsive" alt="Product Image" /> </a>
                             </div>

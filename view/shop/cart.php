@@ -27,24 +27,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                                <td class="align-middle">Product Name Dada</td>
-                                <td class="align-middle">In stock</td>
-                                <td class="align-middle">
-                                    <input style="border-radius: 0" class="form-control" type="number" value="1" />
-                                </td>
-                                <td class="align-middle">
-                                    <select style="border-radius: 0" class="form-control">
-                                        <option>M</option>
-                                        <option>S</option>
-                                        <option>L</option>
-                                        <option>XL</option>
-                                    </select>
-                                </td>
-                                <td class="align-middle">$124,90</td>
-                                <td class="align-middle text-right"><button class="btn btn-sm btn-danger no-border"><i class="fa fa-trash"></i> </button> </td>
-                            </tr>
+                            <?php if (!$products) : ?>
+                                <?php foreach ($products = [1, 2] as $product) : ?>
+                                <tr>
+                                    <form>
+                                        <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                                        <td class="align-middle">Product Name Dada</td>
+                                        <td class="align-middle">In stock</td>
+                                        <td class="align-middle">
+                                            <input style="border-radius: 0" class="form-control" type="number" value="1" />
+                                        </td>
+                                        <td class="align-middle">
+                                            <select style="border-radius: 0" class="form-control">
+                                                <option>M</option>
+                                                <option>S</option>
+                                                <option>L</option>
+                                                <option>XL</option>
+                                            </select>
+                                        </td>
+                                        <td class="align-middle">$124,90</td>
+                                        <td class="align-middle text-right">
+                                            <button class="btn btn-sm btn-danger no-border"><i class="fa fa-trash"></i> </button>
+                                            <button type="submit" class="btn btn-sm btn-success no-border"><i class="fa fa-refresh"></i> </button>
+                                        </td>
+                                    </form>
+                                </tr>
+                                <?php endforeach; ?>
+                                <tr>
+                                    <td align="center" colspan="7">No Products</td>
+                                </tr>
+                            <?php endif ?>
                             <tr>
                                 <td></td>
                                 <td></td>
