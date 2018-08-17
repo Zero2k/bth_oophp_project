@@ -77,15 +77,31 @@ class CartSession implements ConfigureInterface, InjectionAwareInterface
 
 
     /**
+     * Get single product saved in session.
+     *
+     * @return array with the dataset
+     */
+    public function getProduct($key)
+    {
+        $data = $this->session->get(self::KEY);
+        $set = isset($data[$key])
+            ? $data[$key]
+            : [];
+        return $set;
+    }
+
+
+
+    /**
      * Add new product.
      *
-     * @param string $productId
-     * @param string $size
+     * @param object $product
      * @param integer $quantity
+     * @param string $size
      *
      * @return array
      */
-    public function addProduct($productId, $name, $image, $available, $quantity, $size, $price)
+    public function addProduct($product, $quantity, $size)
     {
         $allProducts = $this->session->get(self::KEY);
 
@@ -99,13 +115,13 @@ class CartSession implements ConfigureInterface, InjectionAwareInterface
 
         $product = [
             "id" => ($id + 1),
-            "productId" => $productId,
-            "name" => $name,
-            "image" => $image,
-            "available" => $available,
+            "productId" => $product->id,
+            "name" => $product->name,
+            "image" => $product->image,
+            "available" => 1, // FIX THIS
             "quantity" => $quantity,
             "size" => $size,
-            "price" => $quantity * $price,
+            "price" => $quantity * $product->price,
         ];
 
         $allProducts[] = $product;
@@ -126,9 +142,9 @@ class CartSession implements ConfigureInterface, InjectionAwareInterface
      */
     public function updateProductRow($id, $quantity, $size)
     {
-        $allProducts = $this->session->get(self::KEY);
+        $allProducts = $this->session->getProduct($id);
         // Find the comment if id exists
-        
+
         $this->saveDataset($allProducts);
     }
 

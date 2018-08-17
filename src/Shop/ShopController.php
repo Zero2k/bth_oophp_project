@@ -125,6 +125,14 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
 
+        $action = isset($_POST) ? $_POST : '';
+
+        if (isset($_POST["delete"])) {
+            $this->session->set("message", "delete!");
+        } else if (isset($_POST["update"])) {
+            $this->session->set("message", "update!");
+        }
+
         $data = [
             "products" => $this->cartSession->getProducts(),
         ];
@@ -135,8 +143,24 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
 
 
 
-    /* function postAddToCart()
+    function postAddToCart()
     {
-        # code...
-    } */
+        $this->init();
+
+        $id = isset($_POST["productId"]) ? $_POST["productId"] : '';
+        $size = isset($_POST["size"]) ? $_POST["size"] : '';
+        $quantity = isset($_POST["quantity"]) ? $_POST["quantity"] : '';
+
+        $product = $this->product->find("id", $id);
+        
+        if ($product) {
+            $this->cartSession->addProduct($product, $quantity, $size);
+        } else {
+            $this->session->set("message", "Error!");
+        }
+        $this->session->set("message", "Product added to cart!");
+
+
+        $this->di->get("response")->redirect($_SERVER["HTTP_REFERER"]);
+    }
 }

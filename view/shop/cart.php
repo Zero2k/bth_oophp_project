@@ -1,5 +1,6 @@
 <?php
     $url = $this->di->get("url");
+    $session = $this->di->get("session");    
 ?>
 
 <main role="main">
@@ -27,15 +28,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!$products) : ?>
-                                <?php foreach ($products = [1, 2] as $product) : ?>
+                            <!-- <?php var_dump($_SESSION["cart"]) ?> -->
+                            <?php if ($products) : ?>
+                                <?php foreach ($products as $product) : ?>
                                 <tr>
-                                    <form>
+                                    <form method="post">
                                         <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                                        <td class="align-middle">Product Name Dada</td>
+                                        <td class="align-middle"><?= $product["name"] ?></td>
                                         <td class="align-middle">In stock</td>
                                         <td class="align-middle">
-                                            <input style="border-radius: 0" class="form-control" type="number" value="1" />
+                                            <input style="border-radius: 0" class="form-control" type="number" value="<?= $product["quantity"] ?>" />
                                         </td>
                                         <td class="align-middle">
                                             <select style="border-radius: 0" class="form-control">
@@ -45,14 +47,15 @@
                                                 <option>XL</option>
                                             </select>
                                         </td>
-                                        <td class="align-middle">$124,90</td>
+                                        <td class="align-middle">$<?= $product["price"] ?></td>
                                         <td class="align-middle text-right">
-                                            <button class="btn btn-sm btn-danger no-border"><i class="fa fa-trash"></i> </button>
-                                            <button type="submit" class="btn btn-sm btn-success no-border"><i class="fa fa-refresh"></i> </button>
+                                            <button type="submit" name="delete" class="btn btn-sm btn-danger no-border"><i class="fa fa-trash"></i> </button>
+                                            <button type="submit" name="update" class="btn btn-sm btn-success no-border"><i class="fa fa-refresh"></i> </button>
                                         </td>
                                     </form>
                                 </tr>
                                 <?php endforeach; ?>
+                            <?php else : ?>
                                 <tr>
                                     <td align="center" colspan="7">No Products</td>
                                 </tr>

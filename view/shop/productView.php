@@ -1,5 +1,6 @@
 <?php
     $url = $this->di->get("url");
+    $session = $this->di->get("session");
 ?>
 
 <main role="main">
@@ -45,14 +46,15 @@
                             <?php endif ?>
                             <span class="new">$<?= $product->price ?></span>
                         </p>
-                        <form method="post">
+                        <form method="post" action="<?= $url->create("cart/add")?>">
+                            <input type="hidden" name="productId" value="<?= $product->id ?>">
                             <div style="margin-bottom: 0.3rem" class="form-group">
-                                <select class="form-control-custom" id="colors" required>
+                                <select class="form-control-custom" name="size" id="colors" required>
                                     <option value="" selected>Select Size</option>
-                                    <option value="1">S</option>
-                                    <option value="2">M</option>
-                                    <option value="3">L</option>
-                                    <option value="4">XL</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -76,6 +78,7 @@
                                 <i class="fa fa-shopping-cart"></i> Add To Cart
                             </button>
                         </form>
+                        <small><?= $session->getOnce("message") ?></small>
                         <div class="reviews_product ptb-20">
                             3 reviews
                             <i class="fa fa-star"></i>
