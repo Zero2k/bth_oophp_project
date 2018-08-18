@@ -118,7 +118,7 @@ class CartSession implements ConfigureInterface, InjectionAwareInterface
             "productId" => $product->id,
             "name" => $product->name,
             "image" => $product->image,
-            "available" => 1, // FIX THIS
+            "available" => ($product->stock - $quantity < 0 ? 0 : 1),
             "quantity" => $quantity,
             "size" => $size,
             "price" => $quantity * $product->price,
@@ -129,6 +129,7 @@ class CartSession implements ConfigureInterface, InjectionAwareInterface
         $this->saveDataset($allProducts);
         return $product;
     }
+
 
 
     /**
@@ -167,5 +168,25 @@ class CartSession implements ConfigureInterface, InjectionAwareInterface
             }
         }
         $this->saveDataset($allProducts);
+    }
+
+
+
+    public function productExists($productId)
+    {
+        $allProducts = $this->session->get(self::KEY);
+        $exist = null;
+
+        if (count($allProducts) < 0) {
+            $exist = null;
+        }
+
+        foreach ($allProducts as $product) {
+            if ($product["productId"] == $productId) {
+                $exist = $product;
+            }
+        }
+
+        return $exist;
     }
 }

@@ -35,16 +35,16 @@
                                     <form method="post">
                                         <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
                                         <td class="align-middle"><?= $product["name"] ?></td>
-                                        <td class="align-middle">In stock</td>
+                                        <td class="align-middle"><?= $product["available"] === 1 ? 'In stock' : '48h' ?></td>
                                         <td class="align-middle">
                                             <input style="border-radius: 0" class="form-control" type="number" value="<?= $product["quantity"] ?>" />
                                         </td>
                                         <td class="align-middle">
                                             <select style="border-radius: 0" class="form-control">
-                                                <option>M</option>
-                                                <option>S</option>
-                                                <option>L</option>
-                                                <option>XL</option>
+                                                <option <?= $product["size"] === "M" ? ' selected="selected"' : '' ?> value="M">M</option>
+                                                <option <?= $product["size"] === "S" ? ' selected="selected"' : '' ?> value="S">S</option>
+                                                <option <?= $product["size"] === "L" ? ' selected="selected"' : '' ?> value="L">L</option>
+                                                <option <?= $product["size"] === "XL" ? ' selected="selected"' : '' ?> value="XL">XL</option>
                                             </select>
                                         </td>
                                         <td class="align-middle">$<?= $product["price"] ?></td>
@@ -75,11 +75,14 @@
             </div>
             <div class="col mb-2">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-sm-12 col-md-4">
                         <a href="<?= $url->create("shop")?>" class="btn btn-block btn-secondary no-border">Return to Shop</a>
                     </div>
-                    <div class="col-sm-12 col-md-6 text-right">
-                        <button class="btn btn-block btn-success no-border">Checkout</button>
+                    <div class="col-sm-6 col-md-4">
+                        <a href="<?= $url->create("cart/remove")?>" class="btn btn-block btn-dark no-border">Delete Cart</a>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <a href="" class="btn btn-block btn-success no-border">Checkout</a>
                     </div>
                 </div>
             </div>

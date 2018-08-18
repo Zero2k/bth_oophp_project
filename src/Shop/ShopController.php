@@ -142,8 +142,12 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
     }
 
 
-
-    function postAddToCart()
+    /**
+     * Add product to cart route.
+     *
+     * @return void
+     */
+    public function postAddToCart()
     {
         $this->init();
 
@@ -161,6 +165,20 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $this->session->set("message", "Product added to cart!");
 
 
+        $this->di->get("response")->redirect($_SERVER["HTTP_REFERER"]);
+    }
+
+
+    /**
+     * Remove cart route.
+     *
+     * @return void
+     */
+    public function removeCart()
+    {
+        $this->init();
+
+        $this->session->delete("cart");
         $this->di->get("response")->redirect($_SERVER["HTTP_REFERER"]);
     }
 }
