@@ -189,4 +189,20 @@ class CartSession implements ConfigureInterface, InjectionAwareInterface
 
         return $exist;
     }
+
+
+
+    public function calculateTotal()
+    {
+        $allProducts = $this->session->get(self::KEY);
+
+        if (!$allProducts) {
+            $prices = 0;
+        } else {
+            $prices = array_sum(array_column($allProducts, 'price'));
+        }
+
+
+        return $prices;
+    }
 }

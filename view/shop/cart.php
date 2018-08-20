@@ -33,8 +33,10 @@
                                 <?php foreach ($products as $product) : ?>
                                 <tr>
                                     <form method="post">
-                                        <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                                        <td class="align-middle"><?= $product["name"] ?></td>
+                                        <td><img class="product-img" src="<?= $url->create("/kmom10/shop/htdocs/img/$product[image]")?>" /> </td>
+                                        <td class="align-middle">
+                                            <a href="<?= $url->create("shop/product/$product[productId]")?>"><?= $product["name"] ?></a>
+                                        </td>
                                         <td class="align-middle"><?= $product["available"] === 1 ? 'In stock' : '48h' ?></td>
                                         <td class="align-middle">
                                             <input style="border-radius: 0" class="form-control" type="number" value="<?= $product["quantity"] ?>" />
@@ -67,7 +69,7 @@
                                 <td></td>
                                 <td></td>
                                 <td><strong>Total</strong></td>
-                                <td class="text-right"><strong>$346,90</strong></td>
+                                <td class="text-right"><strong>$<?= $total ?></strong></td>
                             </tr>
                         </tbody>
                     </table>

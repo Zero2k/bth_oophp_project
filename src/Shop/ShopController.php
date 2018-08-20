@@ -135,6 +135,7 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
 
         $data = [
             "products" => $this->cartSession->getProducts(),
+            "total" => $this->cartSession->calculateTotal(),
         ];
 
         $view->add("shop/cart", $data);
@@ -152,8 +153,8 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $this->init();
 
         $id = isset($_POST["productId"]) ? $_POST["productId"] : '';
-        $size = isset($_POST["size"]) ? $_POST["size"] : '';
-        $quantity = isset($_POST["quantity"]) ? $_POST["quantity"] : '';
+        $size = isset($_POST["size"]) ? $_POST["size"] : 'S';
+        $quantity = isset($_POST["quantity"]) ? $_POST["quantity"] : '1';
 
         $product = $this->product->find("id", $id);
         
