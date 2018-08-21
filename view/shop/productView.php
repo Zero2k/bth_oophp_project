@@ -78,7 +78,7 @@
                                 <i class="fa fa-shopping-cart"></i> Add To Cart
                             </button>
                         </form>
-                        <small><?= $session->getOnce("message") ?></small>
+                        <small><?= $session->getOnce("message-$product->id") ?></small>
                         <div class="reviews_product ptb-20">
                             3 reviews
                             <i class="fa fa-star"></i>

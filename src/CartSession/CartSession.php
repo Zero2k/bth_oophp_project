@@ -172,18 +172,18 @@ class CartSession implements ConfigureInterface, InjectionAwareInterface
 
 
 
-    public function productExists($productId)
+    public function productExists($productId, $size)
     {
         $allProducts = $this->session->get(self::KEY);
         $exist = null;
 
-        if (count($allProducts) < 0) {
+        if (!$allProducts) {
             $exist = null;
-        }
-
-        foreach ($allProducts as $product) {
-            if ($product["productId"] == $productId) {
-                $exist = $product;
+        } else {
+            foreach ($allProducts as $product) {
+                if ($product["productId"] == $productId && $product["size"] == $size) {
+                    $exist = $product;
+                }
             }
         }
 

@@ -1,6 +1,6 @@
 <?php
     $url = $this->di->get("url");
-    $session = $this->di->get("session");    
+    $session = $this->di->get("session");
 ?>
 
 <main role="main">
@@ -29,6 +29,7 @@
                         </thead>
                         <tbody>
                             <!-- <?php var_dump($_SESSION["cart"]) ?> -->
+                            <!-- <?= $session->getOnce("message") ?> -->
                             <?php if ($products) : ?>
                                 <?php foreach ($products as $product) : ?>
                                 <tr>
@@ -39,10 +40,10 @@
                                         </td>
                                         <td class="align-middle"><?= $product["available"] === 1 ? 'In stock' : '48h' ?></td>
                                         <td class="align-middle">
-                                            <input style="border-radius: 0" class="form-control" type="number" value="<?= $product["quantity"] ?>" />
+                                            <input style="border-radius: 0" class="form-control" type="number" name="quantity" value="<?= $product["quantity"] ?>" />
                                         </td>
                                         <td class="align-middle">
-                                            <select style="border-radius: 0" class="form-control">
+                                            <select style="border-radius: 0" name="size" class="form-control">
                                                 <option <?= $product["size"] === "M" ? ' selected="selected"' : '' ?> value="M">M</option>
                                                 <option <?= $product["size"] === "S" ? ' selected="selected"' : '' ?> value="S">S</option>
                                                 <option <?= $product["size"] === "L" ? ' selected="selected"' : '' ?> value="L">L</option>
@@ -51,8 +52,8 @@
                                         </td>
                                         <td class="align-middle">$<?= $product["price"] ?></td>
                                         <td class="align-middle text-right">
-                                            <button type="submit" name="delete" class="btn btn-sm btn-danger no-border"><i class="fa fa-trash"></i> </button>
-                                            <button type="submit" name="update" class="btn btn-sm btn-success no-border"><i class="fa fa-refresh"></i> </button>
+                                            <button type="submit" name="delete" value="<?= $product["id"] ?>" class="btn btn-sm btn-danger no-border"><i class="fa fa-trash"></i> </button>
+                                            <button type="submit" name="update" value="<?= $product["id"] ?>" class="btn btn-sm btn-success no-border"><i class="fa fa-refresh"></i> </button>
                                         </td>
                                     </form>
                                 </tr>

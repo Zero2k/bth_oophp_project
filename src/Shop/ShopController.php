@@ -125,12 +125,16 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
 
-        $action = isset($_POST) ? $_POST : '';
-
         if (isset($_POST["delete"])) {
-            $this->session->set("message", "delete!");
+            $id = $_POST["delete"];
+            $size = $_POST["size"];
+            $quantity = $_POST["quantity"];
+            $this->session->set("message", "delete | ID: $id Size: $size QUANTITY: $quantity");
         } else if (isset($_POST["update"])) {
-            $this->session->set("message", "update!");
+            $id = $_POST["update"];
+            $size = $_POST["size"];
+            $quantity = $_POST["quantity"];
+            $this->session->set("message", "update | ID: $id Size: $size QUANTITY: $quantity");
         }
 
         $data = [
@@ -155,16 +159,24 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $id = isset($_POST["productId"]) ? $_POST["productId"] : '';
         $size = isset($_POST["size"]) ? $_POST["size"] : 'S';
         $quantity = isset($_POST["quantity"]) ? $_POST["quantity"] : '1';
+        $requestType = isset($_POST["requestType"]) ? $_POST["requestType"] : '';
 
+        /* CHECK IF PRODUCT ALREADY EXIST IN SESSION */
+        $existingProduct = $this->cartSession->productExists($id, $size);
         $product = $this->product->find("id", $id);
-        
-        if ($product) {
-            $this->cartSession->addProduct($product, $quantity, $size);
-        } else {
-            $this->session->set("message", "Error!");
-        }
-        $this->session->set("message", "Product added to cart!");
 
+        if (!$existingProduct) {
+            if ($product) {
+                $this->cartSession->addProduct($product, $quantity, $size);
+                $this->session->set("message-$product->id", "Product added to cart!");
+            } else {
+                $this->session->set("message", "Error!");
+            }
+        } else if ($existingProduct && $requestType === "ajax") {
+            die(header("HTTP/1.0 409 Conflict (Product already added to cart)", true, 409));
+        } else {
+            $this->session->set("message-$product->id", "Product already added to cart!");
+        }
 
         $this->di->get("response")->redirect($_SERVER["HTTP_REFERER"]);
     }

@@ -2,8 +2,6 @@ var request;
 
 $('.product').each(function (index) {
     $("#product-" + (index + 1)).submit(function(event) {
-        // console.log("Submitted: ", event.target[0].value);
-        /* MAKE POST REQUEST TO cart/add with ProductId */
         event.preventDefault();
 
         if (request) {
@@ -13,8 +11,10 @@ $('.product').each(function (index) {
         request = $.ajax({
             url: "cart/add",
             type: "post",
+            datatype: "html",
             data: {
-                productId: event.target[0].value
+                productId: event.target[0].value,
+                requestType: "ajax"
             }
         });
 
@@ -25,5 +25,9 @@ $('.product').each(function (index) {
             });
             console.log("Hooray, it worked!");
         });
+
+        request.fail(function (data) {
+            console.log(data.statusText);
+        })
     });
 });
