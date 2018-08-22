@@ -1,0 +1,30 @@
+.smallest
+{
+    font-size: 12px; 
+    color: rgb(52, 152, 219);
+    padding: 5px;
+}
+.small
+{
+    font-size: 16px; 
+    color: rgb(52, 152, 219);
+    padding: 5px;
+}
+.medium
+{
+    font-size: 20px; 
+    color: rgb(52, 152, 219);
+    padding: 5px;
+}
+.large
+{
+    font-size: 28px; 
+    color: rgb(52, 152, 219);
+    padding: 5px;
+}
+.largest
+{
+    font-size: 36px; 
+    color: rgb(70, 207, 176);
+    padding: 5px;
+}

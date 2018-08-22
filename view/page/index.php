@@ -311,6 +311,11 @@
             </div>
         </div>
 
+        <div class="col-lg-12 text-center">
+            <h5 style="color: #9da9b9; font-size: 14px">CATEGORIES</h5>
+            <?= $categoryCloud ?>
+        </div>
+
         <h3 class="text-divider"><span>Latest News</span></h3>
         <div id="myCarousel" class="slide" data-ride="carousel">
             <!-- Wrapper for carousel items -->

@@ -26,6 +26,25 @@ class CategoryProduct extends ActiveRecordModel
 
 
 
+    /**
+     * Return all categories
+     *
+     * @param integer $limit.
+     *
+     * @return array
+     */
+    public function getAllCategories($limit = 10)
+    {
+        $sql = 'SELECT Category.id, Category.category, count(CategoryProduct.categoryId) as total FROM oophp_Category Category 
+        LEFT JOIN oophp_CategoryProduct CategoryProduct ON Category.id = CategoryProduct.categoryId 
+        GROUP BY Category.id ASC 
+        ORDER BY total DESC 
+        LIMIT ?';
+        return $this->findAllSql($sql, [$limit]);
+    }
+
+
+
     public function findCategoriesToProduct($productId)
     {
         $sql = 'SELECT * FROM oophp_CategoryProduct CategoryProduct 

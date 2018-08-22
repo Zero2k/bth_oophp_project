@@ -141,11 +141,18 @@ class CartSession implements ConfigureInterface, InjectionAwareInterface
      *
      * @return array
      */
-    public function updateProductRow($id, $quantity, $size)
+    public function updateProductRow($product, $id, $size, $quantity)
     {
-        $allProducts = $this->session->getProduct($id);
-        // Find the comment if id exists
+        $allProducts = $this->session->get(self::KEY);
 
+        foreach ($allProducts as &$p) {
+            if ($p["id"] == $id) {
+                $p["available"] = ($product->stock - $quantity < 0 ? 0 : 1);
+                $p["size"] = $size;
+                $p["quantity"] = $quantity;
+                $p["price"] = $quantity * $product->price;
+            }
+        }
         $this->saveDataset($allProducts);
     }
 

@@ -8,6 +8,8 @@ use \Anax\Configure\ConfigureInterface;
 use \Anax\Configure\ConfigureTrait;
 use \Vibe\Content\Content;
 use \Vibe\Post\Post;
+use \Vibe\Category\CategoryProduct;
+use \Vibe\CategoryCloud\CategoryCloud;
 
 /**
 * Routes class.
@@ -25,6 +27,11 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
 
         $this->post = new Post();
         $this->post->setDb($this->di->get("database"));
+
+        $this->categoryProduct = new CategoryProduct();
+        $this->categoryProduct->setDb($this->di->get("database"));
+
+        $this->categoryCloud = new CategoryCloud();
     }
 
 
@@ -36,12 +43,17 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
      */
     public function getIndex()
     {
+        $this->init();
         $title      = "Home";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
 
+        $categories = $this->categoryProduct->getAllCategories();
+        $categoryCloud = $this->categoryCloud->generateCloud($categories);
+
         $data = [
             "items" => "items",
+            "categoryCloud" => $categoryCloud,
         ];
 
         $view->add("page/index", $data);

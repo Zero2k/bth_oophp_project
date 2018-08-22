@@ -127,14 +127,17 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
 
         if (isset($_POST["delete"])) {
             $id = $_POST["delete"];
-            $size = $_POST["size"];
-            $quantity = $_POST["quantity"];
-            $this->session->set("message", "delete | ID: $id Size: $size QUANTITY: $quantity");
+            $this->cartSession->removeProduct($id);
+            $this->session->set("message", "Product was removed");
         } else if (isset($_POST["update"])) {
             $id = $_POST["update"];
             $size = $_POST["size"];
             $quantity = $_POST["quantity"];
-            $this->session->set("message", "update | ID: $id Size: $size QUANTITY: $quantity");
+            if ($quantity > 0) {
+                $product = $this->product->find("id", $id);
+                $this->session->set("message", "update | ID: $id SIZE: $size QUANTITY: $quantity");
+                $this->cartSession->updateProductRow($product, $id, $size, $quantity);
+            }
         }
 
         $data = [

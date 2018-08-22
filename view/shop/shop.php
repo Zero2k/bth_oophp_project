@@ -37,7 +37,7 @@
                         <article class="col-item">
                             <div class="photo">
                                 <div class="options-cart-round">
-                                    <form class="product" id="product-<?= $product->id ?>">
+                                    <form class="product" id="product-<?= $product->id ?>" method="post">
                                         <input type="hidden" name="productId" value="<?= $product->id ?>" />
                                         <button class="btn btn-default" type="submit" title="Add to cart">
                                             <span class="fa fa-shopping-cart"></span>

@@ -28,8 +28,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <?php var_dump($_SESSION["cart"]) ?> -->
-                            <!-- <?= $session->getOnce("message") ?> -->
                             <?php if ($products) : ?>
                                 <?php foreach ($products as $product) : ?>
                                 <tr>
@@ -64,8 +62,7 @@
                                 </tr>
                             <?php endif ?>
                             <tr>
-                                <td></td>
-                                <td></td>
+                                <td colspan="2"><?= $session->getOnce("message") ?></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
