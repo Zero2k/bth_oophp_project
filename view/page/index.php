@@ -1,3 +1,7 @@
+<?php
+    $url = $this->di->get("url");
+?>
+
 <main role="main">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -87,7 +91,7 @@
             </div>
         </div>
 
-        <h3 class="text-divider"><span>Popular Products</span></h3>
+        <h3 class="text-divider"><span>Featured Products</span></h3>
         <div class="row">
             <div class="col-md-12">
                 <div id="myCarousel" class="carousel-product slide" data-ride="carousel">
@@ -202,28 +206,28 @@
         </div>
     </div>
 
-        <h3 class="text-divider"><span>Weekly Deals</span></h3>
+        <h3 class="text-divider"><span>Summer Sale</span></h3>
         <div class="row row-eq-height text-center text-lg-left">
             <div class="col-md-6">
                 <a href="#" class="d-block mb-4 h-100">
-                    <img class="img-fluid" src="http://placehold.it/550x365" alt="">
+                    <img class="img-fluid" src="<?= $url->create("/kmom10/shop/htdocs/img/sale/summer_sale_alt1.jpeg")?>" alt="">
                 </a>
             </div>
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-6">
                         <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid" src="http://placehold.it/550x300" alt="">
+                            <img class="img-fluid" src="<?= $url->create("/kmom10/shop/htdocs/img/sale/summer_sale_alt2.jpeg")?>" alt="">
                         </a>
                     </div>
                     <div class="col-md-6">
                         <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid" src="http://placehold.it/550x300" alt="">
+                            <img class="img-fluid" src="<?= $url->create("/kmom10/shop/htdocs/img/sale/summer_sale_alt3.jpeg")?>" alt="">
                         </a>
                     </div>
                     <div class="col-md-12">
                         <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid" src="http://placehold.it/550x200" alt="">
+                            <img class="img-fluid" src="<?= $url->create("/kmom10/shop/htdocs/img/sale/summer_sale_alt4.jpeg")?>" alt="">
                         </a>
                     </div>
                 </div>
@@ -234,79 +238,46 @@
             <div class="col-md-4 col-sm-12">
                 <div class="widget widget-featured-products">
                     <h3 class="widget-title">Top Sellers</h3>
-                    <!-- Entry-->
+                    <?php foreach ($latestProducts as $product) : ?>
                     <div class="product">
-                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                    <div class="product-content">
-                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                        <div>
+                            <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title"><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4><span class="entry-meta">$<?= $product->price ?></span>
+                        </div>
                     </div>
-                    </div>
-                    <!-- Entry-->
-                    <div class="product">
-                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                    <div class="product-content">
-                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
-                    </div>
-                    </div>
-                    <!-- Entry-->
-                    <div class="product">
-                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                    <div class="product-content">
-                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
-                    </div>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="widget widget-featured-products">
                     <h3 class="widget-title">New Arrivals</h3>
-                    <!-- Entry-->
+                    <?php foreach ($latestProducts as $product) : ?>
                     <div class="product">
-                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                    <div class="product-content">
-                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                        <div>
+                            <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title"><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4><span class="entry-meta">$<?= $product->price ?></span>
+                        </div>
                     </div>
-                    </div>
-                    <!-- Entry-->
-                    <div class="product">
-                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                    <div class="product-content">
-                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
-                    </div>
-                    </div>
-                    <!-- Entry-->
-                    <div class="product">
-                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                    <div class="product-content">
-                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
-                    </div>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="widget widget-featured-products">
-                    <h3 class="widget-title">Best Rated</h3>
-                    <!-- Entry-->
+                    <h3 class="widget-title">Best Offers</h3>
+                    <?php foreach ($latestProducts as $product) : ?>
                     <div class="product">
-                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                    <div class="product-content">
-                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                        <div>
+                            <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title"><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4><span class="entry-meta">$<?= $product->price ?></span>
+                        </div>
                     </div>
-                    </div>
-                    <!-- Entry-->
-                    <div class="product">
-                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                    <div class="product-content">
-                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
-                    </div>
-                    </div>
-                    <!-- Entry-->
-                    <div class="product">
-                    <div class="product-thumb"><a href="#"><img src="http://placehold.it/60x60" alt="Product"></a></div>
-                    <div class="product-content">
-                        <h4 class="product-title"><a href="#">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
-                    </div>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
@@ -319,72 +290,54 @@
         <h3 class="text-divider"><span>Latest News</span></h3>
         <div id="myCarousel" class="slide" data-ride="carousel">
             <!-- Wrapper for carousel items -->
+            <?php if ($latestPosts) : ?>
             <div class="carousel-inner">
                 <div class="item carousel-item active">
                     <div class="row">
+                        <?php foreach (array_slice($latestPosts, 0, 2) as $post) : ?>
                         <div class="col-md-6">
                             <div class="card flex-md-row mb-4 box-shadow h-md-250">
                                 <div class="card-body d-flex flex-column align-items-start">
-                                <strong class="d-inline-block mb-2 text-primary">News</strong>
-                                <h3 class="mb-0">
-                                    <a class="text-dark" href="#">Featured post 1</a>
-                                </h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#">Read more</a>
+                                <strong class="d-inline-block mb-2 text-primary"><?= ucfirst($post->category) ?></strong>
+                                <h4 class="mb-0">
+                                    <a class="text-dark" href="<?= $url->create("blog/$post->slug")?>"><?= ucfirst($post->title) ?></a>
+                                </h4>
+                                <div class="mb-1 text-muted" style="padding-top: 5px"><?= $post->created ?></div>
+                                <p class="card-text mb-auto"><?= substr(strip_tags($post->content), 0, 70) ?></p>
+                                <a href="<?= $url->create("blog/$post->slug")?>">Read more</a>
                                 </div>
-                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16523b6b3e2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16523b6b3e2%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2258%22%20y%3D%22130.7%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px; object-fit: cover;" src="<?= $url->create("/kmom10/shop/htdocs/img/blog/$post->image")?>" data-holder-rendered="true">
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                                <div class="card-body d-flex flex-column align-items-start">
-                                <strong class="d-inline-block mb-2 text-primary">Offers</strong>
-                                <h3 class="mb-0">
-                                    <a class="text-dark" href="#">Featured post 2</a>
-                                </h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#">Read more</a>
-                                </div>
-                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16523b6b3e2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16523b6b3e2%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2258%22%20y%3D%22130.7%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                            </div>
-                        </div>
+                        <?php endforeach ?>
                     </div>
                 </div>
                 <div class="item carousel-item">
                     <div class="row">
+                        <?php foreach (array_slice($latestPosts, 2, 4) as $post) : ?>
                         <div class="col-md-6">
                             <div class="card flex-md-row mb-4 box-shadow h-md-250">
                                 <div class="card-body d-flex flex-column align-items-start">
-                                <strong class="d-inline-block mb-2 text-primary">World</strong>
-                                <h3 class="mb-0">
-                                    <a class="text-dark" href="#">Featured post 3</a>
-                                </h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#">Continue reading</a>
+                                <strong class="d-inline-block mb-2 text-primary"><?= ucfirst($post->category) ?></strong>
+                                <h4 class="mb-0">
+                                    <a class="text-dark" href="#"><?= ucfirst($post->title) ?></a>
+                                </h4>
+                                <div class="mb-1 text-muted" style="padding-top: 5px"><?= $post->created ?></div>
+                                <p class="card-text mb-auto"><?= substr(strip_tags($post->content), 0, 70) ?></p>
+                                <a href="<?= $url->create("blog/$post->slug")?>">Read more</a>
                                 </div>
-                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16523b6b3e2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16523b6b3e2%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2258%22%20y%3D%22130.7%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px; object-fit: cover;" src="<?= $url->create("/kmom10/shop/htdocs/img/blog/$post->image")?>" data-holder-rendered="true">
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                                <div class="card-body d-flex flex-column align-items-start">
-                                <strong class="d-inline-block mb-2 text-primary">World</strong>
-                                <h3 class="mb-0">
-                                    <a class="text-dark" href="#">Featured post 4</a>
-                                </h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#">Continue reading</a>
-                                </div>
-                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16523b6b3e2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16523b6b3e2%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2258%22%20y%3D%22130.7%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                            </div>
-                        </div>
+                        <?php endforeach ?>
                     </div>
                 </div>
             </div>
+            <?php else : ?>
+                <div class="text-center">
+                    <h3>No posts found</h3>
+                </div>
+            <?php endif ?>
         </div>
     </div>
 </main>

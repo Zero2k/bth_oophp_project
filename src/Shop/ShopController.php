@@ -51,28 +51,17 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
 
-        $category = isset($_GET["category"]) ? $_GET["category"] : '';
+        $category = isset($_GET["category"]) ? $_GET["category"] : 'all';
         $limit = isset($_GET["limit"]) ? $_GET["limit"] : 10;
+        $categories = $this->categoryProduct->getAllCategories();
 
         switch ($category) {
             case 'all':
                 $products = $this->product->getProducts($limit);
                 break;
 
-            case 'dresses':
-                $products = $this->shop->getAllProductsByCategory("dresses", $limit);
-                break;
-
-            case 'shirts':
-                $products = $this->shop->getAllProductsByCategory("shirts", $limit);
-                break;
-
-            case 'shorts':
-                $products = $this->shop->getAllProductsByCategory("shorts", $limit);
-                break;
-
-            case 'pants':
-                $products = $this->shop->getAllProductsByCategory("pants", $limit);
+            case $category:
+                $products = $this->shop->getAllProductsByCategory($category, $limit);
                 break;
 
             default:
@@ -82,6 +71,7 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
 
         $data = [
             "products" => $products,
+            "categories" => $categories,
         ];
 
         $view->add("shop/shop", $data);
@@ -128,14 +118,14 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         if (isset($_POST["delete"])) {
             $id = $_POST["delete"];
             $this->cartSession->removeProduct($id);
-            $this->session->set("message", "Product was removed");
+            $this->session->set("message", "Product was removed.");
         } else if (isset($_POST["update"])) {
             $id = $_POST["update"];
             $size = $_POST["size"];
             $quantity = $_POST["quantity"];
             if ($quantity > 0) {
                 $product = $this->product->find("id", $id);
-                $this->session->set("message", "update | ID: $id SIZE: $size QUANTITY: $quantity");
+                $this->session->set("message", "$product->name has been updated!");
                 $this->cartSession->updateProductRow($product, $id, $size, $quantity);
             }
         }
@@ -171,7 +161,9 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         if (!$existingProduct) {
             if ($product) {
                 $this->cartSession->addProduct($product, $quantity, $size);
-                $this->session->set("message-$product->id", "Product added to cart!");
+                if (!$requestType) {
+                    $this->session->set("message-$product->id", "Product added to cart!");
+                }
             } else {
                 $this->session->set("message", "Error!");
             }

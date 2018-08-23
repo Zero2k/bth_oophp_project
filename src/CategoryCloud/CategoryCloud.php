@@ -18,9 +18,9 @@ class CategoryCloud
             $percent = floor(($category->total / count($categories)) * 100);
             // determine the class for this term based on the percentage
             if ($percent < 20) {
-                $class = 'smallest'; 
+                $class = 'smallest';
             } elseif ($percent >= 20 and $percent < 40) {
-                $class = 'small'; 
+                $class = 'small';
             } elseif ($percent >= 40 and $percent < 60) {
                 $class = 'medium';
             } elseif ($percent >= 60 and $percent < 80) {

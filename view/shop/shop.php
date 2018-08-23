@@ -14,10 +14,9 @@
         <div class="row">
             <div class="col-md-3">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="<?= $url->create("?category=dresses")?>">Dresses</a></li>
-                    <li class="list-group-item"><a href="<?= $url->create("?category=shirts")?>">Shirts</a></li>
-                    <li class="list-group-item"><a href="<?= $url->create("?category=shorts")?>">Shorts</a></li>
-                    <li class="list-group-item"><a href="<?= $url->create("?category=pants")?>">Pants</a></li>
+                    <?php foreach ($categories as $category) : ?>
+                        <li class="list-group-item"><a href="<?= $url->create("?category=$category->category")?>"><?= ucfirst($category->category) ?> (<?= $category->total ?>)</a></li>
+                    <?php endforeach ?>
                     <li class="list-group-item"><a href="<?= $url->create("?category=all")?>">See all</a></li>
                 </ul>
             </div>
