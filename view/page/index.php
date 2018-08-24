@@ -99,108 +99,52 @@
                 <div class="carousel-inner">
                     <div class="item carousel-item active">
                         <div class="row">
+                            <?php foreach (array_slice($featuredProducts, 0, 4) as $product) : ?>
                             <div class="col-md-3 col-sm-6">
                                 <div class="thumb-wrapper">
                                     <div class="img-box">
-                                        <img src="img/orange_shirt_01.jpg" class="img-responsive img-fluid" alt="">
+                                        <img src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" class="img-responsive img-fluid" alt="">
                                     </div>
                                     <div class="thumb-content">
-                                        <h4>Pleated Halter Blouse</h4>
-                                        <p class="item-price"><strike>$40.00</strike> <span>$34.00</span></p>
-                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                        <h4><?= $product->name ?></h4>
+                                        <p class="item-price">
+                                            <?php if ($product->old_price) : ?>
+                                                <strike>$<?= $product->old_price ?></strike> 
+                                            <?php endif ?>
+                                            <span>$<?= $product->price ?></span>
+                                        </p>
+                                        <a href="<?= $url->create("shop/product/$product->id")?>" class="btn btn-primary">View Product</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <img src="img/black_shirt_01.jpg" class="img-responsive img-fluid" alt="">
-                                    </div>
-                                    <div class="thumb-content">
-                                        <h4>Michael Stars Front Halter</h4>
-                                        <p class="item-price"><strike>$25.00</strike> <span>$21.99</span></p>
-                                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <img src="img/grey_shirt_01.jpg" class="img-responsive img-fluid" alt="">
-                                    </div>
-                                    <div class="thumb-content">
-                                        <h4>Cinch Athletic Poly Spandex Tech Polo</h4>
-                                        <p class="item-price"><strike>$69.00</strike> <span>$23.00</span></p>
-                                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <img src="img/green_shirt_01.jpg" class="img-responsive img-fluid" alt="">
-                                    </div>
-                                    <div class="thumb-content">
-                                        <h4>Sleeveless Chiffon Zebra Fresco</h4>
-                                        <p class="item-price"><strike>$35.00</strike> <span>$25.00</span></p>
-                                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach ?>
                         </div>
                     </div>
+                    <?php if (count($featuredProducts) > 4) : ?>
                     <div class="item carousel-item">
                         <div class="row">
+                            <?php foreach (array_slice($featuredProducts, 4, 8) as $product) : ?>
                             <div class="col-md-3 col-sm-6">
                                 <div class="thumb-wrapper">
                                     <div class="img-box">
-                                        <img src="img/green_woman_shorts_01.jpg" class="img-responsive img-fluid" alt="">
+                                        <img src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" class="img-responsive img-fluid" alt="">
                                     </div>
                                     <div class="thumb-content">
-                                        <h4>Patagonia Baggies Short</h4>
-                                        <p class="item-price"><strike>$28.00</strike> <span>$26.00</span></p>
-                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                        <h4><?= $product->name ?></h4>
+                                        <p class="item-price">
+                                            <?php if ($product->old_price) : ?>
+                                                <strike>$<?= $product->old_price ?></strike> 
+                                            <?php endif ?>
+                                            <span>$<?= $product->price ?></span>
+                                        </p>
+                                        <a href="<?= $url->create("shop/product/$product->id")?>" class="btn btn-primary">View Product</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <img src="img/darkgrey_shirt_01.jpg" class="img-responsive img-fluid" alt="">
-                                    </div>
-                                    <div class="thumb-content">
-                                        <h4>Under Armour Tank</h4>
-                                        <p class="item-price"><strike>$39.00</strike> <span>$26.00</span></p>
-                                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <img src="img/blue_shirt_01.jpg" class="img-responsive img-fluid" alt="">
-                                    </div>
-                                    <div class="thumb-content">
-                                        <h4>Lucky Brand Neptune Records Graphic Tee</h4>
-                                        <p class="item-price"><strike>$49.00</strike> <span>$39.00</span></p>
-                                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <img src="img/white_red_shirt_01.jpg" class="img-responsive img-fluid" alt="">
-                                    </div>
-                                    <div class="thumb-content">
-                                        <h4>Calvin Klein Short Sleeve Jersey</h4>
-                                        <p class="item-price"><strike>$59.00</strike> <span>$56.00</span></p>
-                                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach ?>
                         </div>
                     </div>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
@@ -268,7 +212,7 @@
             <div class="col-md-4 col-sm-12">
                 <div class="widget widget-featured-products">
                     <h3 class="widget-title">Best Offers</h3>
-                    <?php foreach ($latestProducts as $product) : ?>
+                    <?php foreach ($offerProducts as $product) : ?>
                     <div class="product">
                         <div>
                             <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">

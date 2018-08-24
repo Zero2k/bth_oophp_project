@@ -51,6 +51,7 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
 
+        $search = isset($_GET["search"]) ? $_GET["search"] : '';
         $category = isset($_GET["category"]) ? $_GET["category"] : 'all';
         $limit = isset($_GET["limit"]) ? $_GET["limit"] : 10;
         $categories = $this->categoryProduct->getAllCategories();
@@ -67,6 +68,10 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
             default:
                 $products = $this->product->getProducts($limit);
                 break;
+        }
+
+        if ($search) {
+            $products = $this->product->searchProduct($search);
         }
 
         $data = [

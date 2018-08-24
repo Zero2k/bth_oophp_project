@@ -43,6 +43,7 @@ class Product extends ActiveRecordModel
      * Get products.
      *
      * @param integer $limit.
+     * @param string $order.
      *
      * @return objects.
      */
@@ -53,6 +54,68 @@ class Product extends ActiveRecordModel
         LIMIT ?';
 
         $products = $this->findAllSql($sql, [$limit]);
+        $products = array_map(function ($product) {
+            $product->id = $product->id;
+            $product->userId = $product->userId;
+            $product->name = $product->name;
+            $product->descriptin = $product->description;
+            $product->text = $product->text;
+            $product->price = $product->price;
+            $product->old_price = $product->old_price;
+            $product->image = $product->image;
+            $product->stock = $product->stock;
+            $product->offer = $product->offer;
+            $product->featured = $product->featured;
+            return $product;
+        }, $products);
+
+        return $products;
+    }
+
+
+
+    /**
+     * Get products where.
+     *
+     * @param integer $limit.
+     * @param string $order.
+     * @param string $where.
+     *
+     * @return objects.
+     */
+    public function getProductsWhere($limit, $order = "id", $where = "featured = 0")
+    {
+        $sql = 'SELECT * FROM oophp_Product Product 
+        WHERE '.$where.' 
+        ORDER BY '.$order.' ASC 
+        LIMIT ?';
+
+        $products = $this->findAllSql($sql, [$limit]);
+        $products = array_map(function ($product) {
+            $product->id = $product->id;
+            $product->userId = $product->userId;
+            $product->name = $product->name;
+            $product->descriptin = $product->description;
+            $product->text = $product->text;
+            $product->price = $product->price;
+            $product->old_price = $product->old_price;
+            $product->image = $product->image;
+            $product->stock = $product->stock;
+            $product->offer = $product->offer;
+            $product->featured = $product->featured;
+            return $product;
+        }, $products);
+
+        return $products;
+    }
+
+
+
+    public function searchProduct($search)
+    {
+        $sql = 'SELECT * FROM oophp_Product Product WHERE Product.name LIKE ?';
+
+        $products = $this->findAllSql($sql, [$search]);
         $products = array_map(function ($product) {
             $product->id = $product->id;
             $product->userId = $product->userId;

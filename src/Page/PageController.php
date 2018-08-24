@@ -56,9 +56,10 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
         $categoryCloud = $this->categoryCloud->generateCloud($categories);
 
         $data = [
-            "items" => "items",
             "categoryCloud" => $categoryCloud,
+            "featuredProducts" => $this->product->getProductsWhere(4, "created", "featured = 1"),
             "latestProducts" => $this->product->getProducts(3, "created"),
+            "offerProducts" => $this->product->getProductsWhere(3, "created", "offer = 1"),
             "latestPosts" => $this->post->getPosts(4, "created"),
         ];
 
