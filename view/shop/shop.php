@@ -23,10 +23,10 @@
             <div class="col-md-9">
                 <form class="form-inline" method="get">
                     <input id="search-field" class="search form-control no-border" placeholder="Search" name="search" />
-                    <button class="btn btn-outline-dark margin_left10 no-border" name="name" value="DESC">
+                    <button class="btn btn-outline-dark margin_left10 no-border" name="sort" value="name">
                         Sort by name
                     </button>
-                    <button class="btn btn-outline-dark margin_left10 no-border" name="price" value="ASC">
+                    <button class="btn btn-outline-dark margin_left10 no-border" name="sort" value="price">
                         Sort by price
                     </button>
                 </form>

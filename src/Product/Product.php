@@ -58,7 +58,7 @@ class Product extends ActiveRecordModel
             $product->id = $product->id;
             $product->userId = $product->userId;
             $product->name = $product->name;
-            $product->descriptin = $product->description;
+            $product->description = $product->description;
             $product->text = $product->text;
             $product->price = $product->price;
             $product->old_price = $product->old_price;
@@ -95,7 +95,7 @@ class Product extends ActiveRecordModel
             $product->id = $product->id;
             $product->userId = $product->userId;
             $product->name = $product->name;
-            $product->descriptin = $product->description;
+            $product->description = $product->description;
             $product->text = $product->text;
             $product->price = $product->price;
             $product->old_price = $product->old_price;
@@ -113,14 +113,14 @@ class Product extends ActiveRecordModel
 
     public function searchProduct($search)
     {
-        $sql = 'SELECT * FROM oophp_Product Product WHERE Product.name LIKE ?';
+        $sql = "SELECT * FROM oophp_Product Product WHERE Product.name LIKE '%$search%' OR Product.description LIKE '%$search%'";
 
-        $products = $this->findAllSql($sql, [$search]);
+        $products = $this->findAllSql($sql);
         $products = array_map(function ($product) {
             $product->id = $product->id;
             $product->userId = $product->userId;
             $product->name = $product->name;
-            $product->descriptin = $product->description;
+            $product->description = $product->description;
             $product->text = $product->text;
             $product->price = $product->price;
             $product->old_price = $product->old_price;

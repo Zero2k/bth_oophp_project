@@ -10,13 +10,13 @@ use \Anax\Database\ActiveRecordModel;
  */
 class Shop extends ActiveRecordModel
 {
-    public function getAllProductsByCategory($category, $limit = 10)
+    public function getAllProductsByCategory($category, $limit = 10, $order = "created")
     {
         $sql = 'SELECT Product.* FROM oophp_Product Product
         LEFT JOIN oophp_CategoryProduct CP ON CP.productId = Product.id
         LEFT JOIN oophp_Category Category ON Category.id = CP.categoryId
         WHERE Category.category = ? 
-        ORDER BY created DESC LIMIT ?';
+        ORDER BY '.$order.' DESC LIMIT ?';
 
         $products = $this->findAllSql($sql, [$category, $limit]);
         $products = array_map(function ($product) {
