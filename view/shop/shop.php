@@ -42,9 +42,6 @@
                                             <span class="fa fa-shopping-cart"></span>
                                         </button>
                                     </form>
-                                    <!-- <button class="btn btn-default" title="Add to cart">
-                                        <span class="fa fa-shopping-cart"></span>
-                                    </button> -->
                                 </div>
                                 <a href="#"> <img src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" class="img-responsive" alt="Product Image" /> </a>
                             </div>
@@ -52,9 +49,6 @@
                                 <div class="row">
                                     <div class="price-details col-md-12">
                                         <h6 class="title text-center"><a class="text-dark" href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h6>
-                                        <!-- <p class="details text-center" style="padding-bottom: 10px">
-                                            <?= $product->description ?>
-                                        </p> -->
                                         <div class="separator" style="padding-top: 10px">
                                             <span class="price-new">$<?= $product->price ?></span>
                                             <?php if ($product->old_price) : ?>
@@ -69,17 +63,9 @@
                 <?php endforeach ?>
                 </div>
                 <!-- Pagination start -->
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
+                <nav>
+                    <ul class="pagination pagination-sm justify-content-center">
+                        <?= $pagination ?>
                     </ul>
                 </nav>
                 <!-- Pagination end -->

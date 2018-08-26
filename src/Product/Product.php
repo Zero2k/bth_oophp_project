@@ -47,13 +47,13 @@ class Product extends ActiveRecordModel
      *
      * @return objects.
      */
-    public function getProducts($limit, $order = "id")
+    public function getProducts($limit, $offset = 0, $order = "id")
     {
         $sql = 'SELECT * FROM oophp_Product Product 
         ORDER BY '.$order.' ASC 
-        LIMIT ?';
+        LIMIT ? OFFSET ?';
 
-        $products = $this->findAllSql($sql, [$limit]);
+        $products = $this->findAllSql($sql, [$limit, $offset]);
         $products = array_map(function ($product) {
             $product->id = $product->id;
             $product->userId = $product->userId;
@@ -111,11 +111,11 @@ class Product extends ActiveRecordModel
 
 
 
-    public function searchProduct($search)
+    public function searchProduct($search, $limit, $offset)
     {
-        $sql = "SELECT * FROM oophp_Product Product WHERE Product.name LIKE '%$search%' OR Product.description LIKE '%$search%'";
+        $sql = "SELECT * FROM oophp_Product Product WHERE Product.name LIKE '%$search%' OR Product.description LIKE '%$search%' LIMIT ? OFFSET ?";
 
-        $products = $this->findAllSql($sql);
+        $products = $this->findAllSql($sql, [$limit, $offset]);
         $products = array_map(function ($product) {
             $product->id = $product->id;
             $product->userId = $product->userId;

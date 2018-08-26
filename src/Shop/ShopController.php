@@ -10,6 +10,7 @@ use \Vibe\Product\Product;
 use \Vibe\Category\CategoryProduct;
 use \Vibe\Shop\Shop;
 use \Vibe\CartSession\CartSession;
+use \Vibe\Pagination\Pagination;
 
 /**
 * Routes class.
@@ -34,6 +35,8 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $this->cartSession = new CartSession();
         $this->cartSession->inject(["session" => $this->di->get("session")]);
 
+        $this->pagination = new Pagination();
+
         $this->session = $this->di->get("session");
     }
 
@@ -50,35 +53,56 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
         $title      = "Shop";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
+        $di         = $this->di;
 
         $search = isset($_GET["search"]) ? htmlentities($_GET["search"]) : '';
         $category = isset($_GET["category"]) ? $_GET["category"] : 'all';
         $limit = isset($_GET["limit"]) ? $_GET["limit"] : 10;
         $sort = isset($_GET["sort"]) ? $_GET["sort"] : 'id';
+        $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1;
+        $offset = ($currentPage - 1) * $limit;
 
         $categories = $this->categoryProduct->getAllCategories();
-
+        
         switch ($category) {
             case 'all':
-                $products = $this->product->getProducts($limit, $sort);
-                break;
+                $query = "SELECT id FROM oophp_Product";
+                $total = count($this->shop->getTotal($query, []));
 
+                $products = $this->product->getProducts($limit, $offset, $sort);
+                break;
+                
             case $category:
-                $products = $this->shop->getAllProductsByCategory($category, $limit, $sort);
-                break;
+                $query = "SELECT Product.* FROM oophp_Product Product
+                LEFT JOIN oophp_CategoryProduct CP ON CP.productId = Product.id
+                LEFT JOIN oophp_Category Category ON Category.id = CP.categoryId
+                WHERE Category.category = ?";
+                $total = count($this->shop->getTotal($query, [$category]));
 
+                $products = $this->shop->getAllProductsByCategory($category, $limit, $offset, $sort);
+                break;
+            
             default:
-                $products = $this->product->getProducts($limit, $sort);
+                $query = "SELECT id FROM oophp_Product";
+                $total = count($this->shop->getTotal($query, []));
+
+                $products = $this->product->getProducts($limit, $offset, $sort);
                 break;
         }
-
+        
         if ($search) {
-            $products = $this->product->searchProduct($search);
+            $query = "SELECT * FROM oophp_Product Product WHERE Product.name LIKE '%$search%' OR Product.description LIKE '%$search%'";
+            $total = count($this->shop->getTotal($query, []));
+
+            $products = $this->product->searchProduct($search, $limit, $offset);
         }
+
+        $pagination = $this->pagination->renderPagination($total, $offset, $limit, $currentPage, $category, $sort, $search, $di);
 
         $data = [
             "products" => $products,
             "categories" => $categories,
+            "pagination" => $pagination,
         ];
 
         $view->add("shop/shop", $data);
