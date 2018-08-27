@@ -9,6 +9,8 @@ use \Anax\Configure\ConfigureTrait;
 use \Vibe\Product\Product;
 use \Vibe\Category\CategoryProduct;
 use \Vibe\Shop\Shop;
+use \Vibe\User\User;
+use \Vibe\Order\Order;
 use \Vibe\CartSession\CartSession;
 use \Vibe\Pagination\Pagination;
 
@@ -34,6 +36,12 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
 
         $this->cartSession = new CartSession();
         $this->cartSession->inject(["session" => $this->di->get("session")]);
+
+        $this->user = new User();
+        $this->user->setDb($this->di->get("database"));
+
+        $this->order = new Order();
+        $this->order->setDb($this->di->get("database"));
 
         $this->pagination = new Pagination();
 
@@ -208,6 +216,7 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
     }
 
 
+
     /**
      * Remove cart route.
      *
@@ -219,5 +228,45 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
 
         $this->session->delete("cart");
         $this->di->get("response")->redirect($_SERVER["HTTP_REFERER"]);
+    }
+
+
+
+    public function checkoutCart()
+    {
+        $this->init();
+        $title      = "Cart - Checkout";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $userId = $this->session->get("userId");
+        $products = $this->cartSession->getProducts();
+
+        if ($userId && $products) {
+            if (isset($_POST["fullName"]) && isset($_POST["cardNumber"]) && isset($_POST["expiration"]) && isset($_POST["cvv"])) {
+                $fullName = isset($_POST["fullName"]) ? $_POST["fullName"] : '';
+                $cardNumber = isset($_POST["cardNumber"]) ? $_POST["cardNumber"] : '';
+                $expiration = isset($_POST["expiration"]) ? $_POST["expiration"] : '';
+                $cvv = isset($_POST["cvv"]) ? $_POST["cvv"] : '';
+
+                $order = $this->order->createOrder($userId);
+                /* If order was created then start to create orderRows */
+                if ($order) {
+                    
+                }
+
+                $this->di->get("response")->redirect("");
+            }
+        } else {
+            $this->di->get("response")->redirect("login");
+        }
+
+        $data = [
+            "cart" => $products,
+            "total" => $this->cartSession->calculateTotal(),
+            "user" => $this->user->getUserInfo($userId),
+        ];
+
+        $view->add("shop/checkout", $data);
+        $pageRender->renderPage(["title" => $title]);
     }
 }

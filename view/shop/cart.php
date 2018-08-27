@@ -82,7 +82,7 @@
                         <a href="<?= $url->create("cart/remove")?>" class="btn btn-block btn-dark no-border">Delete Cart</a>
                     </div>
                     <div class="col-sm-6 col-md-4">
-                        <a href="" class="btn btn-block btn-success no-border">Checkout</a>
+                        <a href="<?= $url->create("cart/checkout")?>" class="btn btn-block btn-success no-border">Checkout</a>
                     </div>
                 </div>
             </div>

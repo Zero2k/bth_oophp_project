@@ -106,7 +106,7 @@
                                         <img src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" class="img-responsive img-fluid" alt="">
                                     </div>
                                     <div class="thumb-content">
-                                        <h4><a href="shop/product/<?= $product->id ?>"><?= $product->name ?></a></h4>
+                                        <h4><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4>
                                         <p class="item-price">
                                             <?php if ($product->old_price) : ?>
                                                 <strike>$<?= $product->old_price ?></strike> 

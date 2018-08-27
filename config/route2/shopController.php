@@ -33,6 +33,12 @@ return [
             "requestMethod" => "get|post",
             "path" => "cart/remove",
             "callable" => ["shopController", "removeCart"],
+        ],
+        [
+            "info" => "Cart Checkout",
+            "requestMethod" => "get|post",
+            "path" => "cart/checkout",
+            "callable" => ["shopController", "checkoutCart"],
         ]
     ]
 ];

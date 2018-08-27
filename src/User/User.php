@@ -111,7 +111,7 @@ class User extends ActiveRecordModel
      *
      * @return object.
      */
-    public function getUserInfo($id, $size)
+    public function getUserInfo($id, $size = 180)
     {
         $user = $this->find("id", $id);
         $gravatar = new Gravatar();
