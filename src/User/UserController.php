@@ -8,6 +8,7 @@ use \Anax\DI\InjectionAwareInterface;
 use \Anax\Di\InjectionAwareTrait;
 use \Vibe\User\HTMLForm\UserLoginForm;
 use \Vibe\User\HTMLForm\CreateUserForm;
+use \Vibe\Order\Order;
 
 /**
  * A controller class.
@@ -32,6 +33,9 @@ class UserController implements
     {
         $this->user = new User();
         $this->user->setDb($this->di->get("database"));
+
+        $this->order = new Order();
+        $this->order->setDb($this->di->get("database"));        
 
         $this->session = $this->di->get("session");
     }
@@ -141,6 +145,7 @@ class UserController implements
 
         if ($userId) {
             $tab = isset($_GET["tab"]) ? $_GET["tab"] : '';
+            $orderId = isset($_GET["orderId"]) ? $_GET["orderId"] : '';
 
             switch ($tab) {
                 case 'profile':
@@ -153,10 +158,20 @@ class UserController implements
 
                 case 'orders':
                     $data = [
-                        "content" => "test",
+                        "content" => $this->order->getOrders($userId),
                     ];
 
                     $view->add("user/partials/orders", $data, "partial");
+                    break;
+
+                case 'view-order':
+                    $data = [
+                        "content" => $this->order->getOrder($orderId),
+                        "user" => $this->user->getUserInfo($userId),
+                        "total" => $this->order->getOrderTotal($orderId),
+                    ];
+
+                    $view->add("user/partials/viewOrder", $data, "partial");
                     break;
 
                 case 'address':

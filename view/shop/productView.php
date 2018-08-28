@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Quantity:</label>
-                                <label class="pull-right">Stock: <?= $product->stock ?></label>
+                                <label class="pull-right">Stock: <?= $product->stock <=> 0 ? $product->stock : "48h" ?></label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <button type="button" class="quantity-left-minus btn btn-danger no-border" data-type="minus" data-field="">

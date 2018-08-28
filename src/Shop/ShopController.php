@@ -11,6 +11,7 @@ use \Vibe\Category\CategoryProduct;
 use \Vibe\Shop\Shop;
 use \Vibe\User\User;
 use \Vibe\Order\Order;
+use \Vibe\Order\OrderRow;
 use \Vibe\CartSession\CartSession;
 use \Vibe\Pagination\Pagination;
 
@@ -248,12 +249,16 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
                 $expiration = isset($_POST["expiration"]) ? $_POST["expiration"] : '';
                 $cvv = isset($_POST["cvv"]) ? $_POST["cvv"] : '';
 
-                $order = $this->order->createOrder($userId);
+                $order = $this->order->createOrder($userId, $fullName, $cardNumber, $expiration, $cvv);
                 /* If order was created then start to create orderRows */
-                if ($order) {
-                    
+                if ($order && !empty($products)) {
+                    foreach ($products as $product) {
+                        $orderRow = new OrderRow();
+                        $orderRow->setDb($this->di->get("database"));
+                        $orderRow->createOrderRow($order->id, $product);
+                    }
                 }
-
+                $this->session->delete("cart");
                 $this->di->get("response")->redirect("");
             }
         } else {

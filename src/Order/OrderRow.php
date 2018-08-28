@@ -23,7 +23,21 @@ class OrderRow extends ActiveRecordModel
     public $id;
     public $orderId;
     public $productId;
+    public $productName;
     public $quantity;
     public $size;
     public $price;
+
+
+
+    public function createOrderRow($orderId, $product)
+    {
+        $this->orderId = $orderId;
+        $this->productId = $product["productId"];
+        $this->productName = $product["name"];
+        $this->quantity = $product["quantity"];
+        $this->size = $product["size"];
+        $this->price = $product["price"];
+        $this->save();
+    }
 }
