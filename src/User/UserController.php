@@ -35,7 +35,7 @@ class UserController implements
         $this->user->setDb($this->di->get("database"));
 
         $this->order = new Order();
-        $this->order->setDb($this->di->get("database"));        
+        $this->order->setDb($this->di->get("database"));
 
         $this->session = $this->di->get("session");
     }

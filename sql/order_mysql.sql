@@ -49,3 +49,37 @@ CREATE TABLE oophp_OrderRow (
     FOREIGN KEY (`productId`) REFERENCES `oophp_Product` (`id`)
 
 ) ENGINE INNODB CHARACTER SET utf8 COLLATE utf8_swedish_ci;
+
+-- ------------------------------------------------------------------------
+--
+-- UpdateStock
+--
+DROP TRIGGER IF EXISTS UpdateStock;
+
+DELIMITER //
+
+CREATE TRIGGER UpdateStock
+AFTER INSERT ON oophp_OrderRow
+FOR EACH ROW
+
+BEGIN
+	DECLARE amount INT;
+
+	SELECT stock INTO amount
+	FROM oophp_Product AS Product
+	WHERE Product.id = NEW.productId;
+    
+    IF amount - New.quantity > 0 THEN
+		UPDATE oophp_Product AS Product
+		SET Product.stock = Product.stock - New.quantity
+		WHERE Product.id = NEW.productId; 
+    ELSE
+		UPDATE oophp_Product AS Product
+		SET Product.stock = 0
+		WHERE Product.id = NEW.productId; 
+    END IF;
+END;
+
+//
+
+DELIMITER ;

@@ -51,7 +51,7 @@
                                         <td class="align-middle">$<?= $product["price"] ?></td>
                                         <td class="align-middle text-right">
                                             <button type="submit" name="delete" value="<?= $product["id"] ?>" class="btn btn-sm btn-danger no-border"><i class="fa fa-trash"></i> </button>
-                                            <button type="submit" name="update" value="<?= $product["id"] ?>" class="btn btn-sm btn-success no-border"><i class="fa fa-refresh"></i> </button>
+                                            <button type="submit" name="update" value="<?= $product["productId"] ?>" class="btn btn-sm btn-success no-border"><i class="fa fa-refresh"></i> </button>
                                         </td>
                                     </form>
                                 </tr>

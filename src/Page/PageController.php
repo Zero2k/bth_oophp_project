@@ -60,6 +60,7 @@ class PageController implements ConfigureInterface, InjectionAwareInterface
             "featuredProducts" => $this->product->getProductsWhere(4, "created", "featured = 1"),
             "latestProducts" => $this->product->getProducts(3, "created"),
             "offerProducts" => $this->product->getProductsWhere(3, "created", "offer = 1"),
+            "topSellers" => $this->product->getTopSellers(3),
             "latestPosts" => $this->post->getPosts(4, "created"),
         ];
 

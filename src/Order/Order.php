@@ -79,7 +79,7 @@ class Order extends ActiveRecordModel
         $total = 0;
 
         foreach ($orderRows as $orderRow) {
-            $total += $orderRow->quantity * $orderRow->price;
+            $total += $orderRow->price;
         }
 
         return $total;

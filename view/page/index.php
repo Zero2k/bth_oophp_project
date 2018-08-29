@@ -182,46 +182,64 @@
             <div class="col-md-4 col-sm-12">
                 <div class="widget widget-featured-products">
                     <h3 class="widget-title">Top Sellers</h3>
-                    <?php foreach ($latestProducts as $product) : ?>
-                    <div class="product">
-                        <div>
-                            <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">
+                    <?php if ($topSellers) : ?>
+                        <?php foreach ($topSellers as $product) : ?>
+                        <div class="product">
+                            <div>
+                                <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">
+                            </div>
+                            <div class="product-content">
+                                <h4 class="product-title"><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4><span class="entry-meta">$<?= $product->price ?></span>
+                            </div>
                         </div>
-                        <div class="product-content">
-                            <h4 class="product-title"><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4><span class="entry-meta">$<?= $product->price ?></span>
+                        <?php endforeach ?>
+                    <?php else : ?>
+                        <div class="text-center">
+                            <h3>No products</h3>
                         </div>
-                    </div>
-                    <?php endforeach ?>
+                    <?php endif ?>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="widget widget-featured-products">
                     <h3 class="widget-title">New Arrivals</h3>
-                    <?php foreach ($latestProducts as $product) : ?>
-                    <div class="product">
-                        <div>
-                            <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">
+                    <?php if ($latestProducts) : ?>
+                        <?php foreach ($latestProducts as $product) : ?>
+                        <div class="product">
+                            <div>
+                                <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">
+                            </div>
+                            <div class="product-content">
+                                <h4 class="product-title"><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4><span class="entry-meta">$<?= $product->price ?></span>
+                            </div>
                         </div>
-                        <div class="product-content">
-                            <h4 class="product-title"><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4><span class="entry-meta">$<?= $product->price ?></span>
+                        <?php endforeach ?>
+                    <?php else : ?>
+                        <div class="text-center">
+                            <h3>No products</h3>
                         </div>
-                    </div>
-                    <?php endforeach ?>
+                    <?php endif ?>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="widget widget-featured-products">
                     <h3 class="widget-title">Best Offers</h3>
-                    <?php foreach ($offerProducts as $product) : ?>
-                    <div class="product">
-                        <div>
-                            <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">
+                    <?php if ($offerProducts) : ?>
+                        <?php foreach ($offerProducts as $product) : ?>
+                        <div class="product">
+                            <div>
+                                <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">
+                            </div>
+                            <div class="product-content">
+                                <h4 class="product-title"><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4><span class="entry-meta">$<?= $product->price ?></span>
+                            </div>
                         </div>
-                        <div class="product-content">
-                            <h4 class="product-title"><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4><span class="entry-meta">$<?= $product->price ?></span>
+                        <?php endforeach ?>
+                    <?php else : ?>
+                        <div class="text-center">
+                            <h3>No products</h3>
                         </div>
-                    </div>
-                    <?php endforeach ?>
+                    <?php endif ?>
                 </div>
             </div>
         </div>

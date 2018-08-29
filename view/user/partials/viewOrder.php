@@ -30,7 +30,6 @@
                                         <th class="border-0 text-uppercase small font-weight-bold">Quantity</th>
                                         <th class="border-0 text-uppercase small font-weight-bold">Size</th>
                                         <th class="border-0 text-uppercase small font-weight-bold">Price</th>
-                                        <th class="border-0 text-uppercase small font-weight-bold">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,7 +39,6 @@
                                         <td><?= $product->quantity ?></td>
                                         <td><?= $product->size ?></td>
                                         <td>$<?= $product->price ?></td>
-                                        <td>$<?= $product->quantity * $product->price ?></td>
                                     </tr>
                                     <?php endforeach ?>
                                 </tbody>

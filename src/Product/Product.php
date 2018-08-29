@@ -111,6 +111,44 @@ class Product extends ActiveRecordModel
 
 
 
+    /**
+     * Get products with most sales.
+     *
+     * @param integer $limit.
+     *
+     * @return objects.
+     */
+    public function getTopSellers($limit)
+    {
+        $sql = 'SELECT 
+            OrderRow.productId,
+            Product.name,
+            Product.image,
+            Product.price,
+            Product.old_price,
+            SUM(quantity) AS total
+        FROM oophp_OrderRow OrderRow
+        LEFT JOIN oophp_Product Product ON Product.id = OrderRow.productId
+        GROUP BY OrderRow.productId
+        ORDER BY total DESC
+        LIMIT ?';
+
+        $products = $this->findAllSql($sql, [$limit]);
+        $products = array_map(function ($product) {
+            $product->id = $product->id;
+            $product->userId = $product->userId;
+            $product->name = $product->name;
+            $product->price = $product->price;
+            $product->old_price = $product->old_price;
+            $product->image = $product->image;
+            return $product;
+        }, $products);
+
+        return $products;
+    }
+
+
+
     public function searchProduct($search, $limit, $offset)
     {
         $sql = "SELECT * FROM oophp_Product Product WHERE Product.name LIKE '%$search%' OR Product.description LIKE '%$search%' LIMIT ? OFFSET ?";

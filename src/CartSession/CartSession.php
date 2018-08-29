@@ -146,7 +146,7 @@ class CartSession implements ConfigureInterface, InjectionAwareInterface
         $allProducts = $this->session->get(self::KEY);
 
         foreach ($allProducts as &$p) {
-            if ($p["id"] == $id) {
+            if ($p["productId"] == $id) {
                 $p["available"] = ($product->stock - $quantity < 0 ? 0 : 1);
                 $p["size"] = $size;
                 $p["quantity"] = $quantity;

@@ -17,7 +17,7 @@ CREATE TABLE oophp_Product (
     `image` VARCHAR(250),
     `image_two` VARCHAR(250),
     `image_three` VARCHAR(250),
-    `stock` INTEGER,
+    `stock` INTEGER NOT NULL,
     `offer` BOOLEAN,
     `featured` BOOLEAN,
     `created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
