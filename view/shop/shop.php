@@ -43,7 +43,7 @@
                                         </button>
                                     </form>
                                 </div>
-                                <a href="#"> <img src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" class="img-responsive" alt="Product Image" /> </a>
+                                <a href="#"> <img src="<?= $url->asset("img/$product->image")?>" class="img-responsive" alt="Product Image" /> </a>
                             </div>
                             <div class="info">
                                 <div class="row">

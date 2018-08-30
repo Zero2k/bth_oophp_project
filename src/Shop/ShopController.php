@@ -66,7 +66,7 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
 
         $search = isset($_GET["search"]) ? htmlentities($_GET["search"]) : '';
         $category = isset($_GET["category"]) ? $_GET["category"] : 'all';
-        $limit = isset($_GET["limit"]) ? $_GET["limit"] : 10;
+        $limit = isset($_GET["limit"]) ? $_GET["limit"] : 9;
         $sort = isset($_GET["sort"]) ? $_GET["sort"] : 'id';
         $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1;
         $offset = ($currentPage - 1) * $limit;
@@ -259,7 +259,7 @@ class ShopController implements ConfigureInterface, InjectionAwareInterface
                     }
                 }
                 $this->session->delete("cart");
-                $this->di->get("response")->redirect("");
+                $this->di->get("response")->redirect("profile?tab=view-order&orderId=$order->id");
             }
         } else {
             $this->di->get("response")->redirect("login");

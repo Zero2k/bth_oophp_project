@@ -9,6 +9,7 @@ use \Anax\Di\InjectionAwareTrait;
 use \Vibe\User\User;
 use \Vibe\Post\Post;
 use \Vibe\Product\Product;
+use \Vibe\Order\Order;
 use \Vibe\Category\Category;
 use \Vibe\Category\CategoryProduct;
 use \Vibe\Content\HTMLForm\EditContentForm;
@@ -42,6 +43,9 @@ class AdminController implements
 
         $this->product = new Product();
         $this->product->setDb($this->di->get("database"));
+
+        $this->order = new Order();
+        $this->order->setDb($this->di->get("database"));
 
         $this->category = new Category();
         $this->category->setDb($this->di->get("database"));
@@ -77,19 +81,32 @@ class AdminController implements
 
         if ($userId && $userRole === 1) {
             $tab = isset($_GET["tab"]) ? $_GET["tab"] : '';
+            $orderId = isset($_GET["orderId"]) ? $_GET["orderId"] : '';
+            $orderUserId = isset($_GET["userId"]) ? $_GET["userId"] : '';
+            $limit = isset($_GET["limit"]) ? $_GET["limit"] : '10';
 
             switch ($tab) {
                 case 'orders':
                     $data = [
-                        "content" => "orders",
+                        "orders" => $this->order->getOrders($limit),
                     ];
 
                     $view->add("admin/partials/orders", $data, "partial");
                     break;
 
+                case 'view-order':
+                    $data = [
+                        "content" => $this->order->getOrder($orderId),
+                        "user" => $this->user->getUserInfo($orderUserId),
+                        "total" => $this->order->getOrderTotal($orderId),
+                    ];
+
+                    $view->add("admin/partials/viewOrder", $data, "partial");
+                    break;
+
                 case 'categories':
                     $data = [
-                        "categories" => $this->category->getCategories(10),
+                        "categories" => $this->category->getCategories($limit),
                     ];
 
                     $view->add("admin/partials/categories", $data, "partial");
@@ -97,7 +114,7 @@ class AdminController implements
 
                 case 'products':
                     $data = [
-                        "products" => $this->product->getProducts(10),
+                        "products" => $this->product->getProducts($limit),
                     ];
 
                     $view->add("admin/partials/products", $data, "partial");
@@ -105,7 +122,7 @@ class AdminController implements
 
                 case 'posts':
                     $data = [
-                        "posts" => $this->post->getPosts(10),
+                        "posts" => $this->post->getPosts($limit),
                     ];
 
                     $view->add("admin/partials/posts", $data, "partial");
@@ -113,7 +130,7 @@ class AdminController implements
 
                 case 'users':
                     $data = [
-                        "users" => $this->user->getUsers(10),
+                        "users" => $this->user->getUsers($limit),
                     ];
 
                     $view->add("admin/partials/users", $data, "partial");

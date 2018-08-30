@@ -44,13 +44,14 @@ class Product extends ActiveRecordModel
      *
      * @param integer $limit.
      * @param string $order.
+     * @param string $orderType.
      *
      * @return objects.
      */
-    public function getProducts($limit, $offset = 0, $order = "id")
+    public function getProducts($limit, $offset = 0, $order = "id", $orderType = "ASC")
     {
         $sql = 'SELECT * FROM oophp_Product Product 
-        ORDER BY '.$order.' ASC 
+        ORDER BY '.$order.' '.$orderType.' 
         LIMIT ? OFFSET ?';
 
         $products = $this->findAllSql($sql, [$limit, $offset]);

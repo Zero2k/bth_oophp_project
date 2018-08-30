@@ -103,7 +103,7 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="thumb-wrapper">
                                     <div class="img-box">
-                                        <img src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" class="img-responsive img-fluid" alt="">
+                                        <img src="<?= $url->asset("img/$product->image")?>" class="img-responsive img-fluid" alt="">
                                     </div>
                                     <div class="thumb-content">
                                         <h4><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4>
@@ -127,7 +127,7 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="thumb-wrapper">
                                     <div class="img-box">
-                                        <img src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" class="img-responsive img-fluid" alt="">
+                                        <img src="<?= $url->asset("img/$product->image")?>" class="img-responsive img-fluid" alt="">
                                     </div>
                                     <div class="thumb-content">
                                         <h4><?= $product->name ?></h4>
@@ -154,24 +154,24 @@
         <div class="row row-eq-height text-center text-lg-left">
             <div class="col-md-6">
                 <a href="#" class="d-block mb-4 h-100">
-                    <img class="img-fluid" src="<?= $url->create("/kmom10/shop/htdocs/img/sale/summer_sale_alt1.jpeg")?>" alt="">
+                    <img class="img-fluid" src="<?= $url->asset("img/sale/summer_sale_alt1.jpeg")?>" alt="">
                 </a>
             </div>
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-6">
                         <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid" src="<?= $url->create("/kmom10/shop/htdocs/img/sale/summer_sale_alt2.jpeg")?>" alt="">
+                            <img class="img-fluid" src="<?= $url->asset("img/sale/summer_sale_alt2.jpeg")?>" alt="">
                         </a>
                     </div>
                     <div class="col-md-6">
                         <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid" src="<?= $url->create("/kmom10/shop/htdocs/img/sale/summer_sale_alt3.jpeg")?>" alt="">
+                            <img class="img-fluid" src="<?= $url->asset("img/sale/summer_sale_alt3.jpeg")?>" alt="">
                         </a>
                     </div>
                     <div class="col-md-12">
                         <a href="#" class="d-block mb-4 h-100">
-                            <img class="img-fluid" src="<?= $url->create("/kmom10/shop/htdocs/img/sale/summer_sale_alt4.jpeg")?>" alt="">
+                            <img class="img-fluid" src="<?= $url->asset("img/sale/summer_sale_alt4.jpeg")?>" alt="">
                         </a>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
                         <?php foreach ($topSellers as $product) : ?>
                         <div class="product">
                             <div>
-                                <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">
+                                <img class="product-thumb" src="<?= $url->asset("img/$product->image")?>" alt="Product">
                             </div>
                             <div class="product-content">
                                 <h4 class="product-title"><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4><span class="entry-meta">$<?= $product->price ?></span>
@@ -195,7 +195,7 @@
                         <?php endforeach ?>
                     <?php else : ?>
                         <div class="text-center">
-                            <h3>No products</h3>
+                            <h4>No products</h4>
                         </div>
                     <?php endif ?>
                 </div>
@@ -207,7 +207,7 @@
                         <?php foreach ($latestProducts as $product) : ?>
                         <div class="product">
                             <div>
-                                <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">
+                                <img class="product-thumb" src="<?= $url->asset("img/$product->image")?>" alt="Product">
                             </div>
                             <div class="product-content">
                                 <h4 class="product-title"><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4><span class="entry-meta">$<?= $product->price ?></span>
@@ -216,7 +216,7 @@
                         <?php endforeach ?>
                     <?php else : ?>
                         <div class="text-center">
-                            <h3>No products</h3>
+                            <h4>No products</h4>
                         </div>
                     <?php endif ?>
                 </div>
@@ -228,7 +228,7 @@
                         <?php foreach ($offerProducts as $product) : ?>
                         <div class="product">
                             <div>
-                                <img class="product-thumb" src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" alt="Product">
+                                <img class="product-thumb" src="<?= $url->asset("img/$product->image")?>" alt="Product">
                             </div>
                             <div class="product-content">
                                 <h4 class="product-title"><a href="<?= $url->create("shop/product/$product->id")?>"><?= $product->name ?></a></h4><span class="entry-meta">$<?= $product->price ?></span>
@@ -237,7 +237,7 @@
                         <?php endforeach ?>
                     <?php else : ?>
                         <div class="text-center">
-                            <h3>No products</h3>
+                            <h4>No products</h4>
                         </div>
                     <?php endif ?>
                 </div>
@@ -268,7 +268,7 @@
                                 <p class="card-text mb-auto"><?= substr(strip_tags($post->content), 0, 70) ?></p>
                                 <a href="<?= $url->create("blog/$post->slug")?>">Read more</a>
                                 </div>
-                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px; object-fit: cover;" src="<?= $url->create("/kmom10/shop/htdocs/img/blog/$post->image")?>" data-holder-rendered="true">
+                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px; object-fit: cover;" src="<?= $url->asset("img/blog/$post->image")?>" data-holder-rendered="true">
                             </div>
                         </div>
                         <?php endforeach ?>
@@ -288,7 +288,7 @@
                                 <p class="card-text mb-auto"><?= substr(strip_tags($post->content), 0, 70) ?></p>
                                 <a href="<?= $url->create("blog/$post->slug")?>">Read more</a>
                                 </div>
-                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px; object-fit: cover;" src="<?= $url->create("/kmom10/shop/htdocs/img/blog/$post->image")?>" data-holder-rendered="true">
+                                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px; object-fit: cover;" src="<?= $url->asset("img/blog/$post->image")?>" data-holder-rendered="true">
                             </div>
                         </div>
                         <?php endforeach ?>

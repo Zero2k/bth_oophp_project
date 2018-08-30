@@ -16,7 +16,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="blog text-center blog-item">
                         <span class="category-badge"><?= ucfirst($post->category) ?></span>
-                        <img src="<?= $url->create("/kmom10/shop/htdocs/img/blog/$post->image")?>" alt="" width="100%">
+                        <img src="<?= $url->asset("img/blog/$post->image")?>" alt="" width="100%">
                         <h4 class="blog-title">
                             <a class="text-dark" href="<?= $url->create("blog/$post->slug")?>"><?= ucfirst($post->title) ?></a>
                         </h4>

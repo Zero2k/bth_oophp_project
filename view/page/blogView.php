@@ -14,7 +14,8 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10 text-center">
-                <img src="<?= $url->create("/kmom10/shop/htdocs/img/blog/$post->image")?>" class="img-fluid mx-auto d-block" alt="Responsive image">
+                <!-- http://www.student.bth.se/~vibe16/dbwebb-kurser/oophp/me/kmom10/shop/htdocs/img/black_shirt_01.jpg -->
+                <img src="<?= $url->asset("img/blog/$post->image")?>" class="img-fluid mx-auto d-block" alt="Responsive image">
                 <div class="blog-post">
                     <p class="blog-post-meta"><?= $post->created ?> | <?= ucfirst($post->category) ?></p>
                     <p><?= $post->html ?></p>

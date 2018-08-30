@@ -16,7 +16,7 @@ class Shop extends ActiveRecordModel
         LEFT JOIN oophp_CategoryProduct CP ON CP.productId = Product.id
         LEFT JOIN oophp_Category Category ON Category.id = CP.categoryId
         WHERE Category.category = ? 
-        ORDER BY '.$order.' DESC LIMIT ? OFFSET ?';
+        ORDER BY '.$order.' ASC LIMIT ? OFFSET ?';
 
         $products = $this->findAllSql($sql, [$category, $limit, $offset]);
         $products = array_map(function ($product) {

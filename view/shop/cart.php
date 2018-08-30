@@ -32,7 +32,7 @@
                                 <?php foreach ($products as $product) : ?>
                                 <tr>
                                     <form method="post">
-                                        <td><img class="product-img" src="<?= $url->create("/kmom10/shop/htdocs/img/$product[image]")?>" /> </td>
+                                        <td><img class="product-img" src="<?= $url->asset("img/$product[image]")?>" /> </td>
                                         <td class="align-middle">
                                             <a href="<?= $url->create("shop/product/$product[productId]")?>"><?= $product["name"] ?></a>
                                         </td>

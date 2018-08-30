@@ -31,13 +31,43 @@ class Order extends ActiveRecordModel
 
 
     /**
-     * Get orders.
+     * Get all orders.
+     *
+     * @param integer $limit.
+     *
+     * @return objects.
+     */
+    public function getOrders($limit = 20)
+    {
+        $sql = 'SELECT * FROM oophp_Order Orders
+        ORDER BY id ASC
+        LIMIT ?';
+
+        $orders = $this->findAllSql($sql, [$limit]);
+        $orders = array_map(function ($order) {
+            $order->id = $order->id;
+            $order->userId = $order->userId;
+            $order->fullName = $order->fullName;
+            $order->cardNumber = $order->cardNumber;
+            $order->expiration = $order->expiration;
+            $order->cvv = $order->cvv;
+            $order->created = $order->created;
+            return $order;
+        }, $orders);
+
+        return $orders;
+    }
+
+
+
+    /**
+     * Get user orders.
      *
      * @param integer $userId.
      *
      * @return objects.
      */
-    public function getOrders($userId)
+    public function getUserOrders($userId)
     {
         $sql = 'SELECT * FROM oophp_Order Orders
         WHERE userId = ?

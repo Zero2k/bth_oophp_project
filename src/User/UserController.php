@@ -158,7 +158,7 @@ class UserController implements
 
                 case 'orders':
                     $data = [
-                        "content" => $this->order->getOrders($userId),
+                        "content" => $this->order->getUserOrders($userId),
                     ];
 
                     $view->add("user/partials/orders", $data, "partial");

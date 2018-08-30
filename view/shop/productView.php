@@ -22,16 +22,16 @@
                 <div id="myCarousel" class="carousel-product slide ptb-20" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item carousel-item active">
-                            <img src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image")?>" class="img-responsive img-fluid" alt="">
+                            <img src="<?= $url->asset("img/$product->image")?>" class="img-responsive img-fluid" alt="">
                         </div>
                         <?php if ($product->image_two) : ?>
                             <div class="item carousel-item">
-                                <img src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image_two")?>" class="img-responsive img-fluid" alt="">
+                                <img src="<?= $url->asset("img/$product->image_two")?>" class="img-responsive img-fluid" alt="">
                             </div>
                         <?php endif ?>
                         <?php if ($product->image_three) : ?>
                             <div class="item carousel-item">
-                                <img src="<?= $url->create("/kmom10/shop/htdocs/img/$product->image_three")?>" class="img-responsive img-fluid" alt="">
+                                <img src="<?= $url->asset("img/$product->image_three")?>" class="img-responsive img-fluid" alt="">
                             </div>
                         <?php endif ?>
                     </div>
