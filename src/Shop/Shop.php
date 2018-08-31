@@ -10,6 +10,16 @@ use \Anax\Database\ActiveRecordModel;
  */
 class Shop extends ActiveRecordModel
 {
+    /**
+     * Get all product by category.
+     *
+     * @param object $category.
+     * @param integer $limit.
+     * @param integer $offset.
+     * @param string $order.
+     *
+     * @return object.
+     */
     public function getAllProductsByCategory($category, $limit, $offset, $order = "created")
     {
         $sql = 'SELECT Product.* FROM oophp_Product Product

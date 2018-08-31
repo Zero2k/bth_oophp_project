@@ -110,7 +110,7 @@ check: check-tools-bash check-tools-php
 
 # target: test               - Run all tests.
 .PHONY:  test
-test: bats phpunit phpcs phpmd phploc behat # shellcheck
+test: bats phpunit phpcs phploc behat # shellcheck
 	@$(call HELPTEXT,$@)
 	composer validate
 

@@ -32,6 +32,17 @@ class Post extends ActiveRecordModel
 
 
 
+    /**
+     * Create post.
+     *
+     * @param id $userId.
+     * @param string $content.
+     * @param string $title.
+     * @param string $image.
+     * @param string $category.
+     *
+     * @return object.
+     */
     public function createPost($userId, $content, $title, $image, $category)
     {
         $this->userId = $userId;
@@ -47,6 +58,18 @@ class Post extends ActiveRecordModel
 
 
 
+    /**
+     * Create post.
+     *
+     * @param id $postId.
+     * @param id $userId.
+     * @param string $content.
+     * @param string $title.
+     * @param string $image.
+     * @param string $category.
+     *
+     * @return object.
+     */
     public function updatePost($postId, $userId, $content, $title, $image, $category)
     {
         $post = $this->find("id", $postId);
@@ -64,6 +87,14 @@ class Post extends ActiveRecordModel
 
 
 
+    /**
+     * Get posts.
+     *
+     * @param integer $postId.
+     * @param string $order.
+     *
+     * @return array.
+     */
     public function getPosts($limit = 10, $order = "id")
     {
         $sql = 'SELECT * FROM oophp_Post Post 
@@ -88,6 +119,13 @@ class Post extends ActiveRecordModel
 
 
 
+    /**
+     * Get single post.
+     *
+     * @param string $slug.
+     *
+     * @return object.
+     */
     public function getPost($slug)
     {
         $post = $this->find("slug", $slug);
@@ -97,6 +135,13 @@ class Post extends ActiveRecordModel
 
 
 
+    /**
+     * Return slug.
+     *
+     * @param string $str.
+     *
+     * @return string.
+     */
     public function slugify($str)
     {
         $str = mb_strtolower(trim($str));
@@ -108,6 +153,13 @@ class Post extends ActiveRecordModel
 
 
 
+    /**
+     * Return content as markdown.
+     *
+     * @param string $content.
+     *
+     * @return string.
+     */
     public function parseContent($content)
     {
         $textfilter = new TextFilter();

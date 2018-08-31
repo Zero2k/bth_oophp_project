@@ -30,6 +30,14 @@ class OrderRow extends ActiveRecordModel
 
 
 
+    /**
+     * Create orderRow.
+     *
+     * @param id $orderId.
+     * @param object $product.
+     *
+     * @return void.
+     */
     public function createOrderRow($orderId, $product)
     {
         $this->orderId = $orderId;

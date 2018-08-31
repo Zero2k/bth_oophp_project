@@ -5,7 +5,7 @@ namespace Vibe\Admin;
 use \Anax\Configure\ConfigureInterface;
 use \Anax\Configure\ConfigureTrait;
 use \Anax\DI\InjectionAwareInterface;
-use \Anax\Di\InjectionAwareTrait;
+use \Anax\DI\InjectionAwareTrait;
 use \Vibe\User\User;
 use \Vibe\Post\Post;
 use \Vibe\Product\Product;

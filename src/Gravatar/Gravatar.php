@@ -10,7 +10,7 @@ class Gravatar
     /**
     * get url
     * @param string $email - email to be used for gravatar
-    * @param int $size - optional size of image
+    * @param integer $size - optional size of image
     * @return string $url - gravatar url
     */
     public function url($email, $size = 80)

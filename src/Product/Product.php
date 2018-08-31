@@ -117,7 +117,7 @@ class Product extends ActiveRecordModel
      *
      * @param integer $limit.
      *
-     * @return objects.
+     * @return array.
      */
     public function getTopSellers($limit)
     {
@@ -150,6 +150,15 @@ class Product extends ActiveRecordModel
 
 
 
+    /**
+     * Seach product.
+     *
+     * @param string $search.
+     * @param integer $limit.
+     * @param integer $offset.
+     *
+     * @return array.
+     */
     public function searchProduct($search, $limit, $offset)
     {
         $sql = "SELECT * FROM oophp_Product Product WHERE Product.name LIKE '%$search%' OR Product.description LIKE '%$search%' LIMIT ? OFFSET ?";
@@ -175,6 +184,13 @@ class Product extends ActiveRecordModel
 
 
 
+    /**
+     * Get product.
+     *
+     * @param integer $id.
+     *
+     * @return object.
+     */
     public function getProduct($id)
     {
         return $this->find("id", $id);
@@ -182,6 +198,21 @@ class Product extends ActiveRecordModel
 
 
 
+    /**
+     * Add new product.
+     *
+     * @param id $userId.
+     * @param string $name.
+     * @param string $text.
+     * @param string $description.
+     * @param integer $price.
+     * @param string $image.
+     * @param integer $stock.
+     * @param boolean $offer.
+     * @param boolean $featured.
+     *
+     * @return object.
+     */
     public function addProduct($userId, $name, $text, $description, $price, $image, $stock, $offer, $featured)
     {
         $this->userId = $userId;
@@ -199,6 +230,23 @@ class Product extends ActiveRecordModel
 
 
 
+    /**
+     * Create product.
+     *
+     * @param id $userId.
+     * @param string $name.
+     * @param string $text.
+     * @param string $description.
+     * @param integer $price.
+     * @param string $image.
+     * @param integer $stock.
+     * @param boolean $offer.
+     * @param boolean $featured.
+     * @param array $categories.
+     * @param object $di.
+     *
+     * @return object.
+     */
     public function createProduct($userId, $name, $text, $description, $price, $image, $stock, $offer, $featured, $categories, $di)
     {
         $newProduct = $this->addProduct($userId, $name, $text, $description, $price, $image, $stock, $offer, $featured);
@@ -216,6 +264,26 @@ class Product extends ActiveRecordModel
 
 
 
+    /**
+     * Update product.
+     *
+     * @param id $productId.
+     * @param id $userId.
+     * @param string $name.
+     * @param string $text.
+     * @param string $description.
+     * @param integer $price.
+     * @param string $image.
+     * @param string $image_two.
+     * @param string $image_three.
+     * @param integer $stock.
+     * @param boolean $offer.
+     * @param boolean $featured.
+     * @param array $categories.
+     * @param object $di.
+     *
+     * @return object.
+     */
     public function updateProduct($productId, $userId, $name, $text, $description, $price, $image, $image_two, $image_three, $stock, $offer, $featured, $categories, $di)
     {
         $categoryProduct = new CategoryProduct();

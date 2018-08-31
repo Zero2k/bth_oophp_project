@@ -90,6 +90,13 @@ class Order extends ActiveRecordModel
 
 
 
+    /**
+     * Get order.
+     *
+     * @param id $orderId.
+     *
+     * @return object.
+     */
     public function getOrder($orderId)
     {
         $order = $this->find("id", $orderId);
@@ -103,6 +110,13 @@ class Order extends ActiveRecordModel
 
 
 
+    /**
+     * Get total order value.
+     *
+     * @param id $orderId.
+     *
+     * @return integer.
+     */
     public function getOrderTotal($orderId)
     {
         $orderRows = $this->getOrderRows($orderId);
@@ -117,6 +131,17 @@ class Order extends ActiveRecordModel
 
 
 
+    /**
+     * Create new order.
+     *
+     * @param id $userId.
+     * @param string $fullName.
+     * @param integer $cardNumber.
+     * @param integer $expiration.
+     * @param integer $cvv.
+     *
+     * @return object.
+     */
     public function createOrder($userId, $fullName, $cardNumber, $expiration, $cvv)
     {
         $this->userId = $userId;
@@ -131,6 +156,13 @@ class Order extends ActiveRecordModel
 
 
 
+    /**
+     * Get all orderRows that belong to an order.
+     *
+     * @param id $orderId.
+     *
+     * @return array.
+     */
     public function getOrderRows($orderId)
     {
         $sql = 'SELECT * FROM oophp_OrderRow OrderRow
