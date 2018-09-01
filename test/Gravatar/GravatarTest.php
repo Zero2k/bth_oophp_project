@@ -9,10 +9,14 @@ namespace Vibe\Gravatar;
 class GravatarTest extends \PHPUnit_Framework_TestCase
 {
     protected $gravatar;
+
     public function setUp()
     {
         $this->gravatar = new Gravatar();
     }
+
+
+
     public function testGravatarUrl()
     {
         $response = $this->gravatar->url("test@test.com");

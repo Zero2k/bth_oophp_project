@@ -77,22 +77,6 @@ class CartSession implements ConfigureInterface, InjectionAwareInterface
 
 
     /**
-     * Get single product saved in session.
-     *
-     * @return array with the dataset
-     */
-    public function getProduct($key)
-    {
-        $data = $this->session->get(self::KEY);
-        $set = isset($data[$key])
-            ? $data[$key]
-            : [];
-        return $set;
-    }
-
-
-
-    /**
      * Add new product.
      *
      * @param object $product

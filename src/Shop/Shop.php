@@ -50,7 +50,7 @@ class Shop extends ActiveRecordModel
 
 
     /**
-     * return all records from database
+     * Return all records from database
      *
      * @param string $query.
      *

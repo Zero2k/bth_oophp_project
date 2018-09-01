@@ -13,22 +13,22 @@
             <div class="carousel-item active">
                 <img class="d-block w-100 slider-image" src="img/01.jpg" alt="First slide">
                 <div class="carousel-caption d-none d-md-block text-dark">
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h5>Latest Scarves</h5>
+                    <p>Wear New, Wear Later</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100 slider-image" src="img/02.jpg" alt="First slide">
                 <div class="carousel-caption d-none d-md-block text-dark">
-                    <h5>First slide label</h5>
-                    <a href="#"><p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p></a>
+                    <h5>Scarves Winter 2018: All the Trends</h5>
+                    <a href="<?= $url->create("shop")?>"><p>View all products</p></a>
                 </div>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100 slider-image" src="img/03.jpg" alt="First slide">
                 <div class="carousel-caption d-none d-md-block text-dark">
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h5>New Arrivals | Newest Shoes & Fresh Sneakers</h5>
+                    <p>Shop for New Designer Shoes for Women at eliteAppeal</p>
                 </div>
             </div>
         </div>

@@ -159,7 +159,7 @@ class Product extends ActiveRecordModel
      *
      * @return array.
      */
-    public function searchProduct($search, $limit, $offset)
+    public function searchProduct($search, $limit = 9, $offset = 0)
     {
         $sql = "SELECT * FROM oophp_Product Product WHERE Product.name LIKE '%$search%' OR Product.description LIKE '%$search%' LIMIT ? OFFSET ?";
 

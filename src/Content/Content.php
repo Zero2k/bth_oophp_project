@@ -66,6 +66,7 @@ class Content extends ActiveRecordModel
         $this->html = $this->parseContent($content);
         $this->type = $type;
         $this->update();
+        return $this;
     }
 
 
