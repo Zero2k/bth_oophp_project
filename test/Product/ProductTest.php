@@ -19,10 +19,34 @@ class ProductTest extends \PHPUnit_Framework_TestCase
 
 
 
+    public function testGetProducts()
+    {
+        $response = $this->product->getProducts(1);
+        $this->assertEquals(1, count($response));
+    }
+
+
+
+    public function testGetProductsWhere()
+    {
+        $response = $this->product->getProductsWhere(5);
+        $this->assertEquals(2, count($response));
+    }
+
+
+
     public function testGetProduct()
     {
         $response = $this->product->getProduct(1);
         $this->assertEquals(1, count($response));
+    }
+
+
+
+    public function testGetTopSellers()
+    {
+        $response = $this->product->getTopSellers(10);
+        $this->assertEquals(1, $response[0]->productId);
     }
 
 

@@ -50,6 +50,13 @@ class Category extends ActiveRecordModel
 
 
 
+    /**
+     * Create category.
+     *
+     * @param string $category.
+     *
+     * @return object.
+     */
     public function createCategory($category)
     {
         $this->category = $category;
@@ -59,6 +66,14 @@ class Category extends ActiveRecordModel
 
 
 
+    /**
+     * Update category.
+     *
+     * @param id $productId.
+     * @param string $category.
+     *
+     * @return object.
+     */
     public function updateCategory($categoryId, $category)
     {
         $cat = $this->find("id", $categoryId);

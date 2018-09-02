@@ -45,6 +45,13 @@ class CategoryProduct extends ActiveRecordModel
 
 
 
+    /**
+     * Get categories that belong to product.
+     *
+     * @param id $productId.
+     *
+     * @return array.
+     */
     public function findCategoriesToProduct($productId)
     {
         $sql = 'SELECT * FROM oophp_CategoryProduct CategoryProduct 
@@ -57,6 +64,14 @@ class CategoryProduct extends ActiveRecordModel
 
 
 
+    /**
+     * Create relation between category and product.
+     *
+     * @param id $categoryId.
+     * @param id $productId.
+     *
+     * @return void.
+     */
     public function createCategoryRelation($categoryId, $productId)
     {
         $this->categoryId = $categoryId;
@@ -66,6 +81,13 @@ class CategoryProduct extends ActiveRecordModel
 
 
 
+    /**
+     * Get categories that belong to product.
+     *
+     * @param id $productId.
+     *
+     * @return array.
+     */
     public function getCategoriesToProduct($productId)
     {
         $sql = 'SELECT category FROM oophp_Category Category
